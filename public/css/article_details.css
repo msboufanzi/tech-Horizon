@@ -1,0 +1,439 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Body Styling */
+  body {
+    font-family: "Source Sans Pro", sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    grid-template-areas:
+      "header header"
+      "main aside"
+      "footer footer";
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  /* Header and Navbar */
+  header {
+    grid-area: header;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    font-family: "Raleway", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #001f3f;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .logo:hover {
+    color: #0056b3;
+  }
+  
+  .nav-links {
+    display: flex;
+    list-style: none;
+    margin-left: auto;
+    margin-right: 1rem;
+  }
+  
+  .nav-links li {
+    margin-left: 1rem;
+  }
+  
+  .nav-links a {
+    color: #333;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-links a:hover {
+    color: #0056b3;
+  }
+  
+  .profile-link {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin-left: 1rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #0056b3;
+    transition: border-color 0.3s ease;
+  }
+  
+  .profile-link:hover {
+    border-color: #001f3f;
+  }
+  
+  .profile-pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Main Section */
+  main {
+    grid-area: main;
+  }
+  
+  .post {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .article-title {
+    font-family: "Raleway", sans-serif;
+    font-size: 2rem;
+    color: #001f3f;
+    margin-bottom: 1rem;
+  }
+  
+  .meta {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+  
+  .featured-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+  }
+  
+  .section-title {
+    font-family: "Raleway", sans-serif;
+    font-size: 1.5rem;
+    color: #001f3f;
+    margin-bottom: 1rem;
+  }
+  
+  .content p {
+    margin-bottom: 1rem;
+  }
+  
+  /* Comments Section */
+  .comments {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .comments h3 {
+    font-family: "Raleway", sans-serif;
+    font-size: 1.5rem;
+    color: #001f3f;
+    margin-bottom: 1.5rem;
+  }
+  
+  .comment {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 1rem;
+  }
+  
+  .comment:last-child {
+    border-bottom: none;
+  }
+  
+  .comment-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .comment-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .comment-content {
+    flex: 1;
+  }
+  
+  .comment-author {
+    font-weight: bold;
+    color: #001f3f;
+    font-size: 1rem;
+  }
+  
+  .comment-date {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 0.3rem;
+    display: block;
+  }
+  
+  .comment-text {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+    margin-top: 0.5rem;
+  }
+  
+  /* Add Comment Section */
+  .add-comment {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+  }
+  
+  .add-comment h3 {
+    font-family: "Raleway", sans-serif;
+    font-size: 1.5rem;
+    color: #001f3f;
+    margin-bottom: 1.5rem;
+  }
+  
+  .add-comment textarea {
+    width: 100%;
+    height: 150px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 1rem;
+    resize: none;
+  }
+  
+  .add-comment button {
+    display: inline-block;
+    background-color: #001f3f;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-comment button:hover {
+    background-color: #0056b3;
+  }
+  
+  
+  /* Add Comment Section */
+  .add-comment {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+  }
+  
+  .add-comment h3 {
+    font-family: "Raleway", sans-serif;
+    font-size: 1.5rem;
+    color: #001f3f;
+    margin-bottom: 1.5rem;
+  }
+  
+  .add-comment textarea {
+    width: 100%;
+    height: 150px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 1rem;
+  }
+  
+  .add-comment button {
+    display: inline-block;
+    background-color: #001f3f;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-comment button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Sidebar (Recent Articles) */
+  aside {
+    grid-area: aside;
+  }
+  
+  .recent-articles {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .recent-articles h3 {
+    font-family: "Raleway", sans-serif;
+    color: #001f3f;
+    margin-bottom: 1rem;
+  }
+  
+  .recent-post {
+    display: flex;
+    margin-bottom: 1.5rem;
+    align-items: flex-start;
+  }
+  
+  .recent-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+    margin-right: 1rem;
+  }
+  
+  .recent-info h4 {
+    font-family: "Raleway", sans-serif;
+    color: #001f3f;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .recent-info a {
+    color: #001f3f;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .recent-info a:hover {
+    color: #0056b3;
+  }
+  
+  .recent-info p {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  /* Footer Styling */
+  footer {
+    grid-area: footer;
+    text-align: center;
+    padding: 1rem;
+    background-color: #001f3f;
+    color: #fff;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    body {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "header"
+        "main"
+        "aside"
+        "footer";
+    }
+  
+    nav {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .nav-links {
+      flex-direction: column;
+      margin-top: 1rem;
+    }
+  
+    .nav-links li {
+      margin-left: 0;
+      margin-bottom: 0.5rem;
+    }
+  }
+  
+  /* Article Rating Section */
+  .article-rating {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .article-rating h3 {
+    font-family: "Raleway", sans-serif;
+    font-size: 1.5rem;
+    color: #001f3f;
+    margin-bottom: 1rem;
+  }
+  
+  .stars {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+  }
+  
+  .stars input {
+    display: none; /* Hide radio inputs */
+  }
+  
+  .stars label {
+    font-size: 2rem;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .stars input:checked ~ label {
+    color: #f39c12; /* Highlight stars on selection */
+  }
+  
+  .stars label:hover,
+  .stars label:hover ~ label {
+    color: #f39c12; /* Highlight stars on hover */
+  }
+  
+  /* User Rating in Comments */
+  .user-rating {
+    font-size: 1rem;
+    color: #888;
+  }
+  
+  .user-rating .star {
+    color: #f39c12;
+    font-size: 1.2rem;
+    margin-left: 5px;
+  }
+  
