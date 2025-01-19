@@ -11,10 +11,10 @@
       <div class="nav-content">
         <div class="logo">Tech Horizon</div>
         <div class="nav-links">
-          <a href="../home_page/home.html">Home</a>
-          <a href="../themes/themes.html">Themes</a>
-          <a href="../public_articles/public_articles.html">Public Articles</a>
-          <a href="../auth/auth.html">Sign in/up</a>
+          <a href="{{ route('home') }}">Home</a>
+          <a href="{{ route('themes') }}">Themes</a>
+          <a href="{{ route('public.articles') }}">Public Articles</a>
+          <a href="{{ route('auth') }}">Sign in/up</a>
         </div>
       </div>
     </nav>

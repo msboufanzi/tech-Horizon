@@ -288,3 +288,14 @@ footer a {
     color: #3c97bf;
     text-decoration: none;
 }
+.error {
+    color: #ff3333;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    text-align: left;
+    width: 100%;
+}
+
+input.error {
+    border-color: #ff3333;
+}
