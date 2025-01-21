@@ -7,6 +7,18 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
+Route::get('/editor_dashboard', function () {
+    return view('editor_dashboard');
+})->name('editor_dashboard');
+
+Route::get('/theme_manager_dashboard', function () {
+    return view('theme_manager_dashboard');
+})->name('theme_manager_dashboard');
+
+Route::get('/subscriber_dashboard', function () {
+    return view('subscriber_dashboard');
+})->name('subscriber_dashboard');
+
 Route::get('/themes', function () {
     return view('themes');
 })->name('themes');
