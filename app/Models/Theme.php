@@ -8,5 +8,5 @@ class Theme extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description'];
+    protected $fillable = ['title', 'description', 'manager_id'];
 }
