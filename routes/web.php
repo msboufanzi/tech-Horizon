@@ -31,6 +31,10 @@ Route::get('/articles', function () {
     return view('articles');
 })->name('articles');
 
+Route::get('/article_details', function () {
+    return view('article_details');
+})->name('article_details');
+
 // Auth routes
 Route::get('/auth', [AuthController::class, 'showAuthForm'])->name('auth');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
