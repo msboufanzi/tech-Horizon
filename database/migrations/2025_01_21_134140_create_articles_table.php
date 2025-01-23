@@ -13,9 +13,11 @@ return new class extends Migration {
         Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->text('content'); // Use text if content can be long
+            $table->text('description');
+            $table->text('content');
             $table->unsignedInteger('theme_id');
-            $table->unsignedInteger('author_id'); 
+            $table->unsignedInteger('author_id');
+            $table->boolean('ispublic')->default(false);
             $table->timestamps();
 
             // Define foreign key constraints
