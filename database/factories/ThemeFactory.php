@@ -18,7 +18,7 @@ class ThemeFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->title, 
+            'title' => $this->faker->title,
             'description' => $this->faker->paragraph,
             'manager_id' => User::factory(),
             'created_at' => now(),
