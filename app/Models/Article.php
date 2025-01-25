@@ -8,5 +8,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Article extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'content', 'theme_id', 'author_id'];
+
+    protected $fillable = [
+        'title',
+        'description',
+        'content',
+        'theme_id',
+        'author_id',
+        'ispublic',
+    ];
+
+    // Define a relationship to fetch the author (user)
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'author_id');
+    }
 }

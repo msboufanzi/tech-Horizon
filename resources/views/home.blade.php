@@ -73,73 +73,39 @@
             </div>
         </div>
     </section>
-
+    <!-- Displaying 3 first themes from database -->
     <section class="themes" id="themes">
         <h2 class="section-title">Explore Our Themes</h2>
         <div class="cards-container">
-            <div class="card">
-                <img src="images/cyber_security.jpg" alt="Cybersecurity" />
-                <div class="card-content">
-                    <h3>Cybersecurity</h3>
-                    <p>
-                        Protect your digital assets with cutting-edge security solutions
-                        and best practices.
-                    </p>
+            @foreach ($themes as $theme)
+                <div class="card">
+                    <img src="images/cyber_security.jpg" alt="{{ $theme->title }}" />
+                    <div class="card-content">
+                        <h3>{{ $theme->title }}</h3>
+                        <p>{{ $theme->description }}</p>
+                        <!-- Add creation date -->
+                        <p class="creation-date">Created on: {{ $theme->created_at->format('M d, Y') }}</p>
+                    </div>
                 </div>
-            </div>
-            <div class="card">
-                <img src="images/cyber_security.jpg" alt="AI" />
-                <div class="card-content">
-                    <h3>Artificial Intelligence</h3>
-                    <p>
-                        Discover the power of AI and machine learning in modern
-                        applications.
-                    </p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="images/cyber_security.jpg" alt="Cloud Computing" />
-                <div class="card-content">
-                    <h3>Cloud Computing</h3>
-                    <p>
-                        Learn about cloud technologies and their impact on business
-                        transformation.
-                    </p>
-                </div>
-            </div>
+            @endforeach
         </div>
-        <a href="../themes/themes.html" class="show-more">Show More</a>
+        <a href="{{ route('themes') }}" class="show-more">Show More</a>
     </section>
 
     <section class="articles" id="articles">
         <h2 class="section-title">Public Articles</h2>
         <div class="cards-container">
-            <div class="card">
-                <img src="images/ai.png" alt="Article 1" />
-                <div class="card-content">
-                    <h3>The Future of AI</h3>
-                    <p>
-                        Exploring the latest developments in artificial intelligence and
-                        their implications.
-                    </p>
+            @foreach ($articles as $article)
+                <div class="card">
+                    <img src="images/ai.png" alt="{{ $article->title }}" />
+                    <div class="card-content">
+                        <h3>{{ $article->title }}</h3>
+                        <p>{{$article->description }}</p> <!-- Limit description to 100 characters -->
+                    </div>
                 </div>
-            </div>
-            <div class="card">
-                <img src="images/ai.png" alt="Article 2" />
-                <div class="card-content">
-                    <h3>Cloud Security</h3>
-                    <p>Best practices for securing your cloud infrastructure.</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="images/ai.png" alt="Article 3" />
-                <div class="card-content">
-                    <h3>Game Dev Trends</h3>
-                    <p>Latest trends in game development and emerging technologies.</p>
-                </div>
-            </div>
+            @endforeach
         </div>
-        <a href="../public_articles/public_articles.html" class="show-more">View More Articles</a>
+        <a href="{{ route('public.articles') }}" class="show-more">View More Articles</a>
     </section>
 
     <section class="testimonials" id="testimonials">

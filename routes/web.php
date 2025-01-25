@@ -2,10 +2,16 @@
 
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ThemeController;
+use App\Http\Controllers\PublicArticleController;
 
-Route::get('/',function () {
-    return view('home');
-})->name('home');
+
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
+// Route::get('/',function () {
+//     return view('home');
+// })->name('home');
 
 Route::get('/editor_dashboard', function () {
     return view('editor_dashboard');
@@ -19,13 +25,9 @@ Route::get('/subscriber_dashboard', function () {
     return view('subscriber_dashboard');
 })->name('subscriber_dashboard');
 
-Route::get('/themes', function () {
-    return view('themes');
-})->name('themes');
+Route::get('/themes', [ThemeController::class, 'index'])->name('themes');
 
-Route::get('/public-articles', function () {
-    return view('public_articles');
-})->name('public.articles');
+Route::get('/public-articles', [PublicArticleController::class, 'index'])->name('public.articles');
 
 Route::get('/articles', function () {
     return view('articles');
@@ -40,4 +42,6 @@ Route::get('/auth', [AuthController::class, 'showAuthForm'])->name('auth');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
 
