@@ -30,8 +30,10 @@ nav {
 
 .logo {
     font-size: 1.5rem;
+    cursor: pointer;
     font-weight: bold;
     color: #fff;
+    text-decoration: none;
 }
 
 .nav-links {

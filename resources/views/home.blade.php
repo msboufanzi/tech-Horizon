@@ -11,7 +11,7 @@
 <body>
     <nav>
         <div class="nav-content">
-            <div class="logo">Tech Horizon</div>
+            <a href="{{ route('home') }}" class="logo">Tech Horizon</a>
             <div class="nav-links">
                 <a>Home</a>
                 <a href="#about">About</a>
@@ -102,7 +102,6 @@
                     <div class="card-content">
                         <h3>{{ $article->title }}</h3>
                         <p>{{ Str::limit($article->description, 150) }}</p>
-                        <!-- Display creation date and author name -->
                         <p class="meta-info">
                             Created on: {{ $article->created_at->format('M d, Y') }} |
                             Author: {{ $article->author->name }}

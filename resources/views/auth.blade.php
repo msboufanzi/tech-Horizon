@@ -11,7 +11,7 @@
 <body>
     <nav>
         <div class="nav-content">
-            <div class="logo">Tech Horizon</div>
+            <a href="{{ route('home') }}" class="logo">Tech Horizon</a>
             <div class="nav-links">
                 <a href="{{ route('home') }}">Home</a>
                 <a href="{{ route('themes') }}">Themes</a>
