@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ThemeController;
 use App\Http\Controllers\PublicArticleController;
+use App\Http\Controllers\GuestArticleController;
 
 
 
@@ -36,6 +37,9 @@ Route::get('/articles', function () {
 Route::get('/article_details', function () {
     return view('article_details');
 })->name('article_details');
+
+Route::get('/guest-article/{article_id}', [GuestArticleController::class, 'show'])->name('guest_article_details');
+
 
 // Auth routes
 Route::get('/auth', [AuthController::class, 'showAuthForm'])->name('auth');

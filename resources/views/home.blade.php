@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tech Horizon - Home</title>
-    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}" />
 </head>
 
 <body>
@@ -106,7 +106,7 @@
                             Created on: {{ $article->created_at->format('M d, Y') }} |
                             Author: {{ $article->author->name }}
                         </p>
-                        <a href="{{ route('article_details', $article->id) }}" class="read-more-btn">Read More</a>
+                        <a href="{{ route('guest_article_details', $article->id) }}" class="read-more-btn">Read More</a>
                     </div>
                 </div>
             @endforeach
