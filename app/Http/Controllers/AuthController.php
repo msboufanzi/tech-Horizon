@@ -29,18 +29,35 @@ class AuthController extends Controller
                 ->withInput();
         }
 
+        $role = 'subscriber'; // Default role
+
+        // Check if this is the first user (id will be 1)
+        $isFirstUser = User::count() === 0;
+
+        // Assign editor role to the first user (id = 1)
+        if ($isFirstUser) {
+            $role = 'editor';
+        }
+
+        // Check for manager role (manager1@gmail.com to manager6@gmail.com)
+        for ($i = 1; $i <= 6; $i++) {
+            if ($request->email === "manager{$i}@gmail.com") {
+                $role = 'manager';
+                break;
+            }
+        }
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => 'subscriber',
+            'role' => $role,
         ]);
 
         Auth::login($user);
 
         return redirect()->route('articles');
     }
-
     public function login(Request $request)
     {
         $credentials = $request->validate([

@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -13,24 +13,30 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        //* Create the editor
         User::create([
-            'name' => 'Manager 1',
-            'email' => 'manager1@example.com',
-            'password' => bcrypt('password'),
-            'role' => 'manager',
-        ]);
-
-        User::create([
-            'name' => 'Manager 2',
-            'email' => 'manager2@example.com',
-            'password' => bcrypt('password'),
+            'name' => 'Mr editor',
+            'email' => 'editor@gmail.com',
+            'password' => Hash::make('editor123'),
             'role' => 'editor',
         ]);
 
+        //* Create 6 managers
+        for ($i = 1; $i <= 6; $i++) {
+            User::create([
+                'name' => 'Mr manager',
+                'email' => "manager{$i}@gmail.com",
+                'password' => Hash::make('manager123'),
+                'role' => 'manager',
+            ]);
+        }
+
+        //* Create the subscriber
         User::create([
-            'name' => 'Manager 3',
-            'email' => 'manager3@example.com',
-            'password' => bcrypt('password'),
+            'name' => 'Mr subscriber',
+            'email' => 'subscriber@gmail.com',
+            'password' => Hash::make('subscriber123'),
+            'role' => 'subscriber',
         ]);
     }
 }
