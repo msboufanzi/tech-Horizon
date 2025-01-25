@@ -23,4 +23,10 @@ class Article extends Model
     {
         return $this->belongsTo(User::class, 'author_id');
     }
+
+    // Define a relationship to fetch the theme
+    public function theme()
+    {
+        return $this->belongsTo(Theme::class, 'theme_id');
+    }
 }

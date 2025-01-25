@@ -155,6 +155,7 @@ nav {
 }
 
 /* Themes Section */
+
 .themes {
     padding: 4rem 5%;
     background: #f0f0f0;
@@ -239,6 +240,22 @@ nav {
 }
 
 /* Articles Section */
+
+.theme-info {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.5rem;
+}
+
+.theme-info a {
+    color: #007bff; /* Blue color for the link */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.theme-info a:hover {
+    color: #0056b3; /* Darker blue on hover */
+}
 
 .read-more-btn {
     display: inline-block;

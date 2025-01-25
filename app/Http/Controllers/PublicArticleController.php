@@ -9,8 +9,8 @@ class PublicArticleController extends Controller
 {
     public function index()
     {
-        // Fetch all public articles with their author information
-        $articles = Article::with('author')
+        // Fetch all public articles with their author and theme information
+        $articles = Article::with(['author', 'theme'])
             ->where('ispublic', true)
             ->get();
 

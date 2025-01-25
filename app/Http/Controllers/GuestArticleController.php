@@ -9,8 +9,8 @@ class GuestArticleController extends Controller
 {
     public function show($article_id)
     {
-        // Fetch the article details
-        $article = Article::with('author')->findOrFail($article_id);
+        // Fetch the article details with author and theme information
+        $article = Article::with(['author', 'theme'])->findOrFail($article_id);
 
         // Fetch related public articles (excluding the current article)
         $publicArticles = Article::where('ispublic', true)

@@ -73,6 +73,7 @@
             </div>
         </div>
     </section>
+
     <!-- Displaying 3 first themes from database -->
     <section class="themes" id="themes">
         <h2 class="section-title">Explore Our Themes</h2>
@@ -101,6 +102,10 @@
                     <img src="images/ai.png" alt="{{ $article->title }}" />
                     <div class="card-content">
                         <h3>{{ $article->title }}</h3>
+                        <!-- Display theme name -->
+                        <p class="theme-info">
+                            <a href="{{ route('themes') }}">{{ $article->theme->title }}</a>
+                        </p>
                         <p>{{ Str::limit($article->description, 150) }}</p>
                         <p class="meta-info">
                             Created on: {{ $article->created_at->format('M d, Y') }} |

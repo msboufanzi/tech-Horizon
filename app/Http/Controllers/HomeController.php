@@ -13,8 +13,8 @@ class HomeController extends Controller
         // Fetch the first 3 themes from the database
         $themes = Theme::take(3)->get();
 
-        // Fetch the first 3 public articles with their author information
-        $articles = Article::with('author')
+        // Fetch the first 3 public articles with their author and theme information
+        $articles = Article::with(['author', 'theme'])
             ->where('ispublic', true)
             ->take(3)
             ->get();

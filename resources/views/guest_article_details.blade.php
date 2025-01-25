@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tech Horizon - {{ $article->title }}</title>
     <link rel="stylesheet" href="{{ asset('css/guest_article_details.css') }}" />
-
 </head>
 
 <body>
@@ -16,8 +15,9 @@
         <article class="post">
             <h1 class="article-title">{{ $article->title }}</h1>
             <div class="meta">
-                <span class="date">{{ $article->created_at->format('M d, Y') }}</span>
-                <span class="author">by {{ $article->author->name }}</span>
+                <span class="date">{{ $article->created_at->format('M d, Y') }}</span> |
+                <span class="author">by {{ $article->author->name }}</span> |
+                <span class="theme-info"><a href="{{ route('themes') }}">{{ $article->theme->title }}</a></span>
             </div>
             <img src="{{ asset('images/cyber_security.jpg') }}" alt="{{ $article->title }}" class="featured-image" />
             <div class="content">
