@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tech Horizon - Theme Manager Dashboard: Artificial Intelligence</title>
-    <link rel="stylesheet" href="css/theme_manager.css">
+    <link rel="stylesheet" href="{{ asset('css/theme_manager.css') }}">
 </head>
 
 <body>
