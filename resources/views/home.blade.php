@@ -106,7 +106,7 @@
                         <p class="theme-info">
                             <a href="{{ route('themes') }}">{{ $article->theme->title }}</a>
                         </p>
-                        <p>{{ Str::limit($article->description, 150) }}</p>
+                        <p>{{$article->description}}</p>
 
                         <p class="meta-info">
                             Created on: {{ $article->created_at->format('M d, Y') }} |

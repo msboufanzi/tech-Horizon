@@ -28,8 +28,8 @@
                 <div class="card">
                     <img src="images/ai.png" alt="{{ $article->title }}" />
                     <div class="card-content">
-                        <h3>{{ $article->title }}</h3>
-                        <p>{{ Str::limit($article->description, 150) }}</p>
+                        <h3 class="public-title">{{ $article->title }}</h3>
+                        <p>{{ $article->description }}</p>
                         <!-- Display creation date, author, and theme -->
                         <div class="public-meta">
                             <span class="public-date">{{ $article->created_at->format('M d, Y') }}</span> |
