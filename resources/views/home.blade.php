@@ -92,6 +92,7 @@
         <a href="{{ route('themes') }}" class="show-more">Show More</a>
     </section>
 
+    <!-- Public Articles Section -->
     <section class="articles" id="articles">
         <h2 class="section-title">Public Articles</h2>
         <div class="cards-container">
@@ -100,7 +101,13 @@
                     <img src="images/ai.png" alt="{{ $article->title }}" />
                     <div class="card-content">
                         <h3>{{ $article->title }}</h3>
-                        <p>{{$article->description }}</p> <!-- Limit description to 100 characters -->
+                        <p>{{ Str::limit($article->description, 150) }}</p>
+                        <!-- Display creation date and author name -->
+                        <p class="meta-info">
+                            Created on: {{ $article->created_at->format('M d, Y') }} |
+                            Author: {{ $article->author->name }}
+                        </p>
+                        <a href="{{ route('article_details', $article->id) }}" class="read-more-btn">Read More</a>
                     </div>
                 </div>
             @endforeach
