@@ -152,6 +152,12 @@ nav {
     background: #f0f0f0;
 }
 
+.themes p {
+    color: #333;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
 .creation-date {
     color: #666;
     font-size: 0.9em;
@@ -230,6 +236,11 @@ nav {
     background: #fff;
 }
 
+.articles p {
+    color: #333;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
 
 /* Auth Forms */
 .auth-section {
