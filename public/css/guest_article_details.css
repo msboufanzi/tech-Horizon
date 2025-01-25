@@ -20,7 +20,6 @@ body {
     gap: 20px;
     padding: 20px;
 }
-
 /* Main Section */
 main {
     grid-area: main;
@@ -39,22 +38,6 @@ main {
     font-size: 2rem;
     color: #001f3f;
     margin-bottom: 1rem;
-}
-
-.theme-info {
-    font-size: 0.9rem;
-    color: #666;
-    margin-top: 0.5rem;
-}
-
-.theme-info a {
-    color: #007bff; /* Blue color for the link */
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.theme-info a:hover {
-    color: #0056b3; /* Darker blue on hover */
 }
 
 .meta {
@@ -235,8 +218,99 @@ main {
 }
 
 /* Sidebar (public Articles) */
+/* Public Articles Section */
+.public-articles {
+    margin-bottom: 2rem;
+    width: 100%; /* Ensure it takes the full width of its container */
+}
+
+.public-post {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    width: 100%; /* Ensure it takes the full width of its container */
+}
+
+.public-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 1rem;
+    border-radius: 8px;
+}
+
+.public-info {
+    flex: 1;
+    width: calc(
+        100% - 116px
+    ); /* Adjust width to account for image and margin */
+}
+
+.public-title {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%; /* Ensure it takes the full width of its container */
+}
+
+.public-description {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 0 0 0.5rem 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limit to 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%; /* Ensure it takes the full width of its container */
+}
+
+.public-meta {
+    font-size: 0.8rem;
+    color: #777;
+    width: 100%; /* Ensure it takes the full width of its container */
+}
+
+.public-meta span {
+    margin-right: 0.5rem;
+}
+
+.public-meta a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.public-meta a:hover {
+    text-decoration: underline;
+}
+
+/* Ensure the aside does not overflow */
+aside {
+    width: 100%;
+    max-width: 100%; /* Prevent horizontal scrolling */
+    overflow: hidden; /* Hide any overflow */
+}
+
 aside {
     grid-area: aside;
+}
+
+.theme-info {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.5rem;
+}
+
+.theme-info a {
+    color: #007bff; /* Blue color for the link */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.theme-info a:hover {
+    color: #0056b3; /* Darker blue on hover */
 }
 
 .public-articles {

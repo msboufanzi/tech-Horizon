@@ -29,17 +29,16 @@
                     <img src="images/ai.png" alt="{{ $article->title }}" />
                     <div class="card-content">
                         <h3>{{ $article->title }}</h3>
-                        <!-- Display theme title -->
-                        <p class="theme-info">
-                            <a href="{{ route('themes') }}">{{ $article->theme->title }}</a>
-                        </p>
                         <p>{{ Str::limit($article->description, 150) }}</p>
-                        <!-- Display creation date and author name -->
-                        <p class="meta-info">
-                            Created on: {{ $article->created_at->format('M d, Y') }} |
-                            Author: {{ $article->author->name }}
-                        </p>
-
+                        <!-- Display creation date, author, and theme -->
+                        <div class="public-meta">
+                            <span class="public-date">{{ $article->created_at->format('M d, Y') }}</span> |
+                            <span class="public-author">by {{ $article->author->name }}</span> |
+                            <span class="theme-info">
+                                <a href="{{ route('themes') }}">{{ $article->theme->title }}</a>
+                            </span>
+                        </div>
+                        <br>
                         <a href="{{ route('guest_article_details', $article->id) }}" class="read-more-btn">Read More</a>
                     </div>
                 </div>

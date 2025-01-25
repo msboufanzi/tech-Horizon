@@ -107,7 +107,6 @@
         </section>
     </main>
 
-    <!-- Dynamic Sidebar (Public Articles) -->
     <aside>
         <section class="public-articles">
             <h3>Public Articles</h3>
@@ -115,16 +114,27 @@
                 <article class="public-post">
                     <img src="{{ asset('images/ai.png') }}" alt="{{ $publicArticle->title }}" class="public-image" />
                     <div class="public-info">
-                        <h4><a
-                                href="{{ route('guest_article_details', $publicArticle->id) }}">{{ $publicArticle->title }}</a>
+                        <h4 class="public-title">
+                            <a href="{{ route('guest_article_details', $publicArticle->id) }}">
+                                {{ Str::limit($publicArticle->title, 50, '...') }}
+                            </a>
                         </h4>
-                        <p>{{ Str::limit($publicArticle->description, 100) }}</p>
+                        <p class="public-description">
+                            {{ $publicArticle->description}}
+                        </p>
+                        <!-- Display metadata (date, author, theme) -->
+                        <div class="public-meta">
+                            <span class="public-date">{{ $publicArticle->created_at->format('M d, Y') }}</span> |
+                            <span class="public-author">by {{ $publicArticle->author->name }}</span> |
+                            <span class="public-theme">
+                                <a href="{{ route('themes') }}">{{ $publicArticle->theme->title }}</a>
+                            </span>
+                        </div>
                     </div>
                 </article>
             @endforeach
         </section>
     </aside>
-
     <footer>
         <p>&copy; 2025 Tech Horizon. All rights reserved.</p>
     </footer>
