@@ -14,7 +14,9 @@
 <body>
   <header>
     <nav>
-      <h1><a href="#" class="logo">Tech Horizon</a></h1>
+      <h1>
+        <a href="{{ route('articles.byTheme', 1) }}" class="logo">Tech Horizon</a>
+      </h1>
       <ul class="nav-links">
         @foreach($themes as $theme)
       <li>
