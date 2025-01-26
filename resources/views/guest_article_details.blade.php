@@ -32,7 +32,7 @@
             <!-- Comment 1 -->
             <div class="comment">
                 <div class="comment-avatar">
-                    <img src="{{ asset('images/profile.jpeg') }}" alt="Alice's Avatar" />
+                    <img src="{{ asset('images/profile.jpg') }}" alt="Alice's Avatar" />
                 </div>
                 <div class="comment-content">
                     <span class="comment-author">Alice</span>
@@ -51,7 +51,7 @@
             <!-- Comment 2 -->
             <div class="comment">
                 <div class="comment-avatar">
-                    <img src="{{ asset('images/profile.jpeg') }}" alt="Bob's Avatar" />
+                    <img src="{{ asset('images/profile.jpg') }}" alt="Bob's Avatar" />
                 </div>
                 <div class="comment-content">
                     <span class="comment-author">Bob</span>
@@ -70,7 +70,7 @@
             <!-- Comment 3 -->
             <div class="comment">
                 <div class="comment-avatar">
-                    <img src="{{ asset('images/profile.jpeg') }}" alt="Bob's Avatar" />
+                    <img src="{{ asset('images/profile.jpg') }}" alt="Bob's Avatar" />
                 </div>
                 <div class="comment-content">
                     <span class="comment-author">Bob</span>
@@ -89,7 +89,7 @@
             <!-- Comment 4 -->
             <div class="comment">
                 <div class="comment-avatar">
-                    <img src="{{ asset('images/profile.jpeg') }}" alt="Bob's Avatar" />
+                    <img src="{{ asset('images/profile.jpg') }}" alt="Bob's Avatar" />
                 </div>
                 <div class="comment-content">
                     <span class="comment-author">Bob</span>

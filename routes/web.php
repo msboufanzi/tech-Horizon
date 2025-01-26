@@ -6,13 +6,12 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ThemeController;
 use App\Http\Controllers\PublicArticleController;
 use App\Http\Controllers\GuestArticleController;
+use App\Http\Controllers\ArticlesController;
 
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-// Route::get('/',function () {
-//     return view('home');
-// })->name('home');
+
 
 Route::get('/editor_dashboard', function () {
     return view('editor_dashboard');
@@ -30,9 +29,9 @@ Route::get('/themes', [ThemeController::class, 'index'])->name('themes');
 
 Route::get('/public-articles', [PublicArticleController::class, 'index'])->name('public.articles');
 
-Route::get('/articles', function () {
-    return view('articles');
-})->name('articles');
+Route::get('/articles', [ArticlesController::class, 'index']);
+
+Route::get('/articles/theme/{themeId}', [ArticlesController::class, 'showByTheme'])->name('articles.byTheme');
 
 Route::get('/article_details', function () {
     return view('article_details');

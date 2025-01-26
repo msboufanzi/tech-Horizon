@@ -2,9 +2,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  body {
+}
+
+body {
     font-family: "Source Sans Pro", sans-serif;
     line-height: 1.6;
     color: #333;
@@ -12,14 +12,14 @@
     display: grid;
     grid-template-columns: 1fr 300px;
     grid-template-areas:
-      "header header"
-      "main aside"
-      "footer footer";
+        "header header"
+        "main aside"
+        "footer footer";
     gap: 20px;
     padding: 20px;
-  }
-  
-  .profile-link {
+}
+
+.profile-link {
     display: inline-block;
     width: 40px;
     height: 40px;
@@ -28,19 +28,19 @@
     overflow: hidden;
     border: 2px solid #0056b3;
     transition: border-color 0.3s ease;
-  }
-  
-  .profile-link:hover {
+}
+
+.profile-link:hover {
     border-color: #001f3f;
-  }
-  
-  .profile-pic {
+}
+
+.profile-pic {
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-  
-  header {
+}
+
+header {
     grid-area: header;
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -48,87 +48,92 @@
     position: sticky;
     top: 0;
     z-index: 1000;
-  }
-  
-  nav {
+}
+
+nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-  
-  .logo {
+}
+
+.nav-links a.active {
+    color: #0056b3;
+    font-weight: bold;
+}
+
+.logo {
     font-family: "Raleway", sans-serif;
     font-size: 1.5rem;
     font-weight: 700;
     color: #001f3f;
     text-decoration: none;
     transition: color 0.3s ease;
-  }
-  
-  .logo:hover {
+}
+
+.logo:hover {
     color: #0056b3;
-  }
-  
-  .nav-links {
+}
+
+.nav-links {
     display: flex;
     list-style: none;
     margin-left: auto;
     margin-right: 1rem;
-  }
-  
-  .nav-links li {
+}
+
+.nav-links li {
     margin-left: 1rem;
-  }
-  
-  .nav-links a {
+}
+
+.nav-links a {
     color: #333;
     text-decoration: none;
     font-size: 0.9rem;
     transition: color 0.3s ease;
-  }
-  
-  .nav-links a:hover {
+}
+
+.nav-links a:hover {
     color: #0056b3;
-  }
-  
-  main {
+}
+
+main {
     grid-area: main;
-  }
-  
-  .post {
+}
+
+.post {
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 2rem;
     margin-bottom: 2rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .post:hover {
+}
+
+.post:hover {
     transform: translateY(-5px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  }
-  
-  h2 {
+}
+
+h2 {
     font-family: "Raleway", sans-serif;
     color: #001f3f;
     margin-bottom: 1rem;
-  }
-  
-  .meta {
+}
+
+.meta {
     font-size: 0.9rem;
     color: #666;
     margin-bottom: 1rem;
-  }
-  
-  .featured-image {
+}
+
+.featured-image {
     width: 100%;
     height: auto;
     border-radius: 5px;
     margin-bottom: 1rem;
-  }
-  
-  .read-more {
+}
+
+.read-more {
     display: inline-block;
     background-color: #001f3f;
     color: #fff;
@@ -136,143 +141,281 @@
     border-radius: 3px;
     text-decoration: none;
     transition: background-color 0.3s ease;
-  }
-  
-  .read-more:hover {
+}
+
+.read-more:hover {
     background-color: #0056b3;
-  }
-  
-  aside {
-    grid-area: aside;
-  }
-  
-  .about,
-  .recent-posts {
+}
+/*Aside*/
+
+.public-articles {
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 1.5rem;
     margin-bottom: 2rem;
-  }
-  
-  h3 {
+}
+
+.public-articles h3 {
     font-family: "Raleway", sans-serif;
     color: #001f3f;
     margin-bottom: 1rem;
-  }
-  
-  .recent-posts ul {
-    list-style: none;
-  }
-  
-  .recent-posts li {
+}
+
+.public-post {
+    display: flex;
+    margin-bottom: 1.5rem;
+    align-items: flex-start;
+}
+
+.public-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+    margin-right: 1rem;
+}
+
+.public-info {
+    flex: 1;
+}
+
+.public-title {
+    font-family: "Raleway", sans-serif;
+    color: #001f3f;
+    font-size: 1rem;
     margin-bottom: 0.5rem;
-  }
-  
-  .recent-posts a {
+}
+
+.public-title a {
+    color: #001f3f;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.public-title a:hover {
+    color: #0056b3;
+}
+
+.public-description {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.public-meta {
+    font-size: 0.8rem;
+    color: #999;
+}
+
+.public-meta span {
+    margin-right: 0.5rem;
+}
+
+.public-meta a {
+    color: #999;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.public-meta a:hover {
+    color: #0056b3;
+}
+
+aside {
+    grid-area: aside;
+}
+
+.about,
+.recent-posts {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+h3 {
+    font-family: "Raleway", sans-serif;
+    color: #001f3f;
+    margin-bottom: 1rem;
+}
+
+.recent-posts ul {
+    list-style: none;
+}
+
+.recent-posts li {
+    margin-bottom: 0.5rem;
+}
+
+.recent-posts a {
     color: #333;
     text-decoration: none;
     transition: color 0.3s ease;
-  }
-  
-  .recent-posts a:hover {
+}
+
+.recent-posts a:hover {
     color: #0056b3;
-  }
-  
-  footer {
+}
+
+footer {
     grid-area: footer;
     text-align: center;
     padding: 1rem;
     background-color: #001f3f;
     color: #fff;
-  }
-  
-  @media (max-width: 768px) {
+}
+
+@media (max-width: 768px) {
     body {
-      grid-template-columns: 1fr;
-      grid-template-areas:
-        "header"
-        "main"
-        "aside"
-        "footer";
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "main"
+            "aside"
+            "footer";
     }
-  
+
     nav {
-      flex-direction: column;
-      align-items: flex-start;
+        flex-direction: column;
+        align-items: flex-start;
     }
-  
+
     .nav-links {
-      flex-direction: column;
-      margin-top: 1rem;
+        flex-direction: column;
+        margin-top: 1rem;
     }
-  
+
     .nav-links li {
-      margin-left: 0;
-      margin-bottom: 0.5rem;
+        margin-left: 0;
+        margin-bottom: 0.5rem;
     }
-  }
-  
-  @keyframes fadeIn {
+}
+
+@keyframes fadeIn {
     from {
-      opacity: 0;
+        opacity: 0;
     }
     to {
-      opacity: 1;
+        opacity: 1;
     }
-  }
-  
-  .post,
-  .about,
-  .recent-posts {
+}
+
+.post,
+.about,
+.recent-posts {
     animation: fadeIn 0.5s ease-in-out;
-  }
-  .recent-articles {
+}
+.recent-articles {
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 1.5rem;
     margin-bottom: 2rem;
-  }
-  
-  .recent-articles h3 {
+}
+
+.recent-articles h3 {
     font-family: "Raleway", sans-serif;
     color: #001f3f;
     margin-bottom: 1rem;
-  }
-  
-  .recent-post {
+}
+
+.recent-post {
     display: flex;
     margin-bottom: 1.5rem;
     align-items: flex-start;
-  }
-  
-  .recent-image {
+}
+
+.recent-image {
     width: 80px;
     height: 80px;
     border-radius: 5px;
     margin-right: 1rem;
-  }
-  
-  .recent-info h4 {
+}
+
+.recent-info h4 {
     font-family: "Raleway", sans-serif;
     color: #001f3f;
     font-size: 1rem;
     margin-bottom: 0.5rem;
-  }
-  
-  .recent-info a {
+}
+
+.recent-info a {
     color: #001f3f;
     text-decoration: none;
     transition: color 0.3s ease;
-  }
-  
-  .recent-info a:hover {
+}
+
+.recent-info a:hover {
     color: #0056b3;
-  }
-  
-  .recent-info p {
+}
+
+.recent-info p {
     font-size: 0.9rem;
     color: #666;
-  }
-  
+}
+.sub-menu-wrap {
+    position: absolute;
+    top: 100%;
+    right: 0%;
+    width: 320px;
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.5s;
+}
+.sub-menu-wrap.open-menu {
+    max-height: 400px;
+}
+.sub-menu {
+    background: #fff;
+    padding: 20px;
+    margin: 10px;
+}
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.user-info h3 {
+    font-weight: 200%;
+    display: inline-block;
+    margin: 0;
+    margin-left: 10px;
+}
+.user-info img {
+    border-radius: 50%;
+    margin-right: 15px;
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    border: 2px solid #0056b3;
+    transition: border-color 0.3s ease;
+}
+.sub-menu hr {
+    border: 0;
+    height: 1px;
+    width: 250px;
+    background: #ccc;
+    margin: 15px 0 10px;
+}
+.sub-menu-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #525252;
+    margin: 12px 0;
+}
+.sub-menu-link p {
+    width: 100%;
+}
+.sub-menu-link span {
+    font-size: 22px;
+    transition: transform 0.5s;
+}
+.sub-menu-link:hover span {
+    transform: translateX(5px);
+}
+.sub-menu-link:hover p {
+    font-weight: 600;
+}

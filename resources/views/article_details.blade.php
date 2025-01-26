@@ -23,7 +23,7 @@
         <li><a href="#">Data Science</a></li>
       </ul>
       <a href="/dashboard" class="profile-link">
-        <img src="images/profile.jpeg" alt="Profile" class="profile-pic" />
+        <img src="images/profile.jpg" alt="Profile" class="profile-pic" />
       </a>
     </nav>
   </header>
@@ -131,7 +131,7 @@
       <!-- Comment 1 -->
       <div class="comment">
         <div class="comment-avatar">
-          <img src="images/profile.jpeg" alt="Alice's Avatar" />
+          <img src="images/profile.jpg" alt="Alice's Avatar" />
         </div>
         <div class="comment-content">
           <span class="comment-author">Alice</span>
@@ -150,7 +150,7 @@
       <!-- Comment 2 -->
       <div class="comment">
         <div class="comment-avatar">
-          <img src="images/profile.jpeg" alt="Bob's Avatar" />
+          <img src="images/profile.jpg" alt="Bob's Avatar" />
         </div>
         <div class="comment-content">
           <span class="comment-author">Bob</span>
@@ -169,7 +169,7 @@
       <!-- Comment 3 -->
       <div class="comment">
         <div class="comment-avatar">
-          <img src="images/profile.jpeg" alt="Bob's Avatar" />
+          <img src="images/profile.jpg" alt="Bob's Avatar" />
         </div>
         <div class="comment-content">
           <span class="comment-author">Bob</span>
@@ -188,7 +188,7 @@
       <!-- Comment 4 -->
       <div class="comment">
         <div class="comment-avatar">
-          <img src="images/profile.jpeg" alt="Bob's Avatar" />
+          <img src="images/profile.jpg" alt="Bob's Avatar" />
         </div>
         <div class="comment-content">
           <span class="comment-author">Bob</span>
