@@ -33,9 +33,7 @@ Route::get('/articles', [ArticlesController::class, 'index']);
 
 Route::get('/articles/theme/{themeId}', [ArticlesController::class, 'showByTheme'])->name('articles.byTheme');
 
-Route::get('/article_details', function () {
-    return view('article_details');
-})->name('article_details');
+Route::get('/article/{id}', [ArticlesController::class, 'show'])->name('article_details');
 
 Route::get('/guest-article/{article_id}', [GuestArticleController::class, 'show'])->name('guest_article_details');
 

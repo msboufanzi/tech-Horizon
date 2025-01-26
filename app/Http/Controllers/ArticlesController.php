@@ -35,4 +35,23 @@ class ArticlesController extends Controller
         // Pass the articles, themes, and public articles to the view
         return view('articles', compact('articles', 'themes', 'publicArticles'));
     }
+
+    public function show($id)
+{
+    // Fetch the article by ID
+    $article = Article::with(['author', 'theme'])->findOrFail($id);
+
+    // Fetch all themes for the navbar
+    $themes = Theme::all();
+
+    // Fetch the 10 most recent public articles for the aside section
+    $publicArticles = Article::where('ispublic', true)
+        ->with(['author', 'theme'])
+        ->orderBy('created_at', 'desc')
+        ->take(10)
+        ->get();
+
+    // Pass the article, themes, and public articles to the view
+    return view('article_details', compact('article', 'themes', 'publicArticles'));
+}
 }

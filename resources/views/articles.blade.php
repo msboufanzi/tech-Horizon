@@ -58,7 +58,7 @@
       </div>
       <p>{{ $article->description }}</p>
       <br />
-      <a href="#" class="read-more">Read More</a>
+      <a href="{{ route('article_details', $article->id) }}" class="read-more">Read More</a>
     </article>
   @endforeach
   @else
