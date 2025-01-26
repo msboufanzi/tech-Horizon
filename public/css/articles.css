@@ -19,6 +19,51 @@ body {
     padding: 20px;
 }
 
+/* Dropdown Menu Styles */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0; /* Align to the right edge of the parent */
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    z-index: 1000;
+    min-width: 200px; /* Minimum width */
+    max-width: 300px; /* Maximum width to prevent overflow */
+    padding: 10px 0;
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Add ellipsis for long text */
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 8px 16px;
+    color: #333;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Add ellipsis for long text */
+}
+
+.dropdown-item:hover {
+    background-color: #f4f4f4;
+}
 /* Sub menu */
 /* Profile Dropdown Menu */
 .sub-menu-wrap {
