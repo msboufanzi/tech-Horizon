@@ -67,30 +67,20 @@
   </main>
 
   <aside>
-    <section class="public-articles">
-      <h3>Public Articles</h3>
-      @foreach ($publicArticles as $publicArticle)
-      <article class="public-post">
-      <img src="{{ asset('images/ai.png') }}" alt="{{ $publicArticle->title }}" class="public-image" />
-      <div class="public-info">
-        <h4 class="public-title">
-        <a href="{{ route('guest_article_details', $publicArticle->id) }}">
+    <section class="recent-articles">
+      <h3>Recent Articles</h3>
+      @foreach($publicArticles as $publicArticle)
+      <article class="recent-post">
+      <img src="{{ asset('images/ai.png') }}" alt="{{ $publicArticle->title }}" class="recent-image" />
+      <div class="recent-info">
+        <h4>
+        <a href="{{ route('article_details', $publicArticle->id) }}">
           {{ Str::limit($publicArticle->title, 30, '...') }}
         </a>
         </h4>
-        <p class="public-description">
+        <p>
         {{ Str::limit($publicArticle->description, 50, '...') }}
         </p>
-        <!-- Display metadata (date, author, theme) -->
-        <div class="public-meta">
-        <span class="public-date">{{ $publicArticle->created_at->format('M d, Y') }}</span> |
-        <span class="public-author">by {{ $publicArticle->author->name }}</span> |
-        <span class="public-theme">
-          <a href="{{ route('articles.byTheme', $publicArticle->theme->id) }}">
-          {{ $publicArticle->theme->title }}
-          </a>
-        </span>
-        </div>
       </div>
       </article>
     @endforeach

@@ -121,11 +121,11 @@
       <div class="recent-info">
         <h4>
         <a href="{{ route('article_details', $publicArticle->id) }}">
-          {{ Str::limit($publicArticle->title, 50, '...') }}
+          {{ Str::limit($publicArticle->title, 30, '...') }}
         </a>
         </h4>
         <p>
-        {{ Str::limit($publicArticle->description, 100, '...') }}
+        {{ Str::limit($publicArticle->description, 50, '...') }}
         </p>
       </div>
       </article>
