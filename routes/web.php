@@ -29,7 +29,7 @@ Route::get('/themes', [ThemeController::class, 'index'])->name('themes');
 
 Route::get('/public-articles', [PublicArticleController::class, 'index'])->name('public.articles');
 
-Route::get('/articles', [ArticlesController::class, 'index']);
+Route::get('/articles', [ArticlesController::class, 'index'])->name('articles');
 
 Route::get('/articles/theme/{themeId}', [ArticlesController::class, 'showByTheme'])->name('articles.byTheme');
 
