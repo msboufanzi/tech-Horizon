@@ -24,9 +24,33 @@
       </li>
     @endforeach
       </ul>
-      <a href="/dashboard" class="profile-link">
-        <img src="{{ asset('images/profile.jpg') }}" alt="Profile" class="profile-pic" />
+      <a href="#" class="profile-link">
+        <img src="{{ asset('images/profile.jpg') }}" alt="Profile" class="profile-pic" onclick="toggleMenu()" />
       </a>
+      <div class="sub-menu-wrap" id="subMenu">
+        <div class="sub-menu">
+          <div class="user-info">
+            <img src="{{ asset('images/profile.jpg') }}" alt="Profile" class="profile-pic" />
+            <h3>{{ Auth::user()->name }}</h3> <!-- Display the logged-in user's name -->
+          </div>
+          <hr>
+
+          <a href="#" class="sub-menu-link">
+            <p>Profile</p>
+            <span>></span>
+          </a>
+
+          <!-- Logout Form -->
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+          </form>
+          <a href="#" class="sub-menu-link"
+            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            <p>Log out</p>
+            <span>></span>
+          </a>
+        </div>
+      </div>
     </nav>
   </header>
 
@@ -138,6 +162,14 @@
   <footer>
     <p>&copy; 2025 Tech Horizon. All rights reserved.</p>
   </footer>
+
+  <script>
+    let subMenu = document.getElementById("subMenu");
+
+    function toggleMenu() {
+      subMenu.classList.toggle("open-menu");
+    }
+  </script>
 </body>
 
 </html>
