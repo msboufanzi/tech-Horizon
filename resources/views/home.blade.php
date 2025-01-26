@@ -120,7 +120,7 @@
         <a href="{{ route('public.articles') }}" class="show-more">View More Articles</a>
     </section>
 
-    <section class="testimonials" id="testimonials">
+    <!-- <section class="testimonials" id="testimonials">
         <h2 class="section-title">What Our Users Say</h2>
         <div class="testimonial-container">
             <div class="testimonial">
@@ -156,7 +156,7 @@
                 <span>- Yasser Khalid, Tech Enthusiast</span>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <footer id="contact">
         <div class="footer-content">
