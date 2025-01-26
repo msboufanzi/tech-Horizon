@@ -6,7 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ThemeController;
 use App\Http\Controllers\PublicArticleController;
 use App\Http\Controllers\GuestArticleController;
-
+use App\Http\Controllers\EditorController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -48,4 +48,12 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/editor_dashboard', [EditorController::class, 'index'])->name('editor_dashboard');
+    Route::post('/articles/{article}/toggle-visibility', [EditorController::class, 'toggleVisibility']);
+    Route::put('/users/{user}', [EditorController::class, 'updateUser']);
+    Route::put('/users/{user}/role', [EditorController::class, 'updateRole']);
+    Route::delete('/users/{user}', [EditorController::class, 'blockUser']);
+    Route::post('/users', [EditorController::class, 'addUser']);
+});
 
