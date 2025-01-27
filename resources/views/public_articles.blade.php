@@ -26,7 +26,7 @@
         <div class="cards-container">
             @foreach ($articles as $article)
                 <div class="card">
-                    <img src="images/ai.png" alt="{{ $article->title }}" />
+                <img src="{{ $article->image }}" alt="{{ $article->title }}" />
                     <div class="card-content">
                         <h3 class="public-title">{{ $article->title }}</h3>
                         <p>{{ $article->description }}</p>

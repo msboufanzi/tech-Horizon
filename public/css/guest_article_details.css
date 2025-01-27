@@ -401,6 +401,7 @@ footer {
 }
 
 .stars {
+    flex-direction: row-reverse;
     display: flex;
     justify-content: center;
     gap: 5px;

@@ -80,7 +80,7 @@
         <div class="cards-container">
             @foreach ($themes as $theme)
                 <div class="card">
-                    <img src="images/cyber_security.jpg" alt="{{ $theme->title }}" />
+                    <img src="{{ $theme->image }}" alt="{{ $theme->title }}" />
                     <div class="card-content">
                         <h3>{{ $theme->title }}</h3>
                         <p>{{ $theme->description }}</p>
@@ -99,7 +99,7 @@
         <div class="cards-container">
             @foreach ($articles as $article)
                 <div class="card">
-                    <img src="images/ai.png" alt="{{ $article->title }}" />
+                <img src="{{ $article->image }}" alt="{{ $article->title }}" />
                     <div class="card-content">
                         <h3>{{ $article->title }}</h3>
                         <!-- Display theme name -->
@@ -119,44 +119,6 @@
         </div>
         <a href="{{ route('public.articles') }}" class="show-more">View More Articles</a>
     </section>
-
-    <!-- <section class="testimonials" id="testimonials">
-        <h2 class="section-title">What Our Users Say</h2>
-        <div class="testimonial-container">
-            <div class="testimonial">
-                <img src="images/profile.jpg" alt="Sarah's Profile" class="testimonial-avatar" />
-                <p>
-                    "Tech Horizon has been a game-changer for my career! The insights
-                    and guides are top-notch and incredibly useful."
-                </p>
-                <span>- Sarah Ali, Software Engineer</span>
-            </div>
-            <div class="testimonial">
-                <img src="images/profile.jpg" alt="Ahmed's Profile" class="testimonial-avatar" />
-                <p>
-                    "I love the community here. The articles on AI and cybersecurity
-                    helped me secure my dream job!"
-                </p>
-                <span>- Ahmed Khalid, Data Scientist</span>
-            </div>
-            <div class="testimonial">
-                <img src="images/profile.jpg" alt="Emily's Profile" class="testimonial-avatar" />
-                <p>
-                    "The workshops and events have been incredibly informative. It's a
-                    fantastic platform for networking and learning."
-                </p>
-                <span>- Hamza Ahmed, IT Consultant</span>
-            </div>
-            <div class="testimonial">
-                <img src="images/profile.jpg" alt="John's Profile" class="testimonial-avatar" />
-                <p>
-                    "Tech Horizon's articles are always up-to-date and insightful. It
-                    has become my go-to platform for tech knowledge."
-                </p>
-                <span>- Yasser Khalid, Tech Enthusiast</span>
-            </div>
-        </div>
-    </section> -->
 
     <footer id="contact">
         <div class="footer-content">

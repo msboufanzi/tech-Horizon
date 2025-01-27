@@ -37,6 +37,7 @@ class ArticleSeeder extends Seeder
                 'theme_id' => $cybersecurityTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => true,
+                'image' => 'https://images.pexels.com/photos/1089438/pexels-photo-1089438.jpeg',
             ],
             [
                 'title' => 'Top 10 Cybersecurity Threats to Watch Out for in 2025',
@@ -45,6 +46,7 @@ class ArticleSeeder extends Seeder
                 'theme_id' => $cybersecurityTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => false,
+                'image' => 'https://images.pexels.com/photos/5380642/pexels-photo-5380642.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
             ],
             [
                 'title' => 'The Role of Ethical Hacking in Strengthening Digital Defenses',
@@ -53,6 +55,7 @@ class ArticleSeeder extends Seeder
                 'theme_id' => $cybersecurityTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => false,
+                'image' => 'https://images.pexels.com/photos/5380664/pexels-photo-5380664.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
             ],
             [
                 'title' => 'How Businesses Can Safeguard Against Ransomware Attacks',
@@ -61,6 +64,7 @@ class ArticleSeeder extends Seeder
                 'theme_id' => $cybersecurityTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => false,
+                'image' => 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             ],
             [
                 'title' => 'Cybersecurity in the Age of Quantum Computing: Opportunities and Challenges',
@@ -69,6 +73,7 @@ class ArticleSeeder extends Seeder
                 'theme_id' => $cybersecurityTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => false,
+                'image' => 'https://plus.unsplash.com/premium_photo-1661877737564-3dfd7282efcb?q=80&w=2100&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             ],
             [
                 'title' => 'Building a Career in Cybersecurity: Skills and Certifications Needed',
@@ -77,6 +82,7 @@ class ArticleSeeder extends Seeder
                 'theme_id' => $cybersecurityTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => false,
+                'image' => 'https://images.pexels.com/photos/5380792/pexels-photo-5380792.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
             ],
             //* Artificial Intelligence Articles
             [
@@ -86,6 +92,7 @@ class ArticleSeeder extends Seeder
                 'theme_id' => $aiTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => true,
+                'image' => 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
             ],
             [
                 'title' => 'The Ethics of Artificial Intelligence: Striking a Balance Between Progress and Privacy',
@@ -94,6 +101,7 @@ class ArticleSeeder extends Seeder
                 'theme_id' => $aiTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => false,
+                'image' => 'https://images.pexels.com/photos/8849295/pexels-photo-8849295.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
             ],
             [
                 'title' => 'From Chatbots to GPT: The Evolution of AI in Communication',
@@ -102,6 +110,7 @@ class ArticleSeeder extends Seeder
                 'theme_id' => $aiTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => false,
+                'image' => 'https://plus.unsplash.com/premium_photo-1683121710572-7723bd2e235d?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             ],
             [
                 'title' => 'Exploring AI-Powered Tools for Small Businesses',
@@ -110,6 +119,7 @@ class ArticleSeeder extends Seeder
                 'theme_id' => $aiTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => false,
+                'image' => 'https://images.unsplash.com/photo-1516110833967-0b5716ca1387?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             ],
             [
                 'title' => 'AI and Art: Can Machines Be Creative?',
@@ -118,6 +128,7 @@ class ArticleSeeder extends Seeder
                 'theme_id' => $aiTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => false,
+                'image' => 'https://plus.unsplash.com/premium_photo-1683121716061-3faddf4dc504?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             ],
             [
                 'title' => 'The Future of Work: How AI Will Transform Industries by 2030',
@@ -126,6 +137,7 @@ class ArticleSeeder extends Seeder
                 'theme_id' => $aiTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => false,
+                'image' => 'https://plus.unsplash.com/premium_photo-1682124651258-410b25fa9dc0?q=80&w=1921&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             ],
             //* Cloud Computing Articles 
             [
@@ -135,6 +147,7 @@ class ArticleSeeder extends Seeder
                 'theme_id' => $cloudComputingTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => true,
+                'image' => 'https://plus.unsplash.com/premium_photo-1683141114059-aaeaf635dc05?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             ],
             [
                 'title' => 'The Importance of Data Security in Cloud Storage Solutions',
@@ -143,6 +156,7 @@ class ArticleSeeder extends Seeder
                 'theme_id' => $cloudComputingTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => false,
+                'image' => 'https://images.unsplash.com/photo-1561736778-92e52a7769ef?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             ],
             [
                 'title' => 'How Cloud Computing Enables Remote Work and Collaboration',
@@ -151,6 +165,7 @@ class ArticleSeeder extends Seeder
                 'theme_id' => $cloudComputingTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => false,
+                'image' => 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=1988&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             ],
             [
                 'title' => 'Top Cloud Platforms Compared: AWS vs. Azure vs. Google Cloud',
@@ -159,6 +174,7 @@ class ArticleSeeder extends Seeder
                 'theme_id' => $cloudComputingTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => false,
+                'image' => 'https://plus.unsplash.com/premium_photo-1681487942927-e1a2786e6036?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             ],
             [
                 'title' => 'The Role of Cloud Computing in Driving Digital Transformation',
@@ -167,6 +183,7 @@ class ArticleSeeder extends Seeder
                 'theme_id' => $cloudComputingTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => false,
+                'image' => 'https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
             ],
             [
                 'title' => 'Serverless Computing: The Next Big Step in Cloud Technology',
@@ -175,6 +192,7 @@ class ArticleSeeder extends Seeder
                 'theme_id' => $cloudComputingTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => false,
+                'image' => 'https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
             ],
             //* Game Development articles
             [
@@ -184,6 +202,7 @@ class ArticleSeeder extends Seeder
                 'theme_id' => $gameDevelopmentTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => true,
+                'image' => 'https://plus.unsplash.com/premium_photo-1682141025267-9e0ade0c0826?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             ],
             [
                 'title' => 'The Rise of Indie Game Development: Challenges and Success Stories',
@@ -192,6 +211,7 @@ class ArticleSeeder extends Seeder
                 'theme_id' => $gameDevelopmentTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => false,
+                'image' => 'https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             ],
             [
                 'title' => 'How VR and AR Are Shaping the Future of Gaming',
@@ -200,6 +220,7 @@ class ArticleSeeder extends Seeder
                 'theme_id' => $gameDevelopmentTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => false,
+                'image' => 'https://images.pexels.com/photos/682933/pexels-photo-682933.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
             ],
             [
                 'title' => 'Storytelling in Games: Crafting Memorable Narratives',
@@ -208,6 +229,7 @@ class ArticleSeeder extends Seeder
                 'theme_id' => $gameDevelopmentTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => false,
+                'image' => 'https://plus.unsplash.com/premium_photo-1682140932416-8b011dfa9b4b?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             ],
             [
                 'title' => 'The Role of Artificial Intelligence in Game Design and Development',
@@ -216,6 +238,7 @@ class ArticleSeeder extends Seeder
                 'theme_id' => $gameDevelopmentTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => false,
+                'image' => 'https://images.unsplash.com/photo-1556438064-2d7646166914?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             ],
             [
                 'title' => 'Monetization Models in Gaming: From Free-to-Play to NFTs',
@@ -224,113 +247,133 @@ class ArticleSeeder extends Seeder
                 'theme_id' => $gameDevelopmentTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => false,
+                'image' => 'https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             ],
             //* Data Science Articles
+
             [
                 'title' => 'An Introduction to Data Science: Tools and Techniques for Beginners',
                 'description' => 'This article will provide an overview of data science, explaining its importance and key components, including data collection, data cleaning, analysis, and visualization. It will introduce beginners to popular tools and programming languages used in the field, such as Python, R, and SQL, as well as common techniques like regression analysis, classification, and clustering. The goal is to provide a solid foundation for those new to data science and inspire further learning.',
-                'content' => 'Data science is a multidisciplinary field that combines statistical analysis, programming, and domain expertise to extract valuable insights from data. For beginners, understanding the core tools and techniques is essential to navigating this vast field. The primary tools for data science include programming languages like Python and R, which provide a wide range of libraries and frameworks for data manipulation, analysis, and machine learning. Python, in particular, is favored due to its simplicity and versatility, with popular libraries such as Pandas for data manipulation, NumPy for numerical computing, and Scikit-learn for machine learning. Another key component of data science is SQL (Structured Query Language), which is used for querying databases and extracting relevant data. Data cleaning is one of the first tasks in any data science project and often takes the majority of time. Techniques like handling missing values, dealing with outliers, and transforming variables are critical to preparing the data for analysis. Once the data is prepared, techniques like regression analysis, classification, and clustering can be applied to derive insights. Data visualization tools like Matplotlib and Seaborn help present findings in a clear and understandable way. For beginners, starting with foundational concepts and gradually advancing to more complex topics such as machine learning and big data is key. The field is continuously evolving, and aspiring data scientists need to stay updated with new tools, methodologies, and best practices to succeed.',
+                'content' => 'Data science is a multidisciplinary field that combines statistical analysis, programming, and domain expertise to extract valuable insights from data. ...',
                 'theme_id' => $dataScienceTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => true,
+                'image' => 'https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
             ],
             [
                 'title' => 'Predictive Analytics in Business: How Data Science Drives Decision-Making',
-                'description' => 'This article will explore how predictive analytics, a branch of data science, is used in business to make data-driven decisions. It will explain how businesses use historical data to forecast future trends, customer behavior, and market movements, helping organizations optimize their strategies. The article will cover the tools, techniques, and models used in predictive analytics, including time series forecasting, regression analysis, and machine learning algorithms.',
-                'content' => 'Predictive analytics is a branch of data science that uses historical data, statistical algorithms, and machine learning techniques to forecast future events and trends. In business, predictive analytics plays a pivotal role in driving decision-making processes by providing actionable insights into customer behavior, market conditions, and operational efficiency. By analyzing historical data, companies can predict future outcomes, such as sales forecasts, demand trends, and customer churn, allowing them to make informed decisions and optimize strategies. For example, in retail, predictive models can help businesses forecast inventory needs, reducing overstock or stockouts. In marketing, predictive analytics can identify which customers are likely to respond to specific campaigns, allowing for more targeted and effective marketing efforts. Techniques like time series analysis, regression analysis, and classification models are commonly used in predictive analytics. Time series analysis is particularly useful for forecasting trends based on past data, while regression models help identify relationships between variables and predict outcomes. Machine learning models, such as decision trees and neural networks, can also be applied to improve the accuracy of predictions as they learn from new data. Predictive analytics not only helps businesses anticipate future trends but also empowers them to optimize resource allocation, minimize risks, and enhance customer experiences. By leveraging these tools, organizations can stay ahead of the competition and make data-driven decisions that lead to better business outcomes.',
+                'description' => 'This article will explore how predictive analytics, a branch of data science, is used in business to make data-driven decisions. ...',
+                'content' => 'Predictive analytics is a branch of data science that uses historical data, statistical algorithms, and machine learning techniques to forecast future events and trends. ...',
                 'theme_id' => $dataScienceTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => false,
+                'image' => 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
             ],
             [
                 'title' => 'Big Data vs. Small Data: Choosing the Right Approach for Your Needs',
-                'description' => 'This article will compare big data and small data, helping readers understand the differences between the two and when to use each approach. It will discuss how big data, characterized by its volume, velocity, and variety, requires specialized tools and infrastructure, while small data is more manageable and suitable for smaller-scale operations. The article will guide businesses in choosing the right approach based on their goals, resources, and the type of insights they seek.',
-                'content' => 'Big data and small data are two distinct approaches to data management and analysis, each with its own set of challenges, tools, and ideal use cases. Big data refers to extremely large datasets that are often too complex for traditional data processing tools to handle. These datasets are characterized by the "three Vs": volume, velocity, and variety. Big data typically comes from sources such as social media, sensors, transactional records, and online activities, and it requires specialized tools and infrastructure to store, process, and analyze. Technologies like Hadoop, Spark, and NoSQL databases are often used to manage big data, enabling organizations to process vast amounts of unstructured or semi-structured data in real time. On the other hand, small data refers to smaller, more manageable datasets that can be easily handled using traditional data analysis techniques. Small data is often structured, such as customer records, sales data, or product inventories, and it is easier to analyze using tools like Excel, SQL databases, or simple machine learning models. Small data is ideal for businesses that do not require complex analytics or large-scale infrastructure but still want to derive insights from data. The choice between big data and small data depends on the needs of the business. Large organizations dealing with complex data-driven decisions may benefit from big data, while smaller businesses with specific, targeted needs may find small data more suitable. Both approaches have their own merits, and it’s important to choose the right one based on the scale of the data, the resources available, and the business objectives.',
+                'description' => 'This article will compare big data and small data, helping readers understand the differences between the two and when to use each approach. ...',
+                'content' => 'Big data and small data are two distinct approaches to data management and analysis, each with its own set of challenges, tools, and ideal use cases. ...',
                 'theme_id' => $dataScienceTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => false,
+                'image' => 'https://plus.unsplash.com/premium_photo-1661878265739-da90bc1af051?q=80&w=1986&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
             ],
             [
                 'title' => 'The Role of Data Visualization in Communicating Insights',
-                'description' => 'This article will emphasize the importance of data visualization in data science, focusing on how it helps to communicate complex data insights clearly and effectively. It will explain various visualization techniques, such as bar charts, scatter plots, and heatmaps, and their applications in presenting trends, comparisons, and correlations. The article will also highlight tools like Tableau, Power BI, and Python libraries (e.g., Matplotlib, Seaborn) that facilitate the creation of compelling data visualizations.',
-                'content' => 'Data visualization plays a critical role in transforming raw data into meaningful insights that can be easily understood by both technical and non-technical audiences. As the volume of data grows, the ability to visualize data effectively becomes increasingly important. Well-designed visualizations allow complex data patterns and trends to be quickly identified, enabling decision-makers to make informed choices. Techniques like bar charts, line graphs, scatter plots, and pie charts are the staples of data visualization, but more advanced methods such as heatmaps, geographic maps, and interactive dashboards offer deeper insights and interactivity. For example, a heatmap can show patterns of customer activity across different locations, helping businesses make more targeted marketing decisions. In the financial sector, interactive dashboards that track key performance indicators (KPIs) allow managers to monitor company performance in real time. Tools like Tableau, Power BI, and Qlik are widely used for creating interactive dashboards and visualizations, while Python libraries like Matplotlib, Seaborn, and Plotly provide flexibility for more custom visualizations. Effective data visualization not only helps convey the story behind the numbers but also aids in uncovering hidden insights that might otherwise go unnoticed. It bridges the gap between raw data and actionable business decisions, making it an essential tool in the data scientist’s toolkit. For organizations looking to communicate data-driven insights effectively, investing in proper data visualization tools and training is crucial.',
+                'description' => 'This article will emphasize the importance of data visualization in data science, focusing on how it helps to communicate complex data insights clearly and effectively. ...',
+                'content' => 'Data visualization plays a critical role in transforming raw data into meaningful insights that can be easily understood by both technical and non-technical audiences. ...',
                 'theme_id' => $dataScienceTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => false,
+                'image' => 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
             ],
             [
                 'title' => 'Machine Learning vs. Deep Learning: What’s the Difference?',
-                'description' => 'This article will clarify the distinction between machine learning (ML) and deep learning (DL), two key subfields of artificial intelligence. It will explain how ML involves algorithms that learn from data to make predictions or decisions, whereas DL, a subset of ML, uses neural networks to process large datasets and perform tasks like image and speech recognition. The article will also cover the practical applications of both technologies and guide readers in understanding when to use ML or DL for specific problems.',
-                'content' => 'Machine learning (ML) and deep learning (DL) are two subfields of artificial intelligence (AI) that are often used interchangeably, but they are distinct in terms of their complexity and capabilities. Machine learning is a broad field that involves training algorithms to learn from data and make predictions or decisions based on patterns. ML models typically require structured data and can be divided into supervised learning (where the algorithm learns from labeled data) and unsupervised learning (where the algorithm detects patterns in unlabeled data). Common machine learning algorithms include decision trees, random forests, support vector machines, and k-nearest neighbors, all of which are designed to solve a variety of tasks like classification, regression, and clustering. Deep learning, on the other hand, is a subset of machine learning that deals with neural networks—models inspired by the human brain. Deep learning algorithms use multiple layers (hence the term "deep") of neurons to learn from vast amounts of data, making them particularly effective for tasks that involve unstructured data, such as image recognition, natural language processing, and speech recognition. One key difference between ML and DL is that deep learning models require much larger datasets and more computational power than traditional machine learning models. They also tend to be more complex and require specialized hardware (such as GPUs) to train effectively. While ML can be used for a wide range of tasks and is often easier to implement, deep learning excels at handling more complex problems that involve large-scale data and high-dimensional patterns. In choosing between ML and DL, the decision depends on the specific problem, the available data, and the computational resources at hand.',
+                'description' => 'This article will clarify the distinction between machine learning (ML) and deep learning (DL), two key subfields of artificial intelligence. ...',
+                'content' => 'Machine learning (ML) and deep learning (DL) are two subfields of artificial intelligence (AI) that are often used interchangeably, but they are distinct in terms of their complexity and capabilities. ...',
                 'theme_id' => $dataScienceTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => false,
+                'image' => 'https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?q=80&w=2006&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
             ],
             [
                 'title' => 'Real-World Applications of Data Science in Healthcare, Retail, and Finance',
-                'description' => 'This article will explore the diverse applications of data science across various industries, highlighting how it transforms sectors like healthcare, retail, and finance. In healthcare, data science is used for predictive analytics in patient care, disease outbreak forecasting, and medical image analysis. In retail, it drives customer segmentation, inventory optimization, and personalized marketing. In finance, data science helps in fraud detection, risk assessment, and algorithmic trading. The article will showcase how organizations in these industries leverage data science to gain insights and improve decision-making.',
-                'content' => 'Data science is revolutionizing industries by enabling organizations to make data-driven decisions that improve efficiency, enhance customer experiences, and drive innovation. In healthcare, data science is being used to predict patient outcomes, optimize treatment plans, and detect diseases early through the analysis of medical data, such as patient records, medical imaging, and genetic information. Predictive models can forecast the likelihood of diseases like cancer or diabetes, allowing for earlier intervention and better patient care. Data science also plays a role in medical research, helping to identify trends and correlations in large datasets that can lead to new treatments and therapies. In retail, data science is transforming the way businesses interact with customers. Retailers use data science techniques like customer segmentation, recommendation systems, and sentiment analysis to personalize marketing, optimize inventory, and enhance the shopping experience. By analyzing customer behavior and preferences, retailers can predict future demand, target the right customers with personalized offers, and improve customer retention. In finance, data science is widely used for fraud detection, risk management, and algorithmic trading. By analyzing transaction data in real time, financial institutions can detect fraudulent activities and minimize losses. Additionally, data science helps investors predict market trends, optimize portfolios, and improve financial forecasting. In all these industries, the ability to analyze vast amounts of data and derive actionable insights has proven to be a game-changer, providing businesses with a competitive edge and enabling them to make smarter, faster decisions. Data science is now a critical tool in driving innovation and improving outcomes across healthcare, retail, and finance.',
+                'description' => 'This article will explore the diverse applications of data science across various industries, highlighting how it transforms sectors like healthcare, retail, and finance. ...',
+                'content' => 'Data science is revolutionizing industries by enabling organizations to make data-driven decisions that improve efficiency, enhance customer experiences, and drive innovation. ...',
                 'theme_id' => $dataScienceTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => false,
+                'image' => 'https://images.unsplash.com/photo-1599658880436-c61792e70672?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
             ],
+
+
             //* Internet of Things Articles 
+
             [
                 'title' => 'Internet of Things (IoT): Revolutionizing Connectivity',
-                'description' => 'This article provides an introduction to the Internet of Things (IoT), explaining its core concept and how it connects everyday objects to the internet, allowing them to send and receive data. It discusses how IoT is revolutionizing industries by enabling automation, improving efficiency, and creating new business opportunities.',
-                'content' => 'The Internet of Things (IoT) is a transformative technology that connects everyday objects to the internet, enabling them to send and receive data. At its core, IoT is about creating a network of interconnected devices that can communicate with each other and with centralized systems. This connectivity allows for automation, real-time monitoring, and data-driven decision-making across various industries. Key components of IoT include sensors, which collect data; connectivity options like Wi-Fi, Bluetooth, and cellular networks; and data processing systems that analyze and act on the information gathered. IoT is revolutionizing industries such as manufacturing, healthcare, agriculture, and transportation by improving efficiency, reducing costs, and enabling new business models. For example, in manufacturing, IoT enables predictive maintenance, where machines can alert operators before a failure occurs, reducing downtime. In healthcare, IoT devices like wearables and remote monitoring systems allow for personalized care and early detection of health issues. As IoT continues to evolve, its applications will expand, creating a more connected and intelligent world.',
+                'description' => 'This article provides an introduction to the Internet of Things (IoT), explaining its core concept and how it connects everyday objects to the internet, allowing them to send and receive data...',
+                'content' => 'The Internet of Things (IoT) is a transformative technology that connects everyday objects to the internet...',
                 'theme_id' => $iotTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => true,
+                'image' => 'https://plus.unsplash.com/premium_photo-1688678097473-2ce11d23e30c?q=80&w=1940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
             ],
             [
                 'title' => 'Smart Cities: How IoT Is Transforming Urban Living',
-                'description' => 'This article explores the role of IoT in transforming cities into "smart cities" by integrating technology into urban infrastructure. It focuses on how IoT-powered solutions are improving transportation, energy efficiency, waste management, and public safety.',
-                'content' => 'The Internet of Things (IoT) is revolutionizing urban living by creating smarter cities with enhanced efficiency, sustainability, and livability. Smart cities leverage IoT sensors and devices to collect and analyze data from a range of sources, such as traffic lights, waste management systems, energy meters, and public services. This data enables real-time decision-making and automation, improving urban infrastructure and services. For instance, IoT-powered traffic systems can reduce congestion by adjusting traffic lights based on real-time traffic flow. Additionally, smart energy grids optimize electricity consumption, reducing waste and enhancing sustainability. IoT also supports smart buildings, offering features like energy-efficient lighting, security monitoring, and climate control. Overall, IoT is making cities more responsive to citizens\' needs, enhancing quality of life, and contributing to environmental conservation through optimized resource management.',
+                'description' => 'This article explores the role of IoT in transforming cities into "smart cities" by integrating technology into urban infrastructure...',
+                'content' => 'The Internet of Things (IoT) is revolutionizing urban living by creating smarter cities with enhanced efficiency...',
                 'theme_id' => $iotTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => false,
+                'image' => 'https://images.pexels.com/photos/163073/raspberry-pi-computer-linux-163073.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
             ],
             [
                 'title' => 'IoT in Healthcare: From Wearables to Remote Patient Monitoring',
-                'description' => 'This article examines the growing impact of IoT in healthcare, particularly through the use of wearable devices and remote patient monitoring. It discusses how IoT-enabled devices are helping healthcare providers monitor patients\' health metrics in real time.',
-                'content' => 'The healthcare industry is undergoing a significant transformation thanks to IoT, which has introduced innovations ranging from wearable devices to remote patient monitoring systems. Wearables like smartwatches and fitness trackers collect health data such as heart rate, sleep patterns, and physical activity, offering users valuable insights into their well-being. This data can be shared with healthcare providers for real-time monitoring and early detection of health issues. In addition to wearables, IoT-powered remote patient monitoring tools enable doctors to track patients\' vital signs, such as blood pressure, glucose levels, and oxygen saturation, from afar. This technology is particularly beneficial for patients with chronic conditions or those in rural areas where access to healthcare facilities may be limited. By continuously monitoring patients\' health, IoT helps improve patient outcomes, reduce hospital readmissions, and make healthcare more personalized and efficient.',
+                'description' => 'This article examines the growing impact of IoT in healthcare, particularly through the use of wearable devices...',
+                'content' => 'The healthcare industry is undergoing a significant transformation thanks to IoT...',
                 'theme_id' => $iotTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => false,
+                'image' => 'https://images.pexels.com/photos/159304/network-cable-ethernet-computer-159304.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
             ],
             [
                 'title' => 'Challenges and Risks in IoT Security: Protecting a Connected World',
-                'description' => 'This article delves into the security challenges and risks associated with IoT, where millions of devices are interconnected, creating potential vulnerabilities. It discusses issues such as data privacy, device hacking, and unauthorized access to sensitive information.',
-                'content' => 'While the Internet of Things (IoT) offers numerous benefits, it also introduces significant security challenges. The sheer number of connected devices, from home appliances to industrial machinery, increases the potential attack surface for cybercriminals. Many IoT devices are vulnerable due to weak security protocols, inadequate encryption, and poor software updates. Furthermore, some IoT devices have minimal security features or are built with outdated software, making them prime targets for hackers. A breach in an IoT system can lead to various risks, including unauthorized access to sensitive data, compromised privacy, and disruption of critical services. To protect a connected world, it is essential to implement robust security measures, such as strong encryption, regular firmware updates, secure communication protocols, and comprehensive risk assessments. As the number of connected devices continues to grow, ensuring the security of IoT ecosystems is crucial to preventing widespread cyber threats and safeguarding users\' privacy.',
+                'description' => 'This article delves into the security challenges and risks associated with IoT, where millions of devices are interconnected...',
+                'content' => 'While the Internet of Things (IoT) offers numerous benefits, it also introduces significant security challenges...',
                 'theme_id' => $iotTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => false,
+                'image' => 'https://images.pexels.com/photos/57007/pexels-photo-57007.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
             ],
             [
                 'title' => 'The Future of IoT in Agriculture: Precision Farming and Beyond',
-                'description' => 'This article looks at how IoT is revolutionizing agriculture through precision farming, where connected sensors and devices help optimize crop production, water usage, and soil health.',
-                'content' => 'IoT is transforming agriculture by enabling precision farming, a revolutionary approach that uses real-time data to optimize crop production and farming practices. IoT devices such as soil sensors, weather stations, and drones provide farmers with valuable insights into soil conditions, crop health, and environmental factors, allowing for more informed decision-making. With this data, farmers can monitor soil moisture levels, regulate irrigation systems, and detect early signs of pests or diseases, significantly reducing resource waste and improving crop yields. IoT also supports autonomous farming equipment, such as self-driving tractors and harvesters, which can operate with minimal human intervention, saving time and labor costs. In the future, IoT’s role in agriculture will extend to advanced robotics, AI-powered analysis, and further automation, creating a more sustainable and efficient agricultural system that can meet the demands of a growing global population while minimizing environmental impact.',
+                'description' => 'This article looks at how IoT is revolutionizing agriculture through precision farming, where connected sensors...',
+                'content' => 'IoT is transforming agriculture by enabling precision farming, a revolutionary approach...',
                 'theme_id' => $iotTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => false,
+                'image' => 'https://images.unsplash.com/photo-1555664424-778a1e5e1b48?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
             ],
             [
                 'title' => 'Integrating IoT with Artificial Intelligence: Smarter Devices for a Smarter World',
-                'description' => 'This article discusses how integrating IoT with artificial intelligence (AI) can create smarter, more autonomous devices. It highlights applications in smart homes, healthcare, and manufacturing.',
-                'content' => 'The integration of IoT with Artificial Intelligence (AI) is creating a new wave of smarter devices and systems that can learn, adapt, and make decisions autonomously. While IoT gathers vast amounts of real-time data from sensors and devices, AI enables these systems to analyze and interpret the data to generate actionable insights. For example, in smart homes, AI-powered IoT devices can learn from a user’s behavior, predict their preferences, and automate tasks such as adjusting the thermostat, controlling lights, or suggesting meal plans based on past usage patterns. In industries, IoT and AI together enhance predictive maintenance, identifying potential equipment failures before they occur, reducing downtime, and optimizing performance. Additionally, AI enables IoT systems to enhance security by detecting anomalies in network traffic and preventing cyberattacks. As the synergy between IoT and AI continues to evolve, the potential for creating even more intelligent, responsive, and autonomous systems will revolutionize various sectors, including healthcare, transportation, and urban management.',
+                'description' => 'This article discusses how integrating IoT with artificial intelligence (AI) can create smarter, more autonomous devices...',
+                'content' => 'The integration of IoT with Artificial Intelligence (AI) is creating a new wave of smarter devices...',
                 'theme_id' => $iotTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => false,
+                'image' => 'https://plus.unsplash.com/premium_photo-1661411311489-46be8dfc82bd?q=80&w=2130&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
             ],
             [
                 'title' => 'A Beginner’s Guide to Building Your Own IoT Project',
-                'description' => 'This article serves as a beginner-friendly guide for those looking to start their own IoT projects. It covers the basic components needed, including sensors, microcontrollers, and connectivity options.',
-                'content' => 'Building your own Internet of Things (IoT) project can be an exciting and educational experience, even for beginners. To start, the first step is to identify the problem or task you want your IoT device to address, such as home automation, environmental monitoring, or health tracking. The next step is to select the appropriate hardware, such as a microcontroller (like Arduino or Raspberry Pi), sensors (temperature, humidity, motion, etc.), and communication modules (Wi-Fi, Bluetooth, or Zigbee). Once you have the hardware, you will need to connect the components and program the microcontroller to collect and transmit data. For example, if you want to build a temperature monitoring system, you would connect a temperature sensor to your microcontroller, write a program to read the data, and then send the readings to a cloud server or display them on a user interface. Learning to work with IoT platforms and software tools, such as MQTT or Node-RED, can help you manage the flow of data between devices and networks. As you gain experience, you can experiment with more complex projects, such as integrating IoT devices with cloud services, using machine learning for data analysis, or adding advanced security features to your system. Building IoT projects is an excellent way to develop your technical skills and understand the potential of connected devices in the modern world.',
+                'description' => 'This article serves as a beginner-friendly guide for those looking to start their own IoT projects...',
+                'content' => 'Building your own Internet of Things (IoT) project can be an exciting and educational experience...',
                 'theme_id' => $iotTheme->id,
                 'author_id' => $author1->id,
                 'ispublic' => false,
+                'image' => 'https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
             ],
+
+
         ];
 
         //* Insert the data into the articles table

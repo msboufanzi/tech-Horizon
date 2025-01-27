@@ -13,6 +13,7 @@ return new class extends Migration {
         Schema::create('proposed_articles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->text('image');
             $table->text('description');
             $table->text('content');
             $table->unsignedInteger('theme_id');

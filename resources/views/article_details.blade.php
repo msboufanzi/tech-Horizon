@@ -19,23 +19,23 @@
       </h1>
       <ul class="nav-links">
         @foreach($themes->take(4) as $theme) <!-- Show only the first 4 themes -->
-          <li>
-            <a href="{{ route('articles.byTheme', $theme->id) }}" class="nav-link">{{ $theme->title }}</a>
-          </li>
-        @endforeach
+      <li>
+        <a href="{{ route('articles.byTheme', $theme->id) }}" class="nav-link">{{ $theme->title }}</a>
+      </li>
+    @endforeach
         <!-- Dropdown for additional themes -->
         @if($themes->count() > 4)
-          <li class="dropdown">
-            <a href="#" class="nav-link dropdown-toggle">More <span>&#9660;</span></a>
-            <ul class="dropdown-menu">
-              @foreach($themes->slice(4) as $theme) <!-- Show the rest of the themes -->
-                <li>
-                  <a href="{{ route('articles.byTheme', $theme->id) }}" class="dropdown-item">{{ $theme->title }}</a>
-                </li>
-              @endforeach
-            </ul>
-          </li>
-        @endif
+      <li class="dropdown">
+        <a href="#" class="nav-link dropdown-toggle">More <span>&#9660;</span></a>
+        <ul class="dropdown-menu">
+        @foreach($themes->slice(4) as $theme) <!-- Show the rest of the themes -->
+      <li>
+        <a href="{{ route('articles.byTheme', $theme->id) }}" class="dropdown-item">{{ $theme->title }}</a>
+      </li>
+    @endforeach
+        </ul>
+      </li>
+    @endif
       </ul>
       <a href="#" class="profile-link">
         <img src="{{ asset('images/profile.jpg') }}" alt="Profile" class="profile-pic" onclick="toggleMenu()" />
@@ -77,7 +77,8 @@
           <a href="{{ route('articles.byTheme', $article->theme->id) }}">{{ $article->theme->title }}</a>
         </span>
       </div>
-      <img src="{{ asset('images/cyber_security.jpg') }}" alt="{{ $article->title }}" class="featured-image" />
+      <img src="{{ $article->image }}" alt="{{ $article->title }}"
+        style="width: 100%; max-width: 100%; height: auto; margin-bottom: 10px;" />
       <div class="content">
         {!! $article->content !!}
       </div>
@@ -156,7 +157,7 @@
       <h3>Recent Articles</h3>
       @foreach($publicArticles as $publicArticle)
       <article class="recent-post">
-      <img src="{{ asset('images/ai.png') }}" alt="{{ $publicArticle->title }}" class="recent-image" />
+      <img src="{{ $publicArticle->image }}" alt="{{ $publicArticle->title }}" class="recent-image" />
       <div class="recent-info">
         <h4>
         <a href="{{ route('article_details', $publicArticle->id) }}">

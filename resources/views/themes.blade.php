@@ -26,7 +26,7 @@
         <div class="cards-container">
             @foreach ($themes as $theme)
                 <div class="card">
-                    <img src="images/cyber_security.jpg" alt="{{ $theme->title }}" />
+                    <img src="{{ $theme->image }}" alt="{{ $theme->title }}" />
                     <div class="card-content">
                         <h3>{{ $theme->title }}</h3>
                         <p>{{ $theme->description }}</p>

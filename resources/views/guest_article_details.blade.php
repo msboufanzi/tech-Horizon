@@ -19,7 +19,8 @@
                 <span class="author">by {{ $article->author->name }}</span> |
                 <span class="theme-info"><a href="{{ route('themes') }}">{{ $article->theme->title }}</a></span>
             </div>
-            <img src="{{ asset('images/cyber_security.jpg') }}" alt="{{ $article->title }}" class="featured-image" />
+            <img src="{{ $article->image }}" alt="{{ $article->title }}"
+                style="width: 100%; max-width: 100%; height: auto; margin-bottom: 10px;" />
             <div class="content">
                 {!! $article->content !!}
             </div>
@@ -112,11 +113,11 @@
             <h3>Public Articles</h3>
             @foreach ($publicArticles as $publicArticle)
                 <article class="public-post">
-                    <img src="{{ asset('images/ai.png') }}" alt="{{ $publicArticle->title }}" class="public-image" />
+                    <img src="{{ $publicArticle->image }}" alt="{{ $publicArticle->title }}" class="public-image" />
                     <div class="public-info">
                         <h4 class="public-title">
                             <a href="{{ route('guest_article_details', $publicArticle->id) }}">
-                                {{ Str::limit($publicArticle->title, 50, '...') }}
+                                {{ $publicArticle->title }}
                             </a>
                         </h4>
                         <p class="public-description">
