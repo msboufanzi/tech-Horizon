@@ -10,7 +10,7 @@
 
 <body>
     <nav>
-        <div class="logo">Tech Horizon</div>
+        <a href="{{ route('home') }}" class="logo">Tech Horizon</a>
         <ul>
             <li><a href="#subscriptions">Subscriptions</a></li>
             <li><a href="#articles">Articles</a></li>

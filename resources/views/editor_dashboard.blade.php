@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,10 @@
     <title>Tech Horizon - Editor Dashboard</title>
     <link rel="stylesheet" href="{{ asset('css/editor.css') }}">
 </head>
+
 <body>
     <nav>
-        <div class="logo">Tech Horizon</div>
+        <a href="{{ route('home') }}" class="logo">Tech Horizon</a>
         <ul>
             <li><a href="#existing-articles">Existing Articles</a></li>
             <li><a href="#articles">Articles Request Management</a></li>
@@ -33,20 +35,21 @@
                 </thead>
                 <tbody>
                     @foreach($existingArticles as $article)
-                    <tr>
-                        <td>{{ $article->title }}</td>
-                        <td>{{ $article->author->name }}</td>
-                        <td>{{ $article->theme->title }}</td>
-                        <td>{{ $article->ispublic ? 'Visible' : 'Private' }}</td>
-                        <td>
-                            <a href="{{ route('article_details', ['id' => $article->id]) }}" class="btn-primary">View</a>
-                            <label class="switch">
-                                <input type="checkbox" {{ $article->ispublic ? 'checked' : '' }} 
-                                       onchange="toggleArticleStatus({{ $article->id }}, this)">
-                                <span class="slider round"></span>
-                            </label>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>{{ $article->title }}</td>
+                            <td>{{ $article->author->name }}</td>
+                            <td>{{ $article->theme->title }}</td>
+                            <td>{{ $article->ispublic ? 'Visible' : 'Private' }}</td>
+                            <td>
+                                <a href="{{ route('article_details', ['id' => $article->id]) }}"
+                                    class="btn-primary">View</a>
+                                <label class="switch">
+                                    <input type="checkbox" {{ $article->ispublic ? 'checked' : '' }}
+                                        onchange="toggleArticleStatus({{ $article->id }}, this)">
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>
@@ -66,20 +69,21 @@
                 </thead>
                 <tbody>
                     @foreach($pendingArticles as $article)
-                    <tr>
-                        <td>{{ $article->title }}</td>
-                        <td>{{ $article->author->name }}</td>
-                        <td>{{ $article->theme->title }}</td>
-                        <td>{{ $article->ispublic ? 'Visible' : 'Private' }}</td>
-                        <td>
-                            <a href="{{ route('article_details', ['id' => $article->id]) }}" class="btn-primary">Review</a>
-                            <label class="switch">
-                                <input type="checkbox" {{ $article->ispublic ? 'checked' : '' }} 
-                                       onchange="toggleArticleStatus({{ $article->id }}, this)">
-                                <span class="slider round"></span>
-                            </label>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>{{ $article->title }}</td>
+                            <td>{{ $article->author->name }}</td>
+                            <td>{{ $article->theme->title }}</td>
+                            <td>{{ $article->ispublic ? 'Visible' : 'Private' }}</td>
+                            <td>
+                                <a href="{{ route('article_details', ['id' => $article->id]) }}"
+                                    class="btn-primary">Review</a>
+                                <label class="switch">
+                                    <input type="checkbox" {{ $article->ispublic ? 'checked' : '' }}
+                                        onchange="toggleArticleStatus({{ $article->id }}, this)">
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>
@@ -99,16 +103,16 @@
                 </thead>
                 <tbody>
                     @foreach($users as $user)
-                    <tr data-user-id="{{ $user->id }}">
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>{{ $user->role }}</td>
-                        <td>
-                            <button class="btn-primary" onclick="editUser({{ $user->id }})">Edit</button>
-                            <button class="btn-primary" onclick="manageRoles({{ $user->id }})">Manage Roles</button>
-                            <button class="btn-danger" onclick="blockUser({{ $user->id }})">Block</button>
-                        </td>
-                    </tr>
+                        <tr data-user-id="{{ $user->id }}">
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->role }}</td>
+                            <td>
+                                <button class="btn-primary" onclick="editUser({{ $user->id }})">Edit</button>
+                                <button class="btn-primary" onclick="manageRoles({{ $user->id }})">Manage Roles</button>
+                                <button class="btn-danger" onclick="blockUser({{ $user->id }})">Block</button>
+                            </td>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>
@@ -118,15 +122,15 @@
             <h2>Global Statistics</h2>
             <div id="stats-container">
                 @foreach($statistics as $label => $value)
-                <div class="stat-box">
-                    <h3>{{ ucwords(str_replace('_', ' ', $label)) }}</h3>
-                    <p>{{ number_format($value) }}</p>
-                </div>
+                    <div class="stat-box">
+                        <h3>{{ ucwords(str_replace('_', ' ', $label)) }}</h3>
+                        <p>{{ number_format($value) }}</p>
+                    </div>
                 @endforeach
             </div>
         </section>
     </main>
     <script src="{{ asset('js/editor.js') }}"></script>
 </body>
-</html>
 
+</html>
