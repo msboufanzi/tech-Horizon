@@ -15,7 +15,7 @@
   <header>
     <nav>
       <h1>
-        <a href="{{ route('articles.byTheme', 1) }}" class="logo">Tech Horizon</a>
+        <a href="{{ route('home') }}" class="logo">Tech Horizon</a>
       </h1>
       <ul class="nav-links">
         @foreach($themes->take(4) as $theme) <!-- Show only the first 4 themes -->

@@ -16,7 +16,7 @@
                 <a href="{{ route('home') }}">Home</a>
                 <a href="{{ route('themes') }}">Themes</a>
                 <a href="{{ route('public.articles') }}">Public Articles</a>
-                <a href="{{ route('auth') }}">Sign in/up</a>
+                <a href="{{ auth()->check() ? route('articles') : route('auth') }}">Sign in/up</a>
             </div>
         </div>
     </nav>
@@ -26,7 +26,7 @@
         <div class="cards-container">
             @foreach ($articles as $article)
                 <div class="card">
-                <img src="{{ $article->image }}" alt="{{ $article->title }}" />
+                    <img src="{{ $article->image }}" alt="{{ $article->title }}" />
                     <div class="card-content">
                         <h3 class="public-title">{{ $article->title }}</h3>
                         <p>{{ $article->description }}</p>

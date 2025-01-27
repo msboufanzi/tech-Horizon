@@ -113,6 +113,19 @@ nav {
     line-height: 1.6;
 }
 
+.follow-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.follow-button:hover {
+    background-color: #0056b3;
+}
+
 /* Footer */
 footer {
     padding: 2rem 5%;

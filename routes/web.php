@@ -31,6 +31,8 @@ Route::get('/redirect-to-dashboard', [ArticlesController::class, 'redirectToDash
 
 Route::get('/themes', [ThemeController::class, 'index'])->name('themes');
 
+Route::post('/themes/{theme}/follow', [ThemeController::class, 'follow'])->name('themes.follow');
+
 Route::get('/public-articles', [PublicArticleController::class, 'index'])->name('public.articles');
 
 Route::get('/articles', [ArticlesController::class, 'index'])->name('articles');

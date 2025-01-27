@@ -16,7 +16,7 @@
                 <a href="{{ route('home') }}">Home</a>
                 <a href="{{ route('themes') }}">Themes</a>
                 <a href="{{ route('public.articles') }}">Public Articles</a>
-                <a href="{{ route('auth') }}">Sign in/up</a>
+                <a href="{{ auth()->check() ? route('articles') : route('auth') }}">Sign in/up</a>
             </div>
         </div>
     </nav>
@@ -31,6 +31,10 @@
                         <h3>{{ $theme->title }}</h3>
                         <p>{{ $theme->description }}</p>
                         <p class="creation-date">Created on: {{ $theme->created_at->format('M d, Y') }}</p>
+                        <!-- Show Follow button only if user is signed in -->
+                        @if (auth()->check())
+                            <button class="follow-button">Follow</button>
+                        @endif
                     </div>
                 </div>
             @endforeach

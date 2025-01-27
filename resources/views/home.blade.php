@@ -17,7 +17,7 @@
                 <a href="#about">About</a>
                 <a href="{{ route('themes') }}">Themes</a>
                 <a href="{{ route('public.articles') }}">Public Articles</a>
-                <a href="{{ route('auth') }}">Sign in/up</a>
+                <a href="{{ auth()->check() ? route('articles') : route('auth') }}">Sign in/up</a>
                 <a href="#contact">Contact</a>
             </div>
         </div>
