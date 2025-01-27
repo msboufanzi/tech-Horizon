@@ -33,7 +33,12 @@
                         <p class="creation-date">Created on: {{ $theme->created_at->format('M d, Y') }}</p>
                         <!-- Show Follow button only if user is signed in -->
                         @if (auth()->check())
-                            <button class="follow-button">Follow</button>
+                            <form action="{{ route('themes.follow') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="theme_id" value="{{ $theme->id }}">
+                                <input type="hidden" name="user_id" value="{{ auth()->id() }}">
+                                <button type="submit" class="follow-button">Follow</button>
+                            </form>
                         @endif
                     </div>
                 </div>
