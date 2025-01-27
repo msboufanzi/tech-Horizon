@@ -120,10 +120,25 @@ nav {
     padding: 8px 16px;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .follow-button:hover {
     background-color: #0056b3;
+}
+
+.unfollow-button {
+    background-color: #dc3545; /* Red for unfollow */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.unfollow-button:hover {
+    background-color: #c82333; /* Darker red on hover */
 }
 
 /* Footer */

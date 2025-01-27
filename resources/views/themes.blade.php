@@ -31,14 +31,24 @@
                         <h3>{{ $theme->title }}</h3>
                         <p>{{ $theme->description }}</p>
                         <p class="creation-date">Created on: {{ $theme->created_at->format('M d, Y') }}</p>
-                        <!-- Show Follow button only if user is signed in -->
+                        <!-- Show Follow or Unfollow button based on whether the user is following the theme -->
                         @if (auth()->check())
-                            <form action="{{ route('themes.follow') }}" method="POST">
-                                @csrf
-                                <input type="hidden" name="theme_id" value="{{ $theme->id }}">
-                                <input type="hidden" name="user_id" value="{{ auth()->id() }}">
-                                <button type="submit" class="follow-button">Follow</button>
-                            </form>
+                            @if ($theme->is_followed)
+                                <form action="{{ route('themes.unfollow') }}" method="POST">
+                                    @csrf
+                                    @method('DELETE') <!-- Use DELETE method for unfollow -->
+                                    <input type="hidden" name="theme_id" value="{{ $theme->id }}">
+                                    <input type="hidden" name="user_id" value="{{ auth()->id() }}">
+                                    <button type="submit" class="unfollow-button">Unfollow</button>
+                                </form>
+                            @else
+                                <form action="{{ route('themes.follow') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="theme_id" value="{{ $theme->id }}">
+                                    <input type="hidden" name="user_id" value="{{ auth()->id() }}">
+                                    <button type="submit" class="follow-button">Follow</button>
+                                </form>
+                            @endif
                         @endif
                     </div>
                 </div>

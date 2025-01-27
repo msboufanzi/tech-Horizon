@@ -17,7 +17,7 @@ class ThemeController extends Controller
 
         // Check if the authenticated user is following each theme
         if (auth()->check()) {
-            $user = auth()->user(); 
+            $user = auth()->user();
             foreach ($themes as $theme) {
                 $theme->is_followed = $user->followings()->where('theme_id', $theme->id)->exists();
             }
@@ -50,5 +50,26 @@ class ThemeController extends Controller
         ]);
 
         return redirect()->back()->with('success', 'You are now following this theme.');
+    }
+
+    public function unfollow(Request $request)
+    {
+        // Validate the request
+        $request->validate([
+            'theme_id' => 'required|exists:themes,id',
+            'user_id' => 'required|exists:users,id',
+        ]);
+
+        // Find and delete the follow relationship
+        $follow = Following::where('user_id', $request->user_id)
+            ->where('theme_id', $request->theme_id)
+            ->first();
+
+        if ($follow) {
+            $follow->delete();
+            return redirect()->back()->with('success', 'You have unfollowed this theme.');
+        }
+
+        return redirect()->back()->with('error', 'You are not following this theme.');
     }
 }
