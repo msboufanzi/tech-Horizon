@@ -91,17 +91,17 @@
   <aside>
     <section class="recent-articles">
       <h3>Recent Articles</h3>
-      @foreach($publicArticles as $publicArticle)
+      @foreach($recentArticles as $recentrticle)
       <article class="recent-post">
-      <img src="{{ $publicArticle->image }}" alt="{{ $publicArticle->title }}" class="recent-image" />
+      <img src="{{ $recentrticle->image }}" alt="{{ $recentrticle->title }}" class="recent-image" />
       <div class="recent-info">
         <h4>
-        <a href="{{ route('article_details', $publicArticle->id) }}">
-          {{ Str::limit($publicArticle->title, 30, '...') }}
+        <a href="{{ route('article_details', $recentrticle->id) }}">
+          {{ Str::limit($recentrticle->title, 30, '...') }}
         </a>
         </h4>
         <p>
-        {{ Str::limit($publicArticle->description, 50, '...') }}
+        {{ Str::limit($recentrticle->description, 50, '...') }}
         </p>
       </div>
       </article>
