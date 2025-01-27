@@ -39,7 +39,12 @@
                             </span>
                         </div>
                         <br>
-                        <a href="{{ route('guest_article_details', $article->id) }}" class="read-more-btn">Read More</a>
+                        <!-- Conditional link based on authentication -->
+                        @if(auth()->check())
+                            <a href="{{ route('article_details', $article->id) }}" class="read-more-btn">Read More</a>
+                        @else
+                            <a href="{{ route('guest_article_details', $article->id) }}" class="read-more-btn">Read More</a>
+                        @endif
                     </div>
                 </div>
             @endforeach
