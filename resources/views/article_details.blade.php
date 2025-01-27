@@ -84,71 +84,64 @@
       </div>
     </article>
 
-    <!-- Rating Section -->
-    <section class="article-rating">
-      <h3>Rate This Article</h3>
-      <div class="stars">
-        <input type="radio" id="star5" name="rating" value="5" />
-        <label for="star5" title="5 stars">&#9733;</label>
-        <input type="radio" id="star4" name="rating" value="4" />
-        <label for="star4" title="4 stars">&#9733;</label>
-        <input type="radio" id="star3" name="rating" value="3" />
-        <label for="star3" title="3 stars">&#9733;</label>
-        <input type="radio" id="star2" name="rating" value="2" />
-        <label for="star2" title="2 stars">&#9733;</label>
-        <input type="radio" id="star1" name="rating" value="1" />
-        <label for="star1" title="1 star">&#9733;</label>
-      </div>
-    </section>
+
 
     <!-- Comments Section -->
     <section class="comments">
       <h3>Comments</h3>
 
-      <!-- Comment 1 -->
+      @foreach ($article->comments as $comment)
       <div class="comment">
-        <div class="comment-avatar">
-          <img src="{{ asset('images/profile.jpg') }}" alt="Alice's Avatar" />
-        </div>
-        <div class="comment-content">
-          <span class="comment-author">Alice</span>
-          <span class="comment-date">Posted on January 9, 2025</span>
-          <p class="comment-text">
-            This is a very insightful article! The details about AI-powered
-            cyberattacks really made me think about how much more secure we
-            need to be in the digital age.
-          </p>
-          <div class="user-rating">
-            <span class="star">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
-          </div>
-        </div>
+      <div class="comment-avatar">
+        <img src="{{ asset('images/profile.jpg') }}" alt="{{ $comment->user->name }}'s Avatar" />
       </div>
-
-      <!-- Comment 2 -->
-      <div class="comment">
-        <div class="comment-avatar">
-          <img src="{{ asset('images/profile.jpg') }}" alt="Bob's Avatar" />
+      <div class="comment-content">
+        <span class="comment-author">{{ $comment->user->name }}</span>
+        <span class="comment-date">Posted on {{ $comment->created_at->format('F j, Y') }}</span>
+        <p class="comment-text">
+        {{ $comment->text }}
+        </p>
+        @if ($comment->ratings->isNotEmpty())
+        <div class="user-rating">
+        @php
+        $rating = $comment->ratings->first();
+        $ratingValue = $rating->rating;
+        $fullStars = str_repeat('&#9733;', $ratingValue);
+        $emptyStars = str_repeat('&#9734;', 5 - $ratingValue);
+    @endphp
+        <span class="star">{!! $fullStars . $emptyStars !!}</span>
         </div>
-        <div class="comment-content">
-          <span class="comment-author">Bob</span>
-          <span class="comment-date">Posted on January 8, 2025</span>
-          <p class="comment-text">
-            It’s incredible how fast technology is evolving. Cybersecurity is
-            indeed a critical area to focus on. Thanks for sharing this
-            article!
-          </p>
-          <div class="user-rating">
-            <span class="star">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
-          </div>
-        </div>
+    @endif
       </div>
+      </div>
+    @endforeach
     </section>
 
-    <!-- Add Comment Section -->
-    <section class="add-comment">
-      <h3>Leave a Comment</h3>
-      <textarea placeholder="Write your comment here..."></textarea>
-      <button type="submit">Post Comment</button>
+    <!-- Rating Section -->
+    <section class="article-rating">
+      <h3>Rate This Article</h3>
+      <form action="{{ route('articles.comment.store', $article->id) }}" method="POST">
+        @csrf
+        <div class="stars">
+          <input type="radio" id="star5" name="rating" value="5" />
+          <label for="star5" title="5 stars">&#9733;</label>
+          <input type="radio" id="star4" name="rating" value="4" />
+          <label for="star4" title="4 stars">&#9733;</label>
+          <input type="radio" id="star3" name="rating" value="3" />
+          <label for="star3" title="3 stars">&#9733;</label>
+          <input type="radio" id="star2" name="rating" value="2" />
+          <label for="star2" title="2 stars">&#9733;</label>
+          <input type="radio" id="star1" name="rating" value="1" />
+          <label for="star1" title="1 star">&#9733;</label>
+        </div>
+
+        <!-- Add Comment Section -->
+        <section class="add-comment">
+          <h3>Leave a Comment</h3>
+          <textarea name="comment" placeholder="Write your comment here..."></textarea>
+          <button type="submit">Post Comment</button>
+        </section>
+      </form>
     </section>
   </main>
 

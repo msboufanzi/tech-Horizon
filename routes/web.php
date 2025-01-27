@@ -25,6 +25,8 @@ Route::get('/subscriber_dashboard', function () {
     return view('subscriber_dashboard');
 })->name('subscriber_dashboard');
 
+Route::post('/articles/{article}/comment', [ArticlesController::class, 'storeComment'])->name('articles.comment.store');
+
 Route::get('/redirect-to-dashboard', [ArticlesController::class, 'redirectToDashboard'])->name('redirectToDashboard');
 
 Route::get('/themes', [ThemeController::class, 'index'])->name('themes');

@@ -12,7 +12,6 @@ return new class extends Migration {
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
             $table->text('text'); // Use text if content can be long
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('article_id');

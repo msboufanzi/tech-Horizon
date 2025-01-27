@@ -9,4 +9,8 @@ class Rating extends Model
 {
     use HasFactory;
     protected $fillable = ['rating', 'user_id', 'article_id', 'comment_id'];
+    public function comment()
+    {
+        return $this->belongsTo(Comment::class);
+    }
 }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\Theme;
+use App\Models\Comment;
+use App\Models\Rating;
 use Illuminate\Support\Facades\Auth;
 
 class ArticlesController extends Controller
@@ -47,8 +49,14 @@ class ArticlesController extends Controller
 
     public function show($id)
     {
-        // Fetch the article by ID
-        $article = Article::with(['author', 'theme'])->findOrFail($id);
+        // Fetch the article by ID and eager load comments, ratings, and users
+        $article = Article::with([
+            'author',
+            'theme',
+            'comments' => function ($query) {
+                $query->with(['user', 'ratings']);
+            }
+        ])->findOrFail($id);
 
         // Fetch all themes for the navbar
         $themes = Theme::all();
@@ -79,5 +87,37 @@ class ArticlesController extends Controller
                 // Handle unknown roles or default case
                 return redirect()->route('home')->with('error', 'Unknown user role.');
         }
+    }
+
+    public function storeComment(Request $request, $articleId)
+    {
+        // Validate the request
+        $request->validate([
+            'comment' => 'required|string',
+            'rating' => 'nullable|integer|between:1,5', // Make rating optional
+        ]);
+
+        // Get the authenticated user
+        $user = Auth::user();
+
+        // Create the comment
+        $comment = Comment::create([
+            'text' => $request->input('comment'),
+            'user_id' => $user->id,
+            'article_id' => $articleId,
+        ]);
+
+        // Create the rating only if it is provided
+        if ($request->has('rating') && $request->input('rating') !== null) {
+            Rating::create([
+                'rating' => $request->input('rating'),
+                'user_id' => $user->id,
+                'article_id' => $articleId,
+                'comment_id' => $comment->id,
+            ]);
+        }
+
+        // Redirect back with a success message
+        return redirect()->back()->with('success', 'Comment submitted successfully!');
     }
 }
