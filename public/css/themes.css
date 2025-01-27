@@ -57,6 +57,17 @@ nav {
     background: #f0f0f0;
 }
 
+.theme-title-link {
+    text-decoration: none;
+    color: inherit; 
+    cursor: pointer; 
+}
+
+.theme-title-link:hover h3 {
+    color: #007bff; 
+    text-decoration: underline; 
+}
+
 .creation-date {
     color: #666;
     font-size: 0.9em;

@@ -28,15 +28,17 @@
                 <div class="card">
                     <img src="{{ $theme->image }}" alt="{{ $theme->title }}" />
                     <div class="card-content">
-                        <h3>{{ $theme->title }}</h3>
+                        <!-- Make the title clickable -->
+                        <a href="{{ route('articles.byTheme', ['themeId' => $theme->id]) }}" class="theme-title-link">
+                            <h3>{{ $theme->title }}</h3>
+                        </a>
                         <p>{{ $theme->description }}</p>
                         <p class="creation-date">Created on: {{ $theme->created_at->format('M d, Y') }}</p>
-                        <!-- Show Follow or Unfollow button based on whether the user is following the theme -->
                         @if (auth()->check())
                             @if ($theme->is_followed)
                                 <form action="{{ route('themes.unfollow') }}" method="POST">
                                     @csrf
-                                    @method('DELETE') <!-- Use DELETE method for unfollow -->
+                                    @method('DELETE')
                                     <input type="hidden" name="theme_id" value="{{ $theme->id }}">
                                     <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                                     <button type="submit" class="unfollow-button">Unfollow</button>
