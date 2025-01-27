@@ -48,7 +48,7 @@
           </div>
           <hr>
 
-          <a href="#" class="sub-menu-link">
+          <a href="{{ route('redirectToDashboard') }}" class="sub-menu-link" id="profile-link">
             <p>Profile</p>
             <span>></span>
           </a>
@@ -163,6 +163,7 @@
         });
       });
     });
+
   </script>
 </body>
 

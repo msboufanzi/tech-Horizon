@@ -48,7 +48,7 @@
           </div>
           <hr>
 
-          <a href="#" class="sub-menu-link">
+          <a href="{{ route('redirectToDashboard') }}" class="sub-menu-link" id="profile-link">
             <p>Profile</p>
             <span>></span>
           </a>
@@ -155,17 +155,17 @@
   <aside>
     <section class="recent-articles">
       <h3>Recent Articles</h3>
-      @foreach($publicArticles as $publicArticle)
+      @foreach($recentArticles as $recentArticle)
       <article class="recent-post">
-      <img src="{{ $publicArticle->image }}" alt="{{ $publicArticle->title }}" class="recent-image" />
+      <img src="{{ $recentArticle->image }}" alt="{{ $recentArticle->title }}" class="recent-image" />
       <div class="recent-info">
         <h4>
-        <a href="{{ route('article_details', $publicArticle->id) }}">
-          {{ Str::limit($publicArticle->title, 30, '...') }}
+        <a href="{{ route('article_details', $recentArticle->id) }}">
+          {{ Str::limit($recentArticle->title, 30, '...') }}
         </a>
         </h4>
         <p>
-        {{ Str::limit($publicArticle->description, 50, '...') }}
+        {{ Str::limit($recentArticle->description, 50, '...') }}
         </p>
       </div>
       </article>
