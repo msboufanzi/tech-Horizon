@@ -73,8 +73,18 @@
     <article class="post">
       <h2>{{ $article->title }}</h2>
       <div class="meta">
-      <span class="date">{{ $article->created_at->format('F j, Y') }}</span>
+      <!-- Display the article's creation date -->
+      <span class="date">{{ $article->created_at->format('M j, Y') }}</span>
+
+      <!-- Display the article's author -->
+      <span class="author"> | by {{ $article->author->name }}</span>
+
+      <!-- Display the article's theme as a link -->
+      <span class="theme"> |
+      <a href="{{ route('articles.byTheme', $article->theme->id) }}">{{ $article->theme->title }}</a>
+      </span>
       </div>
+
       <img src="{{ $article->image }}" alt="{{ $article->title }}"
       style="width: 100%; max-width: 100%; height: auto; margin-bottom: 10px;" />
       <p>{{ $article->description }}</p>

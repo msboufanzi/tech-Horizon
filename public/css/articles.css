@@ -224,6 +224,15 @@ main {
     grid-area: main;
 }
 
+.theme a {
+    color: #007bff; 
+    text-decoration: none; 
+}
+
+.theme a:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+
 .post {
     background-color: #fff;
     border-radius: 5px;
