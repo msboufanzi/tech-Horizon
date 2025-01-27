@@ -16,7 +16,15 @@
                 <a href="{{ route('home') }}">Home</a>
                 <a href="{{ route('themes') }}">Themes</a>
                 <a href="{{ route('public.articles') }}">Public Articles</a>
-                <a href="{{ auth()->check() ? route('articles') : route('auth') }}">Sign in/up</a>
+                @if(auth()->check())
+                    <a href="#"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                @else
+                    <a href="{{ route('auth') }}">Sign in/up</a>
+                @endif
             </div>
         </div>
     </nav>

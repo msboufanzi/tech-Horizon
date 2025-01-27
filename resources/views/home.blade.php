@@ -17,7 +17,15 @@
                 <a href="#about">About</a>
                 <a href="{{ route('themes') }}">Themes</a>
                 <a href="{{ route('public.articles') }}">Public Articles</a>
-                <a href="{{ auth()->check() ? route('articles') : route('auth') }}">Sign in/up</a>
+                @if(auth()->check())
+                    <a href="#"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                @else
+                    <a href="{{ route('auth') }}">Sign in/up</a>
+                @endif
                 <a href="#contact">Contact</a>
             </div>
         </div>
@@ -99,7 +107,7 @@
         <div class="cards-container">
             @foreach ($articles as $article)
                 <div class="card">
-                <img src="{{ $article->image }}" alt="{{ $article->title }}" />
+                    <img src="{{ $article->image }}" alt="{{ $article->title }}" />
                     <div class="card-content">
                         <h3>{{ $article->title }}</h3>
                         <!-- Display theme name -->

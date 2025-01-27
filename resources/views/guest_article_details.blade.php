@@ -17,7 +17,7 @@
                 <a href="{{ route('home') }}">Home</a>
                 <a href="{{ route('themes') }}">Themes</a>
                 <a href="{{ route('public.articles') }}">Public Articles</a>
-                <a href="{{ auth()->check() ? route('articles') : route('auth') }}">Sign in/up</a>
+                <a href="{{route('auth') }}">Sign in/up</a>
             </div>
         </div>
     </nav>
