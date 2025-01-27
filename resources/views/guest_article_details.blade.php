@@ -10,6 +10,18 @@
 
 <body>
 
+    <nav>
+        <div class="nav-content">
+            <a href="{{ route('home') }}" class="logo">Tech Horizon</a>
+            <div class="nav-links">
+                <a href="{{ route('home') }}">Home</a>
+                <a href="{{ route('themes') }}">Themes</a>
+                <a href="{{ route('public.articles') }}">Public Articles</a>
+                <a href="{{ route('auth') }}">Sign in/up</a>
+            </div>
+        </div>
+    </nav>
+
     <main>
         <!-- Dynamic Article Content -->
         <article class="post">

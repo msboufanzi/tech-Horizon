@@ -6,9 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tech Horizon</title>
   <link rel="stylesheet" href="{{ asset('css/article_details.css') }}" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Source+Sans+Pro:wght@400;700&display=swap"
-    rel="stylesheet" />
 </head>
 
 <body>
@@ -108,7 +105,7 @@
         $ratingValue = $rating->rating;
         $fullStars = str_repeat('&#9733;', $ratingValue);
         $emptyStars = str_repeat('&#9734;', 5 - $ratingValue);
-    @endphp
+      @endphp
         <span class="star">{!! $fullStars . $emptyStars !!}</span>
         </div>
     @endif

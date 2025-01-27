@@ -94,7 +94,7 @@ class ArticlesController extends Controller
         // Validate the request
         $request->validate([
             'comment' => 'required|string',
-            'rating' => 'nullable|integer|between:1,5', // Make rating optional
+            'rating' => 'nullable|integer|between:1,5', 
         ]);
 
         // Get the authenticated user

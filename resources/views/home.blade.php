@@ -13,7 +13,7 @@
         <div class="nav-content">
             <a href="{{ route('home') }}" class="logo">Tech Horizon</a>
             <div class="nav-links">
-                <a>Home</a>
+                <a href="{{ route('home') }}">Home</a>
                 <a href="#about">About</a>
                 <a href="{{ route('themes') }}">Themes</a>
                 <a href="{{ route('public.articles') }}">Public Articles</a>

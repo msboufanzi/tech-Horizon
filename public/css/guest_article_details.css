@@ -5,6 +5,49 @@
     box-sizing: border-box;
 }
 
+/* Navigation */
+nav {
+    background: #001f3f;
+    padding: 1rem 5%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    cursor: pointer;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    cursor: pointer;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #66b2ff;
+}
+
 /* Body Styling */
 body {
     font-family: "Source Sans Pro", sans-serif;
@@ -23,6 +66,7 @@ body {
 /* Main Section */
 main {
     grid-area: main;
+    padding-top: 70px; /* Add this line to create space below the navbar */
 }
 
 .post {
@@ -31,6 +75,12 @@ main {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 2rem;
     margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+    main {
+        padding-top: 60px; /* Adjust for smaller screens */
+    }
 }
 
 .article-title {
@@ -291,6 +341,7 @@ aside {
     width: 100%;
     max-width: 100%; /* Prevent horizontal scrolling */
     overflow: hidden; /* Hide any overflow */
+    padding-top: 70px;
 }
 
 aside {
@@ -437,4 +488,16 @@ footer {
     color: #f39c12;
     font-size: 1.2rem;
     margin-left: 5px;
+}
+
+.public-description {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 0 0 0.5rem 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limit to 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%; /* Ensure it takes the full width of its container */
 }
