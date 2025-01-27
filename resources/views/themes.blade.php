@@ -37,7 +37,8 @@
                     <img src="{{ $theme->image }}" alt="{{ $theme->title }}" />
                     <div class="card-content">
                         <!-- Make the title clickable -->
-                        <a href="{{ route('articles.byTheme', ['themeId' => $theme->id]) }}" class="theme-title-link">
+                        <a href="{{ auth()->check() ? route('articles.byTheme', ['themeId' => $theme->id]) : route('auth') }}"
+                            class="theme-title-link">
                             <h3>{{ $theme->title }}</h3>
                         </a>
                         <p>{{ $theme->description }}</p>
