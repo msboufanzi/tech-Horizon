@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->text('image');
             $table->text('description');
             $table->text('content');
+            $table->integer('position')->default(1);
             $table->unsignedInteger('theme_id');
             $table->unsignedInteger('author_id');
             $table->boolean('ispublic')->default(false);

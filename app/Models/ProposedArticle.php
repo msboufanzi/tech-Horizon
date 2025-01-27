@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class ProposedArticle extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'title',
         'image',
@@ -16,6 +17,7 @@ class ProposedArticle extends Model
         'theme_id',
         'author_id',
         'ispublic',
+        'position', // Add this line
     ];
 
     // Define a relationship to fetch the author (user)
