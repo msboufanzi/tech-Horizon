@@ -120,11 +120,11 @@
         <a href="{{ route('public.articles') }}" class="show-more">View More Articles</a>
     </section>
 
-    <section class="testimonials" id="testimonials">
+    <!-- <section class="testimonials" id="testimonials">
         <h2 class="section-title">What Our Users Say</h2>
         <div class="testimonial-container">
             <div class="testimonial">
-                <img src="images/profile.jpeg" alt="Sarah's Profile" class="testimonial-avatar" />
+                <img src="images/profile.jpg" alt="Sarah's Profile" class="testimonial-avatar" />
                 <p>
                     "Tech Horizon has been a game-changer for my career! The insights
                     and guides are top-notch and incredibly useful."
@@ -132,7 +132,7 @@
                 <span>- Sarah Ali, Software Engineer</span>
             </div>
             <div class="testimonial">
-                <img src="images/profile.jpeg" alt="Ahmed's Profile" class="testimonial-avatar" />
+                <img src="images/profile.jpg" alt="Ahmed's Profile" class="testimonial-avatar" />
                 <p>
                     "I love the community here. The articles on AI and cybersecurity
                     helped me secure my dream job!"
@@ -140,7 +140,7 @@
                 <span>- Ahmed Khalid, Data Scientist</span>
             </div>
             <div class="testimonial">
-                <img src="images/profile.jpeg" alt="Emily's Profile" class="testimonial-avatar" />
+                <img src="images/profile.jpg" alt="Emily's Profile" class="testimonial-avatar" />
                 <p>
                     "The workshops and events have been incredibly informative. It's a
                     fantastic platform for networking and learning."
@@ -148,7 +148,7 @@
                 <span>- Hamza Ahmed, IT Consultant</span>
             </div>
             <div class="testimonial">
-                <img src="images/profile.jpeg" alt="John's Profile" class="testimonial-avatar" />
+                <img src="images/profile.jpg" alt="John's Profile" class="testimonial-avatar" />
                 <p>
                     "Tech Horizon's articles are always up-to-date and insightful. It
                     has become my go-to platform for tech knowledge."
@@ -156,7 +156,7 @@
                 <span>- Yasser Khalid, Tech Enthusiast</span>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <footer id="contact">
         <div class="footer-content">

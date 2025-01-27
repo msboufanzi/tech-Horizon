@@ -7,12 +7,11 @@ use App\Http\Controllers\ThemeController;
 use App\Http\Controllers\PublicArticleController;
 use App\Http\Controllers\GuestArticleController;
 use App\Http\Controllers\EditorController;
-
+use App\Http\Controllers\ArticlesController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-// Route::get('/',function () {
-//     return view('home');
-// })->name('home');
+
+
 
 Route::get('/editor_dashboard', function () {
     return view('editor_dashboard');
@@ -30,13 +29,11 @@ Route::get('/themes', [ThemeController::class, 'index'])->name('themes');
 
 Route::get('/public-articles', [PublicArticleController::class, 'index'])->name('public.articles');
 
-Route::get('/articles', function () {
-    return view('articles');
-})->name('articles');
+Route::get('/articles', [ArticlesController::class, 'index'])->name('articles');
 
-Route::get('/article_details', function () {
-    return view('article_details');
-})->name('article_details');
+Route::get('/articles/theme/{themeId}', [ArticlesController::class, 'showByTheme'])->name('articles.byTheme');
+
+Route::get('/article/{id}', [ArticlesController::class, 'show'])->name('article_details');
 
 Route::get('/guest-article/{article_id}', [GuestArticleController::class, 'show'])->name('guest_article_details');
 

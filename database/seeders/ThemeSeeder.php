@@ -15,6 +15,7 @@ class ThemeSeeder extends Seeder
     {
         // Define your themes data
         $themes = [
+            //* Id 1 is reserved by editor
             [
                 'title' => 'Cybersecurity',
                 'description' => 'Cybersecurity involves protecting computer systems, networks, and data from unauthorized access, attacks, or damage. It includes practices like encryption, firewalls, and threat detection to safeguard sensitive information and ensure privacy and integrity.',
@@ -45,7 +46,6 @@ class ThemeSeeder extends Seeder
                 'description' => 'IoT refers to the network of interconnected devices embedded with sensors and software, enabling them to collect and exchange data. Examples include smart homes, wearable devices, and industrial automation, enhancing efficiency and connectivity.',
                 'manager_id' => 7,
             ],
-
         ];
 
         //* Insert the data into the themes table
