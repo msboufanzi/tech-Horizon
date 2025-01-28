@@ -7,6 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Tech Horizon - Editor Dashboard</title>
     <link rel="stylesheet" href="{{ asset('css/editor.css') }}">
+    <link rel="icon" href="{{ asset('images/logo.png') }}">
 </head>
 
 <body>

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tech Horizon - Themes</title>
     <link rel="stylesheet" href="{{ asset('css/themes.css') }}">
+    <link rel="icon" href="{{ asset('images/logo.png') }}">
 </head>
 
 <body>
