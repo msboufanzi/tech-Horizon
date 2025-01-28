@@ -32,7 +32,10 @@ Route::get('/redirect-to-dashboard', [ArticlesController::class, 'redirectToDash
 Route::get('/themes', [ThemeController::class, 'index'])->name('themes');
 
 Route::post('/themes/follow', [ThemeController::class, 'follow'])->name('themes.follow');
+
 Route::delete('/themes/unfollow', [ThemeController::class, 'unfollow'])->name('themes.unfollow');
+
+Route::post('/add-theme', [EditorController::class, 'addTheme'])->name('add-theme');
 
 Route::get('/public-articles', [PublicArticleController::class, 'index'])->name('public.articles');
 
