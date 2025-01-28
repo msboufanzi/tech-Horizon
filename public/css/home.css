@@ -6,17 +6,17 @@
 }
 
 .meta-info {
-    color: #666; /* Grey color */
-    font-size: 0.9em; /* Smaller font size */
-    margin-top: 10px; /* Add some spacing */
-    font-style: italic; /* Optional: Italicize the text */
+    color: #666;
+    font-size: 0.9em;
+    margin-top: 10px;
+    font-style: italic;
 }
 
 body {
     background-color: #f0f0f0;
 }
 
-/* Navigation */
+
 nav {
     background: #001f3f;
     padding: 1rem 5%;
@@ -59,7 +59,7 @@ nav {
     color: #66b2ff;
 }
 
-/* Hero Section */
+
 .hero {
     height: 100vh;
     background: url("../images/cyber_security.jpg") no-repeat center
@@ -92,7 +92,7 @@ nav {
     margin: 0 auto;
 }
 
-/* About Section */
+
 .about {
     padding: 6rem 5%;
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
@@ -155,7 +155,7 @@ nav {
     }
 }
 
-/* Themes Section */
+
 
 .themes {
     padding: 4rem 5%;
@@ -242,7 +242,7 @@ nav {
     background: #003366;
 }
 
-/* Articles Section */
+
 
 .theme-info {
     font-size: 0.9rem;
@@ -251,13 +251,13 @@ nav {
 }
 
 .theme-info a {
-    color: #007bff; /* Blue color for the link */
+    color: #007bff;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .theme-info a:hover {
-    color: #0056b3; /* Darker blue on hover */
+    color: #0056b3;
 }
 
 .read-more-btn {
@@ -295,7 +295,7 @@ nav {
     line-height: 1.6;
 }
 
-/* Auth Forms */
+
 .auth-section {
     padding: 4rem 5%;
     background: #f0f0f0;
@@ -342,7 +342,7 @@ nav {
     background: #003366;
 }
 
-/* Footer */
+
 footer {
     padding: 4rem 5%;
     background: #001f3f;
@@ -377,8 +377,8 @@ footer {
     }
 }
 
-/* Testimonials Section */
-/* Testimonials Section */
+
+
 .testimonials {
     padding: 2rem;
     background-color: #f4f4f4;

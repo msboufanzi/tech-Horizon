@@ -1,13 +1,9 @@
-/* General Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-/* Sub menu */
-/* Profile Dropdown Menu */
-/* Sub menu */
-/* Profile Dropdown Menu */
+
 .sub-menu-wrap {
     position: absolute;
     top: 100%;
@@ -109,7 +105,7 @@
     height: 100%;
     object-fit: cover;
 }
-/* Body Styling */
+
 body {
     font-family: "Source Sans Pro", sans-serif;
     line-height: 1.6;
@@ -124,7 +120,7 @@ body {
     gap: 20px;
     padding: 20px;
 }
-/* Dropdown Menu Styles */
+
 .dropdown {
     position: relative;
 }
@@ -137,17 +133,17 @@ body {
     display: none;
     position: absolute;
     top: 100%;
-    right: 0; /* Align to the right edge of the parent */
+    right: 0;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     z-index: 1000;
-    min-width: 200px; /* Minimum width */
-    max-width: 300px; /* Maximum width to prevent overflow */
+    min-width: 200px;
+    max-width: 300px;
     padding: 10px 0;
-    white-space: nowrap; /* Prevent text wrapping */
-    overflow: hidden; /* Hide overflow */
-    text-overflow: ellipsis; /* Add ellipsis for long text */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .dropdown-menu.show {
@@ -161,15 +157,15 @@ body {
     text-decoration: none;
     font-size: 0.9rem;
     transition: background-color 0.3s ease;
-    white-space: nowrap; /* Prevent text wrapping */
-    overflow: hidden; /* Hide overflow */
-    text-overflow: ellipsis; /* Add ellipsis for long text */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .dropdown-item:hover {
     background-color: #f4f4f4;
 }
-/* Header and Navbar */
+
 header {
     grid-area: header;
     background-color: #fff;
@@ -242,7 +238,6 @@ nav {
     object-fit: cover;
 }
 
-/* Main Section */
 main {
     grid-area: main;
 }
@@ -286,7 +281,6 @@ main {
     margin-bottom: 1rem;
 }
 
-/* Comments Section */
 .comments {
     background-color: #fff;
     border-radius: 5px;
@@ -354,7 +348,6 @@ main {
     margin-top: 0.5rem;
 }
 
-/* Add Comment Section */
 .add-comment {
     background-color: #fff;
     border-radius: 5px;
@@ -397,7 +390,6 @@ main {
     background-color: #0056b3;
 }
 
-/* Add Comment Section */
 .add-comment {
     background-color: #fff;
     border-radius: 5px;
@@ -439,7 +431,6 @@ main {
     background-color: #0056b3;
 }
 
-/* Sidebar (Recent Articles) */
 aside {
     grid-area: aside;
 }
@@ -493,7 +484,6 @@ aside {
     color: #666;
 }
 
-/* Footer Styling */
 footer {
     grid-area: footer;
     text-align: center;
@@ -502,7 +492,6 @@ footer {
     color: #fff;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     body {
         grid-template-columns: 1fr;
@@ -529,7 +518,6 @@ footer {
     }
 }
 
-/* Article Rating Section */
 .article-rating {
     background-color: #fff;
     border-radius: 5px;
@@ -554,7 +542,7 @@ footer {
 }
 
 .stars input {
-    display: none; /* Hide radio inputs */
+    display: none;
 }
 
 .stars label {
@@ -565,15 +553,14 @@ footer {
 }
 
 .stars input:checked ~ label {
-    color: #f39c12; /* Highlight stars on selection */
+    color: #f39c12;
 }
 
 .stars label:hover,
 .stars label:hover ~ label {
-    color: #f39c12; /* Highlight stars on hover */
+    color: #f39c12;
 }
 
-/* User Rating in Comments */
 .user-rating {
     font-size: 1rem;
     color: #888;

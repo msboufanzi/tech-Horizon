@@ -9,7 +9,6 @@ body {
     background-color: #f0f0f0;
 }
 
-/* Navigation */
 nav {
     background: #001f3f;
     padding: 1rem 5%;
@@ -51,7 +50,6 @@ nav {
     color: #66b2ff;
 }
 
-/* Themes Section */
 .themes {
     padding: 6rem 5% 4rem;
     background: #f0f0f0;
@@ -59,13 +57,13 @@ nav {
 
 .theme-title-link {
     text-decoration: none;
-    color: inherit; 
-    cursor: pointer; 
+    color: inherit;
+    cursor: pointer;
 }
 
 .theme-title-link:hover h3 {
-    color: #007bff; 
-    text-decoration: underline; 
+    color: #007bff;
+    text-decoration: underline;
 }
 
 .creation-date {
@@ -139,7 +137,7 @@ nav {
 }
 
 .unfollow-button {
-    background-color: #dc3545; /* Red for unfollow */
+    background-color: #dc3545;
     color: white;
     border: none;
     padding: 8px 16px;
@@ -149,10 +147,9 @@ nav {
 }
 
 .unfollow-button:hover {
-    background-color: #c82333; /* Darker red on hover */
+    background-color: #c82333;
 }
 
-/* Footer */
 footer {
     padding: 2rem 5%;
     background: #001f3f;

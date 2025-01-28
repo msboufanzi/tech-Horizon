@@ -9,7 +9,7 @@ body {
     background-color: #f0f0f0;
 }
 
-/* Navigation */
+
 nav {
     background: #001f3f;
     padding: 1rem 5%;
@@ -51,7 +51,7 @@ nav {
     color: #66b2ff;
 }
 
-/* Articles Section */
+
 
 .theme-info {
     font-size: 0.9rem;
@@ -60,13 +60,13 @@ nav {
 }
 
 .theme-info a {
-    color: #007bff; /* Blue color for the link */
+    color: #007bff;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .theme-info a:hover {
-    color: #0056b3; /* Darker blue on hover */
+    color: #0056b3;
 }
 
 .read-more-btn {
@@ -169,7 +169,7 @@ nav {
     background: #003366;
 }
 
-/* Footer */
+
 footer {
     padding: 2rem 5%;
     background: #001f3f;
