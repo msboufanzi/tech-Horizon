@@ -60,7 +60,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2024 Tech Horizon. All rights reserved.</p>
+        <p>&copy; 2025 Tech Horizon. All rights reserved.</p>
     </footer>
 </body>
 
