@@ -6,8 +6,10 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ThemeController;
 use App\Http\Controllers\PublicArticleController;
 use App\Http\Controllers\GuestArticleController;
+use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\EditorController;
 use App\Http\Controllers\ArticlesController;
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -61,3 +63,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/users', [EditorController::class, 'addUser']);
 });
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/subscriber_dashboard', [SubscriberController::class, 'dashboard'])->name('subscriber_dashboard');
+    Route::post('/subscriber/unfollow', [SubscriberController::class, 'unfollow'])->name('subscriber.unfollow');
+    Route::delete('/subscriber/history', [SubscriberController::class, 'deleteHistory'])->name('subscriber.deleteHistory');
+    Route::post('/subscriber/propose-article', [SubscriberController::class, 'proposeArticle'])->name('subscriber.proposeArticle');
+    Route::delete('/subscriber/comment', [SubscriberController::class, 'deleteComment'])->name('subscriber.deleteComment');
+});

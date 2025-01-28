@@ -15,7 +15,235 @@ document.addEventListener('DOMContentLoaded', function() {
                 <button class="btn-danger" onclick="unsubscribe('${sub.theme}')">Unsubscribe</button>
             </td>
         `;
-        subscriptionsTable.appendChild(tr);
+        subscriptionsTable.appendChild(tr);document.addEventListener("DOMContentLoaded", () => {
+            loadSubscriptions()
+            loadBrowsingHistory()
+            loadProposedArticles()
+            loadComments()
+          
+            // Handle article proposal form submission
+            document.getElementById("article-proposal-form").addEventListener("submit", async function (e) {
+              e.preventDefault()
+          
+              const formData = {
+                title: document.getElementById("article-title").value,
+                theme_id: document.getElementById("article-theme").value,
+                content: document.getElementById("article-content").value,
+                image: document.getElementById("article-image").value,
+                description: document.getElementById("article-description").value,
+              }
+          
+              try {
+                const response = await fetch("/subscriber/propose-article", {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content,
+                  },
+                  body: JSON.stringify(formData),
+                })
+          
+                const data = await response.json()
+                if (data.success) {
+                  alert("Article proposal submitted successfully!")
+                  this.reset()
+                  loadProposedArticles()
+                }
+              } catch (error) {
+                console.error("Error:", error)
+                alert("Error submitting proposal")
+              }
+            })
+          })
+          
+          async function loadSubscriptions() {
+            try {
+              const response = await fetch("/subscriber/subscriptions")
+              const subscriptions = await response.json()
+          
+              const tbody = document.querySelector("#subscriptions-table tbody")
+              tbody.innerHTML = ""
+          
+              subscriptions.forEach((sub) => {
+                const tr = document.createElement("tr")
+                tr.innerHTML = `
+                          <td>${sub.theme}</td>
+                          <td>${sub.date}</td>
+                          <td>
+                              <button class="btn-danger" onclick="unfollow(${sub.theme_id})">Unfolscribe</button>
+                          </td>
+                      `
+                tbody.appendChild(tr)
+              })
+            } catch (error) {
+              console.error("Error:", error)
+            }
+          }
+          
+          async function unfollow(themeId) {
+            if (confirm("Are you sure you want to unfollow this theme?")) {
+              try {
+                const response = await fetch("/subscriber/unfollow", {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content,
+                  },
+                  body: JSON.stringify({ theme_id: themeId }),
+                })
+          
+                const data = await response.json()
+                if (data.success) {
+                  loadSubscriptions()
+                }
+              } catch (error) {
+                console.error("Error:", error)
+              }
+            }
+          }
+          
+          async function loadBrowsingHistory() {
+            try {
+              const response = await fetch("/subscriber/history")
+              const history = await response.json()
+          
+              const tbody = document.querySelector("#history-table tbody")
+              tbody.innerHTML = ""
+          
+              history.forEach((item) => {
+                const tr = document.createElement("tr")
+                tr.innerHTML = `
+                          <td>${item.title}</td>
+                          <td>${item.theme}</td>
+                          <td>${item.date}</td>
+                          <td>
+                              <button class="btn-danger" onclick="deleteHistory(${item.article_id})">Delete</button>
+                          </td>
+                      `
+                tbody.appendChild(tr)
+              })
+            } catch (error) {
+              console.error("Error:", error)
+            }
+          }
+          
+          async function deleteHistory(articleId) {
+            if (confirm("Are you sure you want to delete this history item?")) {
+              try {
+                const response = await fetch("/subscriber/history", {
+                  method: "DELETE",
+                  headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content,
+                  },
+                  body: JSON.stringify({ article_id: articleId }),
+                })
+          
+                const data = await response.json()
+                if (data.success) {
+                  loadBrowsingHistory()
+                }
+              } catch (error) {
+                console.error("Error:", error)
+              }
+            }
+          }
+          
+          async function loadProposedArticles() {
+            try {
+              const response = await fetch("/subscriber/proposed-articles")
+              const articles = await response.json()
+          
+              const tbody = document.querySelector("#proposed-articles-table tbody")
+              tbody.innerHTML = ""
+          
+              articles.forEach((article) => {
+                const tr = document.createElement("tr")
+                tr.innerHTML = `
+                          <td>${article.title}</td>
+                          <td>${article.theme}</td>
+                          <td>${article.date}</td>
+                          <td>${article.status}</td>
+                          <td>
+                              <button class="btn-danger" onclick="cancelProposal(${article.id})">Cancel</button>
+                          </td>
+                      `
+                tbody.appendChild(tr)
+              })
+            } catch (error) {
+              console.error("Error:", error)
+            }
+          }
+          
+          async function cancelProposal(articleId) {
+            if (confirm("Are you sure you want to cancel this proposal?")) {
+              try {
+                const response = await fetch("/subscriber/proposed-articles", {
+                  method: "DELETE",
+                  headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content,
+                  },
+                  body: JSON.stringify({ article_id: articleId }),
+                })
+          
+                const data = await response.json()
+                if (data.success) {
+                  loadProposedArticles()
+                }
+              } catch (error) {
+                console.error("Error:", error)
+              }
+            }
+          }
+          
+          async function loadComments() {
+            try {
+              const response = await fetch("/subscriber/comments")
+              const comments = await response.json()
+          
+              const container = document.getElementById("conversations-list")
+              container.innerHTML = ""
+          
+              comments.forEach((comment) => {
+                const div = document.createElement("div")
+                div.className = "conversation-item"
+                div.innerHTML = `
+                          <h3>${comment.article_title}</h3>
+                          <p>${comment.text}</p>
+                          <p>Posted on: ${comment.date}</p>
+                          <button class="btn-danger" onclick="deleteComment(${comment.id})">Delete</button>
+                      `
+                container.appendChild(div)
+              })
+            } catch (error) {
+              console.error("Error:", error)
+            }
+          }
+          
+          async function deleteComment(commentId) {
+            if (confirm("Are you sure you want to delete this comment?")) {
+              try {
+                const response = await fetch("/subscriber/comments", {
+                  method: "DELETE",
+                  headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content,
+                  },
+                  body: JSON.stringify({ comment_id: commentId }),
+                })
+          
+                const data = await response.json()
+                if (data.success) {
+                  loadComments()
+                }
+              } catch (error) {
+                console.error("Error:", error)
+              }
+            }
+          }
+          
+          
     });
 
     // Populate browsing history table
