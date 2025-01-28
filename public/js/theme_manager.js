@@ -1,140 +1,300 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Populate subscriptions table
-    const subscriptionsTable = document.querySelector('#subscriptions-table tbody');
-    const subscriptions = [
-        { name: 'John Doe', email: 'john@example.com', date: '2025-01-15' },
-        { name: 'Jane Smith', email: 'jane@example.com', date: '2025-02-20' },
-        { name: 'Bob Johnson', email: 'bob@example.com', date: '2025-03-10' }
-    ];
-    subscriptions.forEach(sub => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-            <td>${sub.name}</td>
-            <td>${sub.email}</td>
-            <td>${sub.date}</td>
-            <td>
-                <button class="btn-danger" onclick="kickSubscription('${sub.email}')">Kick Subscription</button>
-            </td>
-        `;
-        subscriptionsTable.appendChild(tr);
-    });
-
-    // Populate articles table
-    const articlesTable = document.querySelector('#articles-table tbody');
-    const articles = [
-        { title: 'AI in Healthcare', author: 'Dr. Sarah Lee', date: '2025-04-01', status: 'Published' },
-        { title: 'Ethics and AI', author: 'Prof. Ahmed Hassan', date: '2025-04-15', status: 'Under Review' },
-        { title: 'AI and Employment', author: 'Lucy Chen', date: '2025-04-30', status: 'Draft' }
-    ];
-    articles.forEach(article => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-            <td>${article.title}</td>
-            <td>${article.author}</td>
-            <td>${article.date}</td>
-            <td>${article.status}</td>
-            <td>
-                <button class="btn-primary" onclick="viewArticle('${article.title}')">View</button>
-                <button class="btn-danger" onclick="deleteArticle('${article.title}')">Delete</button>
-            </td>
-        `;
-        articlesTable.appendChild(tr);
-    });
-
-    // Populate proposals table
-    const proposalsTable = document.querySelector('#proposals-table tbody');
-    const proposals = [
-        { title: 'AI in Industry 4.0', author: 'Mark Wilson', date: '2025-05-05' },
-        { title: 'Machine Learning for Beginners', author: 'Emma Brown', date: '2025-05-10' },
-        { title: 'AI and Privacy Concerns', author: 'David Lee', date: '2025-05-15' }
-    ];
-    proposals.forEach(proposal => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-            <td>${proposal.title}</td>
-            <td>${proposal.author}</td>
-            <td>${proposal.date}</td>
-            <td>
-                <button class="btn-primary" onclick="reviewProposal('${proposal.title}')">Review</button>
-                <button class="btn-danger" onclick="deleteProposal('${proposal.title}')">Delete</button>
-                <button class="btn-primary" onclick="proposeToEditor('${proposal.title}')">Propose to Editor</button>
-            </td>
-        `;
-        proposalsTable.appendChild(tr);
-    });
-
-    // Populate statistics
-    const statsContainer = document.getElementById('stats-container');
-    const stats = [
-        { label: 'Theme Subscribers', value: 1250 },
-        { label: 'Published Articles', value: 75 },
-        { label: 'Total Views', value: 25000 },
-        { label: 'Comments', value: 520 }
-    ];
-    stats.forEach(stat => {
-        const div = document.createElement('div');
-        div.className = 'stat-box';
-        div.innerHTML = `
-            <h3>${stat.label}</h3>
-            <p>${stat.value}</p>
-        `;
-        statsContainer.appendChild(div);
-    });
-
-    // Populate comments table
-    const commentsTable = document.querySelector('#comments-table tbody');
-    const comments = [
-        { date: '2025-05-20', name: 'User123', content: 'Great article!', article: 'AI in Healthcare' },
-        { date: '2025-05-21', name: 'TechEnthusiast', content: 'Interesting perspective.', article: 'Ethics and AI' },
-        { date: '2025-05-22', name: 'FutureThinker', content: 'How will this affect job markets?', article: 'AI and Employment' }
-    ];
-    comments.forEach(comment => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-            <td>${comment.date}</td>
-            <td>${comment.name}</td>
-            <td>${comment.content}</td>
-            <td>
-                <button class="btn-danger" onclick="deleteComment('${comment.date}', '${comment.name}')">Delete</button>
-            </td>
-        `;
-        commentsTable.appendChild(tr);
-    });
-});
-
-// Function stubs for button actions
-function kickSubscription(email) {
-    alert(`Kicking subscription for ${email}`);
-    // Implement the actual kick logic here
-}
-
-function viewArticle(title) {
-    alert(`Viewing article: ${title}`);
-    // Implement the view logic here
-}
-
-function deleteArticle(title) {
-    alert(`Deleting article: ${title}`);
-    // Implement the delete logic here
-}
-
-function reviewProposal(title) {
-    alert(`Reviewing proposal: ${title}`);
-    // Implement the review logic here
-}
-
-function deleteProposal(title) {
-    alert(`Deleting proposal: ${title}`);
-    // Implement the delete logic here
-}
-
-function proposeToEditor(title) {
-    alert(`Proposing article to editor: ${title}`);
-    // Implement the propose logic here
-}
-
-function deleteComment(date, name) {
-    alert(`Deleting comment by ${name} on ${date}`);
-    // Implement the delete logic here
-}
-
+document.addEventListener("DOMContentLoaded", () => {
+    const themeId = document.querySelector('meta[name="theme-id"]').content
+  
+    console.log("Theme ID from meta tag:", themeId)
+  
+    if (!themeId) {
+      console.error("Theme ID not found. Make sure the meta tag is present in the HTML.")
+      return
+    }
+  
+    loadSubscriptions()
+    loadArticles()
+    loadProposals()
+    loadComments()
+    loadStatistics()
+  
+    async function loadSubscriptions() {
+      try {
+        const response = await fetch(`/theme-manager/subscriptions/${themeId}`)
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+        const subscriptions = await response.json()
+        console.log("Subscriptions:", subscriptions)
+  
+        const tbody = document.querySelector("#subscriptions-table tbody")
+        tbody.innerHTML = ""
+  
+        if (subscriptions.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="4">No subscriptions found.</td></tr>'
+          return
+        }
+  
+        subscriptions.forEach((sub) => {
+          const tr = document.createElement("tr")
+          tr.innerHTML = `
+                      <td>${sub.user.name}</td>
+                      <td>${sub.user.email}</td>
+                      <td>${new Date(sub.created_at).toLocaleDateString()}</td>
+                      <td>
+                          <button class="btn-danger" onclick="kickSubscription(${sub.user_id})">
+                              Kick Subscription
+                          </button>
+                      </td>
+                  `
+          tbody.appendChild(tr)
+        })
+      } catch (error) {
+        console.error("Error loading subscriptions:", error)
+        document.querySelector("#subscriptions-table tbody").innerHTML =
+          `<tr><td colspan="4">Error loading subscriptions: ${error.message}</td></tr>`
+      }
+    }
+  
+    async function loadArticles() {
+      try {
+        const response = await fetch(`/theme-manager/articles/${themeId}`)
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+        const articles = await response.json()
+        console.log("Articles:", articles)
+  
+        const tbody = document.querySelector("#articles-table tbody")
+        tbody.innerHTML = ""
+  
+        if (articles.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="5">No articles found.</td></tr>'
+          return
+        }
+  
+        articles.forEach((article) => {
+          const tr = document.createElement("tr")
+          tr.innerHTML = `
+                      <td>${article.title}</td>
+                      <td>${article.author.name}</td>
+                      <td>${new Date(article.created_at).toLocaleDateString()}</td>
+                      <td>${article.ispublic ? "Published" : "Draft"}</td>
+                      <td>
+                          <button class="btn-primary" onclick="viewArticle(${article.id})">View</button>
+                          <button class="btn-danger" onclick="deleteArticle(${article.id})">Delete</button>
+                      </td>
+                  `
+          tbody.appendChild(tr)
+        })
+      } catch (error) {
+        console.error("Error loading articles:", error)
+        document.querySelector("#articles-table tbody").innerHTML =
+          `<tr><td colspan="5">Error loading articles: ${error.message}</td></tr>`
+      }
+    }
+  
+    async function loadProposals() {
+      try {
+        const response = await fetch(`/theme-manager/proposals/${themeId}`)
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+        const proposals = await response.json()
+        console.log("Proposals:", proposals)
+  
+        const tbody = document.querySelector("#proposals-table tbody")
+        tbody.innerHTML = ""
+  
+        if (proposals.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="4">No proposals found.</td></tr>'
+          return
+        }
+  
+        proposals.forEach((proposal) => {
+          const tr = document.createElement("tr")
+          tr.innerHTML = `
+                      <td>${proposal.title}</td>
+                      <td>${proposal.author.name}</td>
+                      <td>${new Date(proposal.created_at).toLocaleDateString()}</td>
+                      <td>
+                          <button class="btn-primary" onclick="reviewProposal(${proposal.id})">Review</button>
+                          <button class="btn-danger" onclick="deleteProposal(${proposal.id})">Delete</button>
+                          <button class="btn-primary" onclick="proposeToEditor(${proposal.id})">
+                              Propose to Editor
+                          </button>
+                      </td>
+                  `
+          tbody.appendChild(tr)
+        })
+      } catch (error) {
+        console.error("Error loading proposals:", error)
+        document.querySelector("#proposals-table tbody").innerHTML =
+          `<tr><td colspan="4">Error loading proposals: ${error.message}</td></tr>`
+      }
+    }
+  
+    async function loadComments() {
+      try {
+        const response = await fetch(`/theme-manager/comments/${themeId}`)
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+        const comments = await response.json()
+        console.log("Comments:", comments)
+  
+        const tbody = document.querySelector("#comments-table tbody")
+        tbody.innerHTML = ""
+  
+        if (comments.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="4">No comments found.</td></tr>'
+          return
+        }
+  
+        comments.forEach((comment) => {
+          const tr = document.createElement("tr")
+          tr.innerHTML = `
+                      <td>${new Date(comment.created_at).toLocaleDateString()}</td>
+                      <td>${comment.user.name}</td>
+                      <td>${comment.text}</td>
+                      <td>
+                          <button class="btn-danger" onclick="deleteComment(${comment.id})">Delete</button>
+                      </td>
+                  `
+          tbody.appendChild(tr)
+        })
+      } catch (error) {
+        console.error("Error loading comments:", error)
+        document.querySelector("#comments-table tbody").innerHTML =
+          `<tr><td colspan="4">Error loading comments: ${error.message}</td></tr>`
+      }
+    }
+  
+    async function loadStatistics() {
+      try {
+        const response = await fetch(`/theme-manager/statistics/${themeId}`)
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+        const stats = await response.json()
+        console.log("Statistics:", stats)
+  
+        const container = document.getElementById("stats-container")
+        container.innerHTML = ""
+  
+        if (Object.keys(stats).length === 0) {
+          container.innerHTML = "<p>No statistics found.</p>"
+          return
+        }
+  
+        Object.entries(stats).forEach(([key, value]) => {
+          const div = document.createElement("div")
+          div.className = "stat-box"
+          div.innerHTML = `
+                      <h3>${key.charAt(0).toUpperCase() + key.slice(1)}</h3>
+                      <p>${value}</p>
+                  `
+          container.appendChild(div)
+        })
+      } catch (error) {
+        console.error("Error loading statistics:", error)
+        document.getElementById("stats-container").innerHTML = `<p>Error loading statistics: ${error.message}</p>`
+      }
+    }
+  
+    // Action functions
+    window.kickSubscription = async (userId) => {
+      if (confirm("Are you sure you want to remove this subscriber?")) {
+        try {
+          const response = await fetch("/theme-manager/subscriptions/remove", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content,
+            },
+            body: JSON.stringify({ user_id: userId, theme_id: themeId }),
+          })
+  
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`)
+          }
+  
+          const result = await response.json()
+          if (result.success) {
+            loadSubscriptions()
+          } else {
+            throw new Error("Failed to remove subscriber")
+          }
+        } catch (error) {
+          console.error("Error removing subscriber:", error)
+          alert("Error removing subscriber: " + error.message)
+        }
+      }
+    }
+  
+    window.deleteArticle = async (articleId) => {
+      if (confirm("Are you sure you want to delete this article?")) {
+        try {
+          const response = await fetch(`/theme-manager/articles/${articleId}`, {
+            method: "DELETE",
+            headers: {
+              "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content,
+            },
+          })
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`)
+          }
+          loadArticles()
+        } catch (error) {
+          console.error("Error deleting article:", error)
+          alert("Error deleting article: " + error.message)
+        }
+      }
+    }
+  
+    window.reviewProposal = (proposalId) => {
+      // Implement proposal review logic
+      window.location.href = `/articles/${proposalId}`
+    }
+  
+    window.proposeToEditor = async (proposalId) => {
+      try {
+        const response = await fetch("/theme-manager/proposals", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content,
+          },
+          body: JSON.stringify({
+            proposal_id: proposalId,
+            status: 2, // Status for "Proposed to Editor"
+          }),
+        })
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+        loadProposals()
+      } catch (error) {
+        console.error("Error updating proposal:", error)
+        alert("Error updating proposal: " + error.message)
+      }
+    }
+  
+    window.deleteComment = async (commentId) => {
+      if (confirm("Are you sure you want to delete this comment?")) {
+        try {
+          const response = await fetch(`/theme-manager/comments/${commentId}`, {
+            method: "DELETE",
+            headers: {
+              "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content,
+            },
+          })
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`)
+          }
+          loadComments()
+        } catch (error) {
+          console.error("Error deleting comment:", error)
+          alert("Error deleting comment: " + error.message)
+        }
+      }
+    }
+  })
+  
+  

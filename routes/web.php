@@ -9,6 +9,8 @@ use App\Http\Controllers\GuestArticleController;
 use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\EditorController;
 use App\Http\Controllers\ArticlesController;
+use App\Http\Controllers\ThemeManagerController;
+
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -72,4 +74,13 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/subscriber/history', [SubscriberController::class, 'deleteHistory'])->name('subscriber.deleteHistory');
     Route::post('/subscriber/propose-article', [SubscriberController::class, 'proposeArticle'])->name('subscriber.proposeArticle');
     Route::delete('/subscriber/comment', [SubscriberController::class, 'deleteComment'])->name('subscriber.deleteComment');
+});
+Route::middleware(['auth'])->group(function () {
+    Route::get('/theme_manager_dashboard', [ThemeManagerController::class, 'index'])->name('theme_manager_dashboard');
+    Route::post('/theme-manager/remove-subscriber', [ThemeManagerController::class, 'removeSubscriber'])->name('theme_manager.remove_subscriber');
+    Route::delete('/theme-manager/delete-article/{id}', [ThemeManagerController::class, 'deleteArticle'])->name('theme_manager.delete_article');
+    Route::post('/theme-manager/update-proposal', [ThemeManagerController::class, 'updateProposalStatus'])->name('theme_manager.update_proposal');
+    Route::delete('/theme-manager/delete-proposal/{id}', [ThemeManagerController::class, 'deleteProposal'])->name('theme_manager.delete_proposal');
+    Route::delete('/theme-manager/delete-comment/{id}', [ThemeManagerController::class, 'deleteComment'])->name('theme_manager.delete_comment');
+    Route::get('/theme-manager/proposed-article/{id}', [ThemeManagerController::class, 'showProposedArticle'])->name('theme_manager.show_proposed_article');
 });
