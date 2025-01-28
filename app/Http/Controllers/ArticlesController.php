@@ -7,6 +7,7 @@ use App\Models\Article;
 use App\Models\Theme;
 use App\Models\Comment;
 use App\Models\Rating;
+use App\Models\History;
 use Illuminate\Support\Facades\Auth;
 
 class ArticlesController extends Controller
@@ -67,6 +68,24 @@ class ArticlesController extends Controller
             ->take(10)
             ->get();
 
+        // Store the reading history if the user is authenticated
+        if (Auth::check()) {
+            $userId = Auth::id();
+
+            // Check if the user has already read this article
+            $existingHistory = History::where('user_id', $userId)
+                ->where('article_id', $id)
+                ->first();
+
+            // If no history exists, create a new record
+            if (!$existingHistory) {
+                History::create([
+                    'user_id' => $userId,
+                    'article_id' => $id,
+                ]);
+            }
+        }
+
         // Pass the article, themes, and recent articles to the view
         return view('article_details', compact('article', 'themes', 'recentArticles'));
     }
@@ -94,7 +113,7 @@ class ArticlesController extends Controller
         // Validate the request
         $request->validate([
             'comment' => 'required|string',
-            'rating' => 'nullable|integer|between:1,5', 
+            'rating' => 'nullable|integer|between:1,5',
         ]);
 
         // Get the authenticated user
