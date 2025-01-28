@@ -15,7 +15,11 @@
             <div class="nav-links">
                 <a href="{{ route('home') }}">Home</a>
                 <a href="{{ route('themes') }}">Themes</a>
-                <a href="{{ route('public.articles') }}">Public Articles</a>
+                @if(auth()->check())
+                    <a href="{{ route('articles') }}">All Articles</a>
+                @else
+                    <a href="{{ route('public.articles') }}">Public Articles</a>
+                @endif
                 @if(auth()->check())
                     <a href="#"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
