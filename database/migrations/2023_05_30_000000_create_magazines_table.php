@@ -4,12 +4,14 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
-    public function up()
+return new class extends Migration {
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
     {
         Schema::create('magazines', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('number')->unique();
             $table->string('title');
             $table->boolean('is_public')->default(false);
@@ -17,17 +19,22 @@ return new class extends Migration
         });
 
         Schema::create('article_magazine', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('article_id')->constrained()->onDelete('cascade');
-            $table->foreignId('magazine_id')->constrained()->onDelete('cascade');
+            $table->increments('id');
+            $table->unsignedInteger('article_id');
+            $table->unsignedInteger('magazine_id');
             $table->timestamps();
+
+            $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
+            $table->foreign('magazine_id')->references('id')->on('magazines')->onDelete('cascade');
         });
     }
 
-    public function down()
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
     {
         Schema::dropIfExists('article_magazine');
         Schema::dropIfExists('magazines');
     }
 };
-
