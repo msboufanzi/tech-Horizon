@@ -70,23 +70,28 @@ class EditorController extends Controller
 
     public function addTheme(Request $request)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'theme-title' => 'required|string|max:255',
             'theme-image' => 'required|url',
-            'theme-manager' => 'required|exists:users,id',
+            'theme-manager' => 'nullable|exists:users,id',
             'theme-description' => 'required|string',
         ]);
 
-        $subscriber = User::findOrFail($request->input('theme-manager'));
-
-        $subscriber->role = 'manager';
-        $subscriber->save();
-
+        $managerId = $request->input('theme-manager');
+        $subscriber = null;
+        if ($managerId) {
+            $subscriber = User::find($managerId);
+            if (!$subscriber) {
+                return response()->json(['success' => false, 'message' => 'Selected manager not found.'], 400);
+            }
+            $subscriber->role = 'manager';
+            $subscriber->save();
+        }
         $theme = Theme::create([
-            'title' => $request->input('theme-title'),
-            'image' => $request->input('theme-image'),
-            'description' => $request->input('theme-description'),
-            'manager_id' => $subscriber->id,
+            'title' => $validatedData['theme-title'],
+            'image' => $validatedData['theme-image'],
+            'description' => $validatedData['theme-description'],
+            'manager_id' => $subscriber ? $subscriber->id : null,
         ]);
 
         return response()->json(['success' => true, 'theme' => $theme]);

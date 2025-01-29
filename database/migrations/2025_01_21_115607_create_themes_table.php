@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->string('title');
             $table->text('image');
             $table->text('description');
-            $table->unsignedInteger('manager_id');
+            $table->unsignedInteger('manager_id')->nullable();
             $table->timestamps();
 
             $table->foreign('manager_id')->references('id')->on('users')->onDelete('cascade');

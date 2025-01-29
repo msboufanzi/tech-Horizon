@@ -127,17 +127,18 @@
             {{ $users->appends(['existing_page' => request('existing_page'), 'pending_page' => request('pending_page')])->links('pagination::bootstrap-4') }}
         </section>
         <section id="add-theme">
-            <h2>Add theme</h2>
-            <form id="add-theme-form">
+            <h2>Add Theme</h2>
+            <form id="add-theme-form" action="{{ route('add-theme') }}" method="POST">
+                @csrf
                 <label for="theme-title">Title:</label>
                 <input type="text" id="theme-title" name="theme-title" required />
 
                 <label for="theme-image">Image link:</label>
                 <input type="text" id="theme-image" name="theme-image" required />
 
-                <label for="theme-manager">Theme's manager:</label>
-                <select id="theme-manager" name="theme-manager" required>
-                    <option value="">Select a manager</option>
+                <label for="theme-manager">Theme's Manager:</label>
+                <select id="theme-manager" name="theme-manager">
+                    <option value="">No manager</option>
                     @foreach($subscribers as $subscriber)
                         <option value="{{ $subscriber->id }}">{{ $subscriber->name }}</option>
                     @endforeach

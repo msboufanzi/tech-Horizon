@@ -56,7 +56,7 @@ class ThemeManagerController extends Controller
     public function updateProposalStatus(Request $request)
     {
         $proposal = ProposedArticle::findOrFail($request->proposal_id);
-        $proposal->position = 2; // 2 for " Processed" status
+        $proposal->position = 2;
         $proposal->save();
         return redirect()->back()->with('success', 'Proposal status updated to  Processed');
     }
