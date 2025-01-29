@@ -32,8 +32,17 @@ class EditorController extends Controller
             'total_activities' => Comment::count() + Rating::count(),
         ];
         $magazines = Magazine::all();
+        $availableThemes = Theme::whereNull('manager_id')->get();
 
-        return view('editor_dashboard', compact('existingArticles', 'pendingArticles', 'users', 'statistics', 'subscribers', 'magazines'));
+        return view('editor_dashboard', compact(
+            'existingArticles',
+            'pendingArticles',
+            'users',
+            'statistics',
+            'subscribers',
+            'magazines',
+            'availableThemes'
+        ));
     }
 
     public function toggleVisibility(Request $request, Article $article)
@@ -45,27 +54,72 @@ class EditorController extends Controller
 
     public function updateUser(Request $request, User $user)
     {
-        $user->update($request->only(['name', 'email']));
-        return response()->json(['success' => true, 'user' => $user]);
+        try {
+            $user->update($request->only(['name', 'email']));
+            return response()->json(['success' => true, 'user' => $user]);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+        }
     }
 
     public function updateRole(Request $request, User $user)
     {
-        $user->role = $request->role;
-        $user->save();
-        return response()->json(['success' => true, 'user' => $user]);
+        try {
+            $oldRole = $user->role;
+            $newRole = $request->role;
+            
+            // If user was a theme manager, update their theme
+            if ($oldRole === 'theme_manager') {
+                Theme::where('manager_id', $user->id)->update(['manager_id' => null]);
+            }
+            
+            // Update user's role
+            $user->role = $newRole;
+            $user->save();
+            
+            // If new role is theme manager, assign theme
+            if ($newRole === 'theme_manager' && $request->has('theme_id')) {
+                $theme = Theme::findOrFail($request->theme_id);
+                if ($theme->manager_id === null) {
+                    $theme->manager_id = $user->id;
+                    $theme->save();
+                }
+            }
+            
+            return response()->json(['success' => true, 'user' => $user]);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+        }
     }
 
     public function blockUser(User $user)
     {
-        $user->delete();
-        return response()->json(['success' => true]);
+        try {
+            $user->delete();
+            return response()->json(['success' => true]);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+        }
     }
 
     public function addUser(Request $request)
     {
-        $user = User::create($request->all());
-        return response()->json(['success' => true, 'user' => $user]);
+        try {
+            $userData = $request->only(['name', 'email', 'password', 'role']);
+            $user = User::create($userData);
+
+            if ($request->role === 'theme_manager' && $request->has('theme_id')) {
+                $theme = Theme::findOrFail($request->theme_id);
+                if ($theme->manager_id === null) {
+                    $theme->manager_id = $user->id;
+                    $theme->save();
+                }
+            }
+
+            return response()->json(['success' => true, 'user' => $user]);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+        }
     }
 
     public function addTheme(Request $request)
@@ -73,28 +127,21 @@ class EditorController extends Controller
         $validatedData = $request->validate([
             'theme-title' => 'required|string|max:255',
             'theme-image' => 'required|url',
-            'theme-manager' => 'nullable|exists:users,id',
             'theme-description' => 'required|string',
         ]);
 
-        $managerId = $request->input('theme-manager');
-        $subscriber = null;
-        if ($managerId) {
-            $subscriber = User::find($managerId);
-            if (!$subscriber) {
-                return response()->json(['success' => false, 'message' => 'Selected manager not found.'], 400);
-            }
-            $subscriber->role = 'manager';
-            $subscriber->save();
-        }
-        $theme = Theme::create([
-            'title' => $validatedData['theme-title'],
-            'image' => $validatedData['theme-image'],
-            'description' => $validatedData['theme-description'],
-            'manager_id' => $subscriber ? $subscriber->id : null,
-        ]);
+        try {
+            $theme = Theme::create([
+                'title' => $validatedData['theme-title'],
+                'image' => $validatedData['theme-image'],
+                'description' => $validatedData['theme-description'],
+                'manager_id' => null,
+            ]);
 
-        return response()->json(['success' => true, 'theme' => $theme]);
+            return response()->json(['success' => true, 'theme' => $theme]);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+        }
     }
 
     public function showProposedArticle($id)
@@ -105,32 +152,39 @@ class EditorController extends Controller
 
     public function approveArticle($id)
     {
-        $proposal = ProposedArticle::findOrFail($id);
+        try {
+            $proposal = ProposedArticle::findOrFail($id);
 
-        $article = new Article();
-        $article->title = $proposal->title;
-        $article->content = $proposal->content;
-        $article->description = $proposal->description;
-        $article->author_id = $proposal->author_id;
-        $article->theme_id = $proposal->theme_id;
-        $article->ispublic = true;
-        $article->image = $proposal->image;
-        $article->save();
+            $article = new Article();
+            $article->title = $proposal->title;
+            $article->content = $proposal->content;
+            $article->description = $proposal->description;
+            $article->author_id = $proposal->author_id;
+            $article->theme_id = $proposal->theme_id;
+            $article->ispublic = true;
+            $article->image = $proposal->image;
+            $article->save();
 
-        $proposal->position = 3;
-        $proposal->save();
+            $proposal->position = 3;
+            $proposal->save();
 
-        return redirect()->route('editor_dashboard')->with('success', 'Article approved and published.');
+            return redirect()->route('editor_dashboard')->with('success', 'Article approved and published.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to approve article: ' . $e->getMessage());
+        }
     }
 
     public function rejectArticle($id)
     {
-        $proposal = ProposedArticle::findOrFail($id);
+        try {
+            $proposal = ProposedArticle::findOrFail($id);
+            $proposal->position = 4;
+            $proposal->save();
 
-        $proposal->position = 4;
-        $proposal->save();
-
-        return redirect()->route('editor_dashboard')->with('error', 'Article rejected.');
+            return redirect()->route('editor_dashboard')->with('error', 'Article rejected.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to reject article: ' . $e->getMessage());
+        }
     }
 }
 

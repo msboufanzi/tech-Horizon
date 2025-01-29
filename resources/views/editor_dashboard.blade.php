@@ -98,34 +98,124 @@
             {{ $pendingArticles->appends(['existing_page' => request('existing_page'), 'users_page' => request('users_page')])->links('pagination::bootstrap-4') }}
         </section>
         <section id="users">
-            <h2>User Management</h2>
-            <button id="add-user-btn" class="btn-primary" onclick="addUser()">Add User</button>
-            <table id="users-table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Role</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($users as $user)
-                        <tr data-user-id="{{ $user->id }}">
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->email }}</td>
-                            <td>{{ $user->role }}</td>
-                            <td>
-                                <button class="btn-primary" onclick="editUser({{ $user->id }})">Edit</button>
-                                <button class="btn-primary" onclick="manageRoles({{ $user->id }})">Manage Roles</button>
-                                <button class="btn-danger" onclick="blockUser({{ $user->id }})">Block</button>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            {{ $users->appends(['existing_page' => request('existing_page'), 'pending_page' => request('pending_page')])->links('pagination::bootstrap-4') }}
-        </section>
+    <h2>User Management</h2>
+    <button id="add-user-btn" class="btn-primary">Add User</button>
+    
+    <!-- Add User Modal -->
+    <div id="add-user-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add New User</h2>
+            <form id="add-user-form">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                
+                <label for="role">Role</label>
+                <select id="role" name="role" required>
+                    <option value="" selected disabled>-- Select Role --</option>
+                    <option value="subscriber">Subscriber</option>
+                    <option value="editor">Editor</option>
+                    <option value="theme_manager">Theme Manager</option>
+                </select>
+
+                <div id="theme-section" style="display: none;">
+                    <label for="theme">Assign Theme</label>
+                    <select id="theme" name="theme_id">
+                        <option value="" selected disabled>-- Select Theme --</option>
+                        @foreach($availableThemes as $theme)
+                            <option value="{{ $theme->id }}">{{ $theme->title }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn-modal">Add User</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit User Modal -->
+    <div id="edit-user-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Edit User</h2>
+            <form id="edit-user-form">
+                <input type="hidden" id="edit-user-id" name="user_id">
+                
+                <label for="edit-name">Name</label>
+                <input type="text" id="edit-name" name="name" required>
+                
+                <label for="edit-email">Email</label>
+                <input type="email" id="edit-email" name="email" required>
+                
+                <button type="submit" class="btn-modal">Update User</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Manage Roles Modal -->
+    <div id="manage-roles-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Manage User Role</h2>
+            <form id="manage-roles-form">
+                <input type="hidden" id="role-user-id" name="user_id">
+                
+                <label for="new-role">New Role</label>
+                <select id="new-role" name="role" required>
+                    <option value="" selected disabled>-- Select Role --</option>
+                    <option value="subscriber">Subscriber</option>
+                    <option value="editor">Editor</option>
+                    <option value="theme_manager">Theme Manager</option>
+                </select>
+
+                <div id="role-theme-section" style="display: none;">
+                    <label for="role-theme">Assign Theme</label>
+                    <select id="role-theme" name="theme_id">
+                        <option value="" selected disabled>-- Select Theme --</option>
+                        @foreach($availableThemes as $theme)
+                            <option value="{{ $theme->id }}">{{ $theme->title }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn-modal">Update Role</button>
+            </form>
+        </div>
+    </div>
+
+    <table id="users-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($users as $user)
+                <tr data-user-id="{{ $user->id }}">
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->email }}</td>
+                    <td>{{ $user->role }}</td>
+                    <td>
+                        <button class="btn-primary edit-user-btn">Edit</button>
+                        <button class="btn-primary manage-roles-btn">Manage Roles</button>
+                        <button class="btn-danger block-user-btn">Block</button>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+    {{ $users->appends(['existing_page' => request('existing_page'), 'pending_page' => request('pending_page')])->links('pagination::bootstrap-4') }}
+</section>
+
         <section id="add-theme">
             <h2>Add Theme</h2>
             <form id="add-theme-form" action="{{ route('add-theme') }}" method="POST">
