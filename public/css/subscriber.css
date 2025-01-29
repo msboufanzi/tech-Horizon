@@ -2,13 +2,32 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Arial", sans-serif;
 }
 
 body {
-    font-family: Arial, sans-serif;
     background-color: #f0f0f0;
     color: #333;
     line-height: 1.6;
+    padding-top: 120px; /* Add padding to account for fixed nav */
+}
+
+nav {
+    background: #001f3f;
+    padding: 1rem 5%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .logo {
@@ -19,10 +38,20 @@ body {
     text-decoration: none;
 }
 
-nav {
-    background-color: #001f3f;
-    color: white;
-    padding: 1rem;
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #66b2ff;
 }
 
 nav ul {
@@ -33,13 +62,13 @@ nav ul {
 }
 
 nav ul li a {
-    color: white;
     text-decoration: none;
-    transition: color 0.3s ease;
+    color: #fff;
+    transition: color 0.3s;
 }
 
 nav ul li a:hover {
-    color: #7FDBFF;
+    color: #66b2ff;
 }
 
 main {
@@ -48,7 +77,8 @@ main {
     margin: 0 auto;
 }
 
-h1, h2 {
+h1,
+h2 {
     color: #001f3f;
     margin-bottom: 1rem;
 }
@@ -67,11 +97,14 @@ table {
     margin-top: 1rem;
 }
 
-table, th, td {
+table,
+th,
+td {
     border: 1px solid #ddd;
 }
 
-th, td {
+th,
+td {
     padding: 0.75rem;
     text-align: left;
 }
@@ -94,7 +127,9 @@ label {
     margin-top: 1rem;
 }
 
-input, textarea, select {
+input,
+textarea,
+select {
     padding: 0.5rem;
     margin-bottom: 1rem;
     border: 1px solid #ddd;
@@ -107,7 +142,7 @@ textarea {
 }
 
 .btn-primary {
-    background-color: #0074D9;
+    background-color: #0074d9;
     color: white;
     padding: 0.5rem 1rem;
     border: none;
@@ -116,7 +151,7 @@ textarea {
 }
 
 .btn-danger {
-    background-color: #FF4136;
+    background-color: #ff4136;
     color: white;
     padding: 0.5rem 1rem;
     border: none;
@@ -131,7 +166,7 @@ textarea {
 }
 
 .alert-success {
-    background-color: #2ECC40;
+    background-color: #2ecc40;
     color: white;
 }
 
@@ -146,4 +181,83 @@ textarea {
     padding: 1rem;
     border-radius: 5px;
     border: 1px solid #ddd;
+}
+
+#propose-article {
+    margin-bottom: 2rem;
+}
+
+#propose-article h2 {
+    color: #001f3f;
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+}
+
+#article-proposal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#article-proposal-form label {
+    font-weight: bold;
+    color: #001f3f;
+    margin-bottom: 0.15rem;
+}
+
+#article-proposal-form input[type="text"],
+#article-proposal-form input[type="url"],
+#article-proposal-form select,
+#article-proposal-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #333;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 0.15rem;
+}
+
+#article-proposal-form input[type="text"]:focus,
+#article-proposal-form input[type="url"]:focus,
+#article-proposal-form select:focus,
+#article-proposal-form textarea:focus {
+    border-color: #0074d9;
+    box-shadow: 0 0 5px rgba(0, 116, 217, 0.3);
+    outline: none;
+}
+
+#article-proposal-form textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+#article-proposal-form button[type="submit"] {
+    align-self: flex-start;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #0074d9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+#article-proposal-form button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
 }

@@ -12,11 +12,25 @@
 
 <body>
     <nav>
-        <a href="{{ route('home') }}" class="logo">Tech Horizon</a>
+        <div class="nav-content">
+            <a href="{{ route('home') }}" class="logo">Tech Horizon</a>
+            <div class="nav-links">
+                <a href="{{ route('home') }}">Home</a>
+                <a href="{{ route('themes') }}">Themes</a>
+                <a href="{{ route('articles') }}">All Articles</a>
+                <a href="#"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </div>
+        </div>
+        <hr>
         <ul>
             <li><a href="#existing-articles">Existing Articles</a></li>
             <li><a href="#articles">Articles Request Management</a></li>
             <li><a href="#users">User Management</a></li>
+            <li><a href="#magazine-numbers">Magazine Numbers</a></li>
             <li><a href="#statistics">Global Statistics</a></li>
         </ul>
     </nav>
@@ -142,7 +156,7 @@
                 <button type="submit" class="btn-primary">Add</button>
             </form>
         </section>
-        
+
         <section id="magazines">
             <h2>Magazine Numbers</h2>
             <div class="magazine-form">
@@ -177,21 +191,24 @@
                 </thead>
                 <tbody id="magazines-table-body">
                     @foreach($magazines as $magazine)
-                    <tr data-magazine-id="{{ $magazine->id }}">
-                        <td>{{ $magazine->number }}</td>
-                        <td>{{ $magazine->title }}</td>
-                        <td>{{ $magazine->is_public ? 'Yes' : 'No' }}</td>
-                        <td>
-    <a href="{{ route('magazines.manage', ['id' => $magazine->id]) }}" class="btn-primary">Manage</a>
-    <form action="{{ route('magazines.destroy', ['id' => $magazine->id]) }}" method="POST" style="display: inline;">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="btn-danger" onclick="return confirm('Are you sure you want to delete this magazine?')">Delete</button>
-    </form>
-</td>
+                        <tr data-magazine-id="{{ $magazine->id }}">
+                            <td>{{ $magazine->number }}</td>
+                            <td>{{ $magazine->title }}</td>
+                            <td>{{ $magazine->is_public ? 'Yes' : 'No' }}</td>
+                            <td>
+                                <a href="{{ route('magazines.manage', ['id' => $magazine->id]) }}"
+                                    class="btn-primary">Manage</a>
+                                <form action="{{ route('magazines.destroy', ['id' => $magazine->id]) }}" method="POST"
+                                    style="display: inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn-danger"
+                                        onclick="return confirm('Are you sure you want to delete this magazine?')">Delete</button>
+                                </form>
+                            </td>
 
 
-                    </tr>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>

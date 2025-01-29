@@ -23,11 +23,32 @@ nav {
     background-color: #001f3f;
     color: white;
     padding: 1rem;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
-nav .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #66b2ff;
 }
 
 nav ul {
@@ -38,13 +59,13 @@ nav ul {
 }
 
 nav ul li a {
-    color: white;
     text-decoration: none;
-    transition: color 0.3s ease;
+    color: #fff;
+    transition: color 0.3s;
 }
 
 nav ul li a:hover {
-    color: #7fdbff;
+    color: #66b2ff;
 }
 
 main {
@@ -323,161 +344,161 @@ input:checked + .slider:before {
     padding: 1.5rem;
     margin-bottom: 2rem;
     border-radius: 5px;
-  }
-  
-  .magazine-header h1 {
+}
+
+.magazine-header h1 {
     margin-bottom: 0.5rem;
-  }
-  
-  .add-article-form {
+}
+
+.add-article-form {
     display: flex;
     gap: 1rem;
     margin-bottom: 1.5rem;
-  }
-  
-  #article-select {
+}
+
+#article-select {
     flex: 1;
     padding: 0.5rem;
     border: 1px solid #ddd;
     border-radius: 3px;
-  }
-  
-  .back-link {
+}
+
+.back-link {
     color: white;
     text-decoration: none;
     font-weight: bold;
     font-size: 1.1rem;
-  }
-  
-  .back-link:hover {
+}
+
+.back-link:hover {
     color: #7fdbff;
-  }
-  
-  /* Add these styles to your existing editor.css */
+}
+
+/* Add these styles to your existing editor.css */
 
 .top-nav {
     background-color: #001f3f;
     color: white;
     padding: 1rem;
     margin-bottom: 2rem;
-  }
-  
-  .back-link {
+}
+
+.back-link {
     color: white;
     text-decoration: none;
     font-size: 1.2rem;
     font-weight: bold;
-  }
-  
-  .container {
+}
+
+.container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1rem;
-  }
-  
-  .magazine-details {
+}
+
+.magazine-details {
     background-color: white;
     padding: 2rem;
     margin-bottom: 2rem;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .magazine-details h1 {
+}
+
+.magazine-details h1 {
     color: #001f3f;
     margin-bottom: 1rem;
     font-size: 2rem;
-  }
-  
-  .magazine-details p {
+}
+
+.magazine-details p {
     color: #666;
     margin-bottom: 0.5rem;
-  }
-  
-  .add-article-section {
+}
+
+.add-article-section {
     background-color: white;
     padding: 2rem;
     margin-bottom: 2rem;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .add-article-section h2 {
+}
+
+.add-article-section h2 {
     color: #001f3f;
     margin-bottom: 1rem;
-  }
-  
-  .add-article-form {
+}
+
+.add-article-form {
     display: flex;
     gap: 1rem;
     align-items: center;
-  }
-  
-  .article-select {
+}
+
+.article-select {
     flex: 1;
     padding: 0.5rem;
     border: 1px solid #ddd;
     border-radius: 3px;
     font-size: 1rem;
-  }
-  
-  .magazine-articles {
+}
+
+.magazine-articles {
     background-color: white;
     padding: 2rem;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .magazine-articles h2 {
+}
+
+.magazine-articles h2 {
     color: #001f3f;
     margin-bottom: 1rem;
-  }
-  
-  .data-table {
+}
+
+.data-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 1rem;
-  }
-  
-  .data-table th {
+}
+
+.data-table th {
     background-color: #001f3f;
     color: white;
     padding: 1rem;
     text-align: left;
-  }
-  
-  .data-table td {
+}
+
+.data-table td {
     padding: 1rem;
     border-bottom: 1px solid #ddd;
-  }
-  
-  .btn-danger {
+}
+
+.btn-danger {
     background-color: #ff4136;
     color: white;
     border: none;
     padding: 0.5rem 1rem;
     border-radius: 3px;
     cursor: pointer;
-  }
-  
-  .btn-danger:hover {
+}
+
+.btn-danger:hover {
     background-color: #dc352b;
-  }
-  
-  .btn-primary {
+}
+
+.btn-primary {
     background-color: #0074d9;
     color: white;
     border: none;
     padding: 0.5rem 1rem;
     border-radius: 3px;
     cursor: pointer;
-  }
-  
-  .btn-primary:hover {
+}
+
+.btn-primary:hover {
     background-color: #0056b3;
-  }
-  
-  .btn-danger {
+}
+
+.btn-danger {
     background-color: #ff4136;
     color: white;
     border: none;
@@ -485,16 +506,13 @@ input:checked + .slider:before {
     border-radius: 3px;
     cursor: pointer;
     font-size: 14px;
-  }
-  
-  .btn-danger:hover {
+}
+
+.btn-danger:hover {
     background-color: #dc352b;
-  }
-  
-  form {
+}
+
+form {
     margin: 0;
     padding: 0;
-  }
-  
-  
-  
+}

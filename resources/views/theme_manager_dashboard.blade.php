@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,23 @@
     <link rel="stylesheet" href="{{ asset('css/theme_manager.css') }}">
     <link rel="icon" href="{{ asset('images/logo.png') }}">
 </head>
+
 <body>
     <nav>
-        <a href="{{ route('home') }}" class="logo">Tech Horizon</a>
+        <div class="nav-content">
+            <a href="{{ route('home') }}" class="logo">Tech Horizon</a>
+            <div class="nav-links">
+                <a href="{{ route('home') }}">Home</a>
+                <a href="{{ route('themes') }}">Themes</a>
+                <a href="{{ route('articles') }}">All Articles</a>
+                <a href="#"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </div>
+        </div>
+        <hr>
         <ul>
             <li><a href="#subscriptions">Subscriptions</a></li>
             <li><a href="#articles">Articles</a></li>
@@ -20,7 +35,7 @@
     </nav>
     <main>
         <h1>Theme Manager Dashboard: {{ $theme->title }}</h1>
-        
+
         @if(session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
@@ -77,7 +92,8 @@
                             <td>{{ $article->created_at->format('Y-m-d') }}</td>
                             <td>
                                 <a href="{{ route('article_details', $article->id) }}" class="btn-primary">View</a>
-                                <form action="{{ route('theme_manager.delete_article', $article->id) }}" method="POST" style="display:inline;">
+                                <form action="{{ route('theme_manager.delete_article', $article->id) }}" method="POST"
+                                    style="display:inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn-danger">Delete</button>
@@ -119,15 +135,18 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="{{ route('theme_manager.show_proposed_article', $proposal->id) }}" class="btn-primary">Review</a>
+                                <a href="{{ route('theme_manager.show_proposed_article', $proposal->id) }}"
+                                    class="btn-primary">Review</a>
                                 @if($proposal->position == 1)
-                                    <form action="{{ route('theme_manager.update_proposal') }}" method="POST" style="display:inline;">
+                                    <form action="{{ route('theme_manager.update_proposal') }}" method="POST"
+                                        style="display:inline;">
                                         @csrf
                                         <input type="hidden" name="proposal_id" value="{{ $proposal->id }}">
                                         <button type="submit" class="btn-primary">Propose to Editor</button>
                                     </form>
                                 @endif
-                                <form action="{{ route('theme_manager.delete_proposal', $proposal->id) }}" method="POST" style="display:inline;">
+                                <form action="{{ route('theme_manager.delete_proposal', $proposal->id) }}" method="POST"
+                                    style="display:inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn-danger">Delete</button>
@@ -184,5 +203,5 @@
         </section>
     </main>
 </body>
-</html>
 
+</html>

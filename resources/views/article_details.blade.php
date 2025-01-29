@@ -47,7 +47,7 @@
           <hr>
 
           <a href="{{ route('redirectToDashboard') }}" class="sub-menu-link" id="profile-link">
-            <p>Profile</p>
+            <p>Dashboard</p>
             <span>></span>
           </a>
 

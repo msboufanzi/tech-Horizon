@@ -23,6 +23,13 @@
                     <a href="{{ route('public.articles') }}">Public Articles</a>
                 @endif
                 @if(auth()->check())
+                    @if(auth()->user()->role === 'subscriber')
+                        <a href="{{ route('subscriber_dashboard') }}">Dashboard</a>
+                    @elseif(auth()->user()->role === 'editor')
+                        <a href="{{ route('editor_dashboard') }}">Dashboard</a>
+                    @elseif(auth()->user()->role === 'manager')
+                        <a href="{{ route('theme_manager_dashboard') }}">Dashboard</a>
+                    @endif
                     <a href="#"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -35,6 +42,7 @@
             </div>
         </div>
     </nav>
+
 
     <section class="hero" id="home">
         <div class="hero-content">
