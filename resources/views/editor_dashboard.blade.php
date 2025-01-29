@@ -121,7 +121,7 @@
                     <option value="" selected disabled>-- Select Role --</option>
                     <option value="subscriber">Subscriber</option>
                     <option value="editor">Editor</option>
-                    <option value="theme_manager">Theme Manager</option>
+                    <option value="manager">Manager</option>
                 </select>
 
                 <div id="theme-section" style="display: none;">
@@ -171,7 +171,7 @@
                     <option value="" selected disabled>-- Select Role --</option>
                     <option value="subscriber">Subscriber</option>
                     <option value="editor">Editor</option>
-                    <option value="theme_manager">Theme Manager</option>
+                    <option value="manager">Manager</option>
                 </select>
 
                 <div id="role-theme-section" style="display: none;">
@@ -290,14 +290,83 @@
                                         onclick="return confirm('Are you sure you want to delete this magazine?')">Delete</button>
                                 </form>
                             </td>
-
-
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </section>
 
+        <section id="vue-themes">
+            <h2>Vue Themes Management</h2>
+            <table id="vue-themes-table">
+                <thead>
+                    <tr>
+                        <th>Theme Name</th>
+                        <th>Manager</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($themes as $theme)
+                        <tr>
+                            <td>{{ $theme->title }}</td>
+                            <td>{{ $theme->manager ? $theme->manager->name : 'No Manager' }}</td>
+                            <td>
+                                <button class="btn-danger delete-theme-btn" data-theme-id="{{ $theme->id }}">Delete</button>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </section>
+
+        <section id="add-article">
+            <h2>Add Article</h2>
+            <form id="add-article-form">
+                @csrf
+                <div class="form-group">
+                    <label for="article-title">Title:</label>
+                    <input type="text" id="article-title" name="title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="article-description">Description:</label>
+                    <textarea id="article-description" name="description" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="article-content">Content:</label>
+                    <textarea id="article-content" name="content" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="article-image">Image URL:</label>
+                    <input type="url" id="article-image" name="image" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="article-theme">Theme:</label>
+                    <select id="article-theme" name="theme_id" required>
+                        <option value="">Select a theme</option>
+                        @foreach($themes as $theme)
+                            <option value="{{ $theme->id }}">{{ $theme->title }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="article-magazine">Magazine Number (Optional):</label>
+                    <select id="article-magazine" name="magazine_id">
+                        <option value="">Select a magazine</option>
+                        @foreach($magazines as $magazine)
+                            <option value="{{ $magazine->id }}">{{ $magazine->number }} - {{ $magazine->title }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-primary">Add Article</button>
+            </form>
+        </section>
 
         <section id="statistics">
             <h2>Global Statistics</h2>
@@ -315,3 +384,4 @@
 </body>
 
 </html>
+

@@ -703,3 +703,70 @@ form {
   display: none;
 }
 
+/* Vue Themes Section */
+#vue-themes {
+  margin-bottom: 2rem;
+}
+
+#vue-themes-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+#vue-themes-table th,
+#vue-themes-table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+#vue-themes-table th {
+  background-color: #001f3f;
+  color: white;
+}
+
+/* Add Article Section */
+#add-article {
+  margin-bottom: 2rem;
+}
+
+#add-article-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+#add-article-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#add-article-form label {
+  font-weight: bold;
+  color: #001f3f;
+}
+
+#add-article-form input,
+#add-article-form select,
+#add-article-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+#add-article-form textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+#add-article-form input:focus,
+#add-article-form select:focus,
+#add-article-form textarea:focus {
+  outline: none;
+  border-color: #0074d9;
+  box-shadow: 0 0 5px rgba(0, 116, 217, 0.3);
+}

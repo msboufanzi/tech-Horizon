@@ -33,6 +33,7 @@ class EditorController extends Controller
         ];
         $magazines = Magazine::all();
         $availableThemes = Theme::whereNull('manager_id')->get();
+        $themes = Theme::with('manager')->get();
 
         return view('editor_dashboard', compact(
             'existingArticles',
@@ -41,7 +42,8 @@ class EditorController extends Controller
             'statistics',
             'subscribers',
             'magazines',
-            'availableThemes'
+            'availableThemes',
+            'themes'
         ));
     }
 
@@ -68,17 +70,14 @@ class EditorController extends Controller
             $oldRole = $user->role;
             $newRole = $request->role;
             
-            // If user was a theme manager, update their theme
-            if ($oldRole === 'theme_manager') {
+            if ($oldRole === 'manager') {
                 Theme::where('manager_id', $user->id)->update(['manager_id' => null]);
             }
             
-            // Update user's role
             $user->role = $newRole;
             $user->save();
             
-            // If new role is theme manager, assign theme
-            if ($newRole === 'theme_manager' && $request->has('theme_id')) {
+            if ($newRole === 'manager' && $request->has('theme_id')) {
                 $theme = Theme::findOrFail($request->theme_id);
                 if ($theme->manager_id === null) {
                     $theme->manager_id = $user->id;
@@ -108,7 +107,7 @@ class EditorController extends Controller
             $userData = $request->only(['name', 'email', 'password', 'role']);
             $user = User::create($userData);
 
-            if ($request->role === 'theme_manager' && $request->has('theme_id')) {
+            if ($request->role === 'manager' && $request->has('theme_id')) {
                 $theme = Theme::findOrFail($request->theme_id);
                 if ($theme->manager_id === null) {
                     $theme->manager_id = $user->id;
@@ -184,6 +183,62 @@ class EditorController extends Controller
             return redirect()->route('editor_dashboard')->with('error', 'Article rejected.');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Failed to reject article: ' . $e->getMessage());
+        }
+    }
+
+    public function deleteTheme($id)
+    {
+        try {
+            $theme = Theme::findOrFail($id);
+            
+            if ($theme->manager) {
+                $manager = $theme->manager;
+                $manager->role = 'subscriber';
+                $manager->save();
+            }
+
+            $theme->delete();
+
+            return response()->json(['success' => true, 'message' => 'Theme deleted successfully']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+        }
+    }
+
+    public function addArticle(Request $request)
+    {
+        try {
+            $validatedData = $request->validate([
+                'title' => 'required|string|max:255',
+                'description' => 'required|string',
+                'content' => 'required|string',
+                'image' => 'required|url',
+                'theme_id' => 'required|exists:themes,id',
+                'magazine_id' => 'nullable|exists:magazines,id'
+            ]);
+
+            $article = Article::create([
+                'title' => $validatedData['title'],
+                'description' => $validatedData['description'],
+                'content' => $validatedData['content'],
+                'image' => $validatedData['image'],
+                'theme_id' => $validatedData['theme_id'],
+                'author_id' => auth()->id(),
+                'ispublic' => true,
+            ]);
+
+            if (!empty($validatedData['magazine_id'])) {
+                $magazine = Magazine::find($validatedData['magazine_id']);
+                $magazine->articles()->attach($article->id);
+            }
+
+            return response()->json([
+                'success' => true, 
+                'message' => 'Article added successfully',
+                'article' => $article->load('author', 'theme')
+            ]);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
         }
     }
 }

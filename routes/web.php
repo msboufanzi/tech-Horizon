@@ -75,6 +75,14 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/proposed-article/{id}/approve', [EditorController::class, 'approveArticle'])->name('editor.approve_article');
     Route::post('/proposed-article/{id}/reject', [EditorController::class, 'rejectArticle'])->name('editor.reject_article');
     Route::delete('/magazines/{id}', [MagazineController::class, 'destroy'])->name('magazines.destroy');
+
+  
+        // ... other routes ...
+        Route::delete('/theme-manager/delete-theme/{id}', [EditorController::class, 'deleteTheme'])->name('theme_manager.delete_theme');
+        Route::post('/editor/add-article', [EditorController::class, 'addArticle'])->name('editor.add_article');
+    
+    
+    
 });
 
 Route::middleware(['auth'])->group(function () {
