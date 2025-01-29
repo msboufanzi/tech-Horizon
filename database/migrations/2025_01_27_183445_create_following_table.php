@@ -13,16 +13,14 @@ class CreateFollowingTable extends Migration
     {
         if (!Schema::hasTable('following')) {
             Schema::create('following', function (Blueprint $table) {
-                $table->id(); // Auto-incrementing primary key
-                $table->unsignedInteger('user_id'); // Foreign key for the user (matches users.id)
-                $table->unsignedInteger('theme_id'); // Foreign key for the theme (matches themes.id)
-                $table->timestamps(); // Created_at and updated_at columns
+                $table->id(); 
+                $table->unsignedInteger('user_id'); 
+                $table->unsignedInteger('theme_id'); 
+                $table->timestamps(); 
 
-                // Define foreign key constraints
                 $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
                 $table->foreign('theme_id')->references('id')->on('themes')->onDelete('cascade');
-
-                // Ensure a user can't follow the same theme more than once
+                
                 $table->unique(['user_id', 'theme_id']);
             });
         }

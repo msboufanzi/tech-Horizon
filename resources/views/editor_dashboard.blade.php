@@ -78,7 +78,6 @@
                         <th>Title</th>
                         <th>Author</th>
                         <th>Theme</th>
-                        <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -88,15 +87,9 @@
                             <td>{{ $article->title }}</td>
                             <td>{{ $article->author->name }}</td>
                             <td>{{ $article->theme->title }}</td>
-                            <td>{{ $article->ispublic ? 'Visible' : 'Private' }}</td>
                             <td>
-                                <a href="{{ route('article_details', ['id' => $article->id]) }}"
+                                <a href="{{ route('editor.show_proposed_article', $article->id) }}"
                                     class="btn-primary">Review</a>
-                                <label class="switch">
-                                    <input type="checkbox" {{ $article->ispublic ? 'checked' : '' }}
-                                        onchange="toggleArticleStatus({{ $article->id }}, this)">
-                                    <span class="slider round"></span>
-                                </label>
                             </td>
                         </tr>
                     @endforeach

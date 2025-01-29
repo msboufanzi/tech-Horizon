@@ -19,17 +19,17 @@ class SubscriberController extends Controller
         $subscriptions = Following::with('theme')
             ->where('user_id', $user->id)
             ->get();
-            
+
         $history = History::with(['article', 'article.theme'])
             ->where('user_id', $user->id)
             ->orderBy('created_at', 'desc')
             ->get();
-            
+
         $proposedArticles = ProposedArticle::with('theme')
             ->where('author_id', $user->id)
             ->orderBy('created_at', 'desc')
             ->get();
-            
+
         $comments = Comment::with('article')
             ->where('user_id', $user->id)
             ->orderBy('created_at', 'desc')
@@ -50,7 +50,7 @@ class SubscriberController extends Controller
         Following::where('user_id', Auth::id())
             ->where('theme_id', $request->theme_id)
             ->delete();
-        
+
         return redirect()->back()->with('success', 'Theme unfollowed successfully');
     }
 
@@ -59,7 +59,7 @@ class SubscriberController extends Controller
         History::where('user_id', Auth::id())
             ->where('article_id', $request->article_id)
             ->delete();
-            
+
         return redirect()->back()->with('success', 'History deleted successfully');
     }
 
@@ -74,7 +74,7 @@ class SubscriberController extends Controller
         ]);
 
         $validated['author_id'] = Auth::id();
-        $validated['position'] = 1; // waiting status
+        $validated['position'] = 1; // sent status
 
         ProposedArticle::create($validated);
 
@@ -86,7 +86,7 @@ class SubscriberController extends Controller
         Comment::where('id', $request->comment_id)
             ->where('user_id', Auth::id())
             ->delete();
-            
+
         return redirect()->back()->with('success', 'Comment deleted successfully');
     }
 }

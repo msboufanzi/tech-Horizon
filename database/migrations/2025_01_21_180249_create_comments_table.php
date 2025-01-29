@@ -12,12 +12,11 @@ return new class extends Migration {
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('text'); // Use text if content can be long
+            $table->text('text');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('article_id');
             $table->timestamps();
 
-            // Define foreign key constraints
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
             

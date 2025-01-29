@@ -12,10 +12,8 @@ class ThemeController extends Controller
 {
     public function index()
     {
-        // Fetch all themes from the database
         $themes = Theme::all();
 
-        // Check if the authenticated user is following each theme
         if (auth()->check()) {
             $user = auth()->user();
             foreach ($themes as $theme) {
@@ -23,18 +21,14 @@ class ThemeController extends Controller
             }
         }
 
-        // Pass the themes to the themes view
         return view('themes', compact('themes'));
     }
     public function follow(Request $request)
     {
-        // Validate the request
         $request->validate([
             'theme_id' => 'required|exists:themes,id',
             'user_id' => 'required|exists:users,id',
         ]);
-
-        // Check if the user is already following the theme
         $existingFollow = Following::where('user_id', $request->user_id)
             ->where('theme_id', $request->theme_id)
             ->first();
@@ -43,7 +37,6 @@ class ThemeController extends Controller
             return redirect()->back()->with('error', 'You are already following this theme.');
         }
 
-        // Create a new follow relationship
         Following::create([
             'user_id' => $request->user_id,
             'theme_id' => $request->theme_id,
@@ -54,13 +47,11 @@ class ThemeController extends Controller
 
     public function unfollow(Request $request)
     {
-        // Validate the request
         $request->validate([
             'theme_id' => 'required|exists:themes,id',
             'user_id' => 'required|exists:users,id',
         ]);
 
-        // Find and delete the follow relationship
         $follow = Following::where('user_id', $request->user_id)
             ->where('theme_id', $request->theme_id)
             ->first();

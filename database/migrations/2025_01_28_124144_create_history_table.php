@@ -16,11 +16,9 @@ return new class extends Migration {
             $table->unsignedInteger('article_id');
             $table->timestamps();
 
-            // Define foreign key constraints
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
 
-            // Ensure a user cannot have multiple entries for the same article
             $table->unique(['user_id', 'article_id']);
         });
     }

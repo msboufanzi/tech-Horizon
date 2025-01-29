@@ -165,7 +165,7 @@ document
             .then((data) => {
                 if (data.success) {
                     alert("Theme added successfully!");
-                    window.location.reload(); 
+                    window.location.reload();
                 } else {
                     alert("Failed to add theme. Please try again.");
                 }
@@ -175,199 +175,232 @@ document
                 alert("An error occurred. Please try again.");
             });
     });
-    async function addMagazine() {
-        const number = document.getElementById('magazine-number').value;
-        const title = document.getElementById('magazine-title').value;
-        const isPublic = document.getElementById('magazine-status').value === '1';
-    
-        try {
-            const response = await fetch('/magazines', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({ number, title, is_public: isPublic })
-            });
-    
-            if (!response.ok) {
-                const errorText = await response.text();
-                throw new Error(`HTTP error! status: ${response.status}, body: ${errorText}`);
-            }
-    
-            const data = await response.json();
-    
-            if (data.success) {
-                alert('Magazine added successfully');
-                addMagazineToTable(data.magazine);
-                clearMagazineForm();
-            } else {
-                throw new Error(data.message || 'Failed to add magazine');
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            alert(error.message);
+async function addMagazine() {
+    const number = document.getElementById("magazine-number").value;
+    const title = document.getElementById("magazine-title").value;
+    const isPublic = document.getElementById("magazine-status").value === "1";
+
+    try {
+        const response = await fetch("/magazines", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": document.querySelector(
+                    'meta[name="csrf-token"]'
+                ).content,
+                Accept: "application/json",
+            },
+            body: JSON.stringify({ number, title, is_public: isPublic }),
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(
+                `HTTP error! status: ${response.status}, body: ${errorText}`
+            );
         }
+
+        const data = await response.json();
+
+        if (data.success) {
+            alert("Magazine added successfully");
+            addMagazineToTable(data.magazine);
+            clearMagazineForm();
+        } else {
+            throw new Error(data.message || "Failed to add magazine");
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        alert(error.message);
     }
-    
-    function addMagazineToTable(magazine) {
-        const tableBody = document.getElementById('magazines-table-body');
-        const newRow = tableBody.insertRow();
-        newRow.innerHTML = `
+}
+
+function addMagazineToTable(magazine) {
+    const tableBody = document.getElementById("magazines-table-body");
+    const newRow = tableBody.insertRow();
+    newRow.innerHTML = `
             <td>${magazine.number}</td>
             <td>${magazine.title}</td>
-            <td>${magazine.is_public ? 'Yes' : 'No'}</td>
+            <td>${magazine.is_public ? "Yes" : "No"}</td>
             <td>
-                <a href="/magazines/${magazine.id}" class="btn-primary">Manage</a>
-                <button onclick="deleteMagazine(${magazine.id})" class="btn-danger">Delete</button>
+                <a href="/magazines/${
+                    magazine.id
+                }" class="btn-primary">Manage</a>
+                <button onclick="deleteMagazine(${
+                    magazine.id
+                })" class="btn-danger">Delete</button>
             </td>
         `;
-    }
-    
-    function clearMagazineForm() {
-        document.getElementById('magazine-number').value = '';
-        document.getElementById('magazine-title').value = '';
-        document.getElementById('magazine-status').value = '1';
-    }
-    // Update the deleteMagazine function to use the correct URL
+}
+
+function clearMagazineForm() {
+    document.getElementById("magazine-number").value = "";
+    document.getElementById("magazine-title").value = "";
+    document.getElementById("magazine-status").value = "1";
+}
+// Update the deleteMagazine function to use the correct URL
 window.deleteMagazine = async (id) => {
     if (!confirm("Are you sure you want to delete this magazine?")) {
-      return
+        return;
     }
-  
+
     try {
-      const response = await fetch(`/magazine/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content,
-        },
-      })
-  
-      if (!response.ok) {
-        throw new Error("Failed to delete magazine")
-      }
-  
-      const data = await response.json()
-  
-      if (data.success) {
-        const row = document.querySelector(`tr[data-magazine-id="${id}"]`)
-        if (row) {
-          row.remove()
+        const response = await fetch(`/magazine/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                "X-CSRF-TOKEN": document.querySelector(
+                    'meta[name="csrf-token"]'
+                ).content,
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error("Failed to delete magazine");
         }
-        alert("Magazine deleted successfully")
-      } else {
-        throw new Error(data.message || "Failed to delete magazine")
-      }
+
+        const data = await response.json();
+
+        if (data.success) {
+            const row = document.querySelector(`tr[data-magazine-id="${id}"]`);
+            if (row) {
+                row.remove();
+            }
+            alert("Magazine deleted successfully");
+        } else {
+            throw new Error(data.message || "Failed to delete magazine");
+        }
     } catch (error) {
-      console.error("Error:", error)
-      alert(error.message)
+        console.error("Error:", error);
+        alert(error.message);
     }
-  }
-  async function addMagazine() {
-    const number = document.getElementById("magazine-number").value
-    const title = document.getElementById("magazine-title").value
-    const isPublic = document.getElementById("magazine-status").value === "1"
-  
+};
+async function addMagazine() {
+    const number = document.getElementById("magazine-number").value;
+    const title = document.getElementById("magazine-title").value;
+    const isPublic = document.getElementById("magazine-status").value === "1";
+
     try {
-      const response = await fetch("/magazines", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content,
-          Accept: "application/json",
-        },
-        body: JSON.stringify({ number, title, is_public: isPublic }),
-      })
-  
-      if (!response.ok) {
-        const errorText = await response.text()
-        throw new Error(`HTTP error! status: ${response.status}, body: ${errorText}`)
-      }
-  
-      const data = await response.json()
-  
-      if (data.success) {
-        alert("Magazine added successfully")
-        // Refresh the page instead of just adding to table
-        window.location.reload()
-      } else {
-        throw new Error(data.message || "Failed to add magazine")
-      }
+        const response = await fetch("/magazines", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": document.querySelector(
+                    'meta[name="csrf-token"]'
+                ).content,
+                Accept: "application/json",
+            },
+            body: JSON.stringify({ number, title, is_public: isPublic }),
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(
+                `HTTP error! status: ${response.status}, body: ${errorText}`
+            );
+        }
+
+        const data = await response.json();
+
+        if (data.success) {
+            alert("Magazine added successfully");
+            // Refresh the page instead of just adding to table
+            window.location.reload();
+        } else {
+            throw new Error(data.message || "Failed to add magazine");
+        }
     } catch (error) {
-      console.error("Error:", error)
-      alert(error.message)
+        console.error("Error:", error);
+        alert(error.message);
     }
-  }
-  
-  function addMagazineToTable(magazine) {
-    const tableBody = document.getElementById("magazines-table-body")
-    const newRow = tableBody.insertRow()
+}
+
+function addMagazineToTable(magazine) {
+    const tableBody = document.getElementById("magazines-table-body");
+    const newRow = tableBody.insertRow();
     newRow.innerHTML = `
           <td>${magazine.number}</td>
           <td>${magazine.title}</td>
           <td>${magazine.is_public ? "Yes" : "No"}</td>
           <td>
-              <a href="/magazines/${magazine.id}/manage" class="btn-primary">Manage</a>
-              <form action="/magazines/${magazine.id}" method="POST" style="display: inline;">
-                  <input type="hidden" name="_token" value="${document.querySelector('meta[name="csrf-token"]').content}">
+              <a href="/magazines/${
+                  magazine.id
+              }/manage" class="btn-primary">Manage</a>
+              <form action="/magazines/${
+                  magazine.id
+              }" method="POST" style="display: inline;">
+                  <input type="hidden" name="_token" value="${
+                      document.querySelector('meta[name="csrf-token"]').content
+                  }">
                   <input type="hidden" name="_method" value="DELETE">
                   <button type="submit" class="btn-danger" onclick="return confirm('Are you sure you want to delete this magazine?')">Delete</button>
               </form>
           </td>
-      `
-  }
-  
-  function clearMagazineForm() {
-    document.getElementById("magazine-number").value = ""
-    document.getElementById("magazine-title").value = ""
-    document.getElementById("magazine-status").value = "1"
-  }
-  
-  
-  
-  window.deleteMagazine = async (id) => {
-    if (!confirm("Are you sure you want to delete this magazine?")) {
-      return
-    }
-  
-    try {
-      const response = await fetch(`/magazines/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content,
-        },
-      })
-  
-      if (!response.ok) {
-        throw new Error("Failed to delete magazine")
-      }
-  
-      const data = await response.json()
-  
-      if (data.success) {
-        const row = document.querySelector(`tr[data-magazine-id="${id}"]`)
-        if (row) {
-          row.remove()
-        }
-        alert("Magazine deleted successfully")
-      } else {
-        throw new Error(data.message || "Failed to delete magazine")
-      }
-    } catch (error) {
-      console.error("Error:", error)
-      alert(error.message)
-    }
-  }
-  
-  
-  
+      `;
+}
 
-  
-  
-    
-    
+function clearMagazineForm() {
+    document.getElementById("magazine-number").value = "";
+    document.getElementById("magazine-title").value = "";
+    document.getElementById("magazine-status").value = "1";
+}
+
+window.deleteMagazine = async (id) => {
+    if (!confirm("Are you sure you want to delete this magazine?")) {
+        return;
+    }
+
+    try {
+        const response = await fetch(`/magazines/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                "X-CSRF-TOKEN": document.querySelector(
+                    'meta[name="csrf-token"]'
+                ).content,
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error("Failed to delete magazine");
+        }
+
+        const data = await response.json();
+
+        if (data.success) {
+            const row = document.querySelector(`tr[data-magazine-id="${id}"]`);
+            if (row) {
+                row.remove();
+            }
+            alert("Magazine deleted successfully");
+        } else {
+            throw new Error(data.message || "Failed to delete magazine");
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        alert(error.message);
+    }
+};
+
+window.rejectArticle = async (articleId) => {
+    if (confirm("Are you sure you want to reject this article?")) {
+        try {
+            const response = await fetch(`/reject-article/${articleId}`, {
+                method: "POST",
+                headers: {
+                    "X-CSRF-TOKEN": csrfToken,
+                },
+            });
+            const data = await response.json();
+            if (data.success) {
+                alert("Article rejected successfully");
+                location.reload();
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            alert("Failed to reject article");
+        }
+    }
+};

@@ -175,7 +175,7 @@
       subMenu.classList.toggle("open-menu");
     }
 
-    // Dropdown functionality
+    
     document.addEventListener('DOMContentLoaded', function () {
       const dropdownToggle = document.querySelector('.dropdown-toggle');
       const dropdownMenu = document.querySelector('.dropdown-menu');
@@ -186,7 +186,7 @@
           dropdownMenu.classList.toggle('show');
         });
 
-        // Close dropdown when clicking outside
+        
         document.addEventListener('click', function (e) {
           if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
             dropdownMenu.classList.remove('show');
@@ -194,7 +194,7 @@
         });
       }
 
-      // Active link functionality
+      
       const navLinks = document.querySelectorAll('.nav-link');
 
       function setActiveLink() {

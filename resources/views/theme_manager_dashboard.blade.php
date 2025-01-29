@@ -125,9 +125,9 @@
                             <td>{{ $proposal->created_at->format('Y-m-d') }}</td>
                             <td>
                                 @if($proposal->position == 1)
-                                    Waiting
+                                    sent
                                 @elseif($proposal->position == 2)
-                                    Almost Done
+                                    Processed
                                 @elseif($proposal->position == 3)
                                     Retained
                                 @else

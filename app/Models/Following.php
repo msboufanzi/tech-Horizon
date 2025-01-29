@@ -13,13 +13,11 @@ class Following extends Model
 
     protected $fillable = ['user_id', 'theme_id'];
 
-    // Relationship to the User model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    // Relationship to the Theme model
     public function theme()
     {
         return $this->belongsTo(Theme::class, 'theme_id');

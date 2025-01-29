@@ -1,0 +1,156 @@
+/* General Styles */
+body {
+    font-family: "Poppins", Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Navigation Bar */
+nav {
+    background-color: #001f3f;
+    padding: 15px;
+    text-align: center;
+}
+
+.logo {
+    color: #fff;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.logo:hover {
+    color: #0056b3;
+}
+
+/* Main Content */
+main {
+    max-width: 850px;
+    margin: 50px auto;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Titles & Headings */
+h1 {
+    text-align: center;
+    color: #001f3f;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 22px;
+    color: #001f3f;
+    margin-bottom: 10px;
+}
+
+h3 {
+    color: #333;
+    border-bottom: 3px solid #001f3f;
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+/* Content Sections */
+section {
+    padding: 20px;
+    border-radius: 8px;
+    background: #f9f9f9;
+    margin-top: 25px;
+}
+
+p {
+    color: #555;
+    font-size: 17px;
+    margin-bottom: 15px;
+}
+
+/* Article Image */
+img {
+    width: 100%;
+    max-height: 320px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-top: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Container */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+/* Buttons */
+button {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Propose to Editor Button */
+.btn-primary {
+    background-color: #3498db;
+    color: white;
+    box-shadow: 0 4px 8px rgba(52, 152, 219, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+/* Delete Button */
+.btn-danger {
+    background-color: #e74c3c;
+    color: white;
+    box-shadow: 0 4px 8px rgba(231, 76, 60, 0.2);
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    main {
+        width: 90%;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    button {
+        width: 100%;
+    }
+}

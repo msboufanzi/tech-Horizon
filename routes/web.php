@@ -66,11 +66,14 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/users/{user}/role', [EditorController::class, 'updateRole']);
     Route::delete('/users/{user}', [EditorController::class, 'blockUser']);
     Route::post('/users', [EditorController::class, 'addUser']);
-    
+
     Route::get('/magazines/{id}/manage', [MagazineController::class, 'manage'])->name('magazines.manage');
     Route::post('/magazines', [MagazineController::class, 'store'])->name('magazines.store');
     Route::post('/magazines/{id}/articles', [MagazineController::class, 'addArticle'])->name('magazines.addArticle');
     Route::delete('/magazines/{id}/articles/{articleId}', [MagazineController::class, 'removeArticle'])->name('magazines.removeArticle');
+    Route::get('/proposed-article/{id}', [EditorController::class, 'showProposedArticle'])->name('editor.show_proposed_article');
+    Route::post('/proposed-article/{id}/approve', [EditorController::class, 'approveArticle'])->name('editor.approve_article');
+    Route::post('/proposed-article/{id}/reject', [EditorController::class, 'rejectArticle'])->name('editor.reject_article');
     Route::delete('/magazines/{id}', [MagazineController::class, 'destroy'])->name('magazines.destroy');
 });
 

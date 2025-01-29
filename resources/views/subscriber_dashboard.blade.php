@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/subscriber.css') }}" />
 </head>
 <body>
-<nav>
+   <nav>
         <div class="nav-content">
             <a href="{{ route('home') }}" class="logo">Tech Horizon</a>
             <div class="nav-links">
@@ -148,13 +148,13 @@
                             <td>
                                 @switch($article->position)
                                     @case(1)
-                                        Waiting
+                                        sent
                                         @break
                                     @case(2)
-                                        Almost Done
+                                         Processed
                                         @break
                                     @case(3)
-                                        Done Posted
+                                         Approved
                                         @break
                                     @case(4)
                                         Rejected

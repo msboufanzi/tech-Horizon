@@ -21,7 +21,6 @@ return new class extends Migration {
             $table->boolean('ispublic')->default(false);
             $table->timestamps();
 
-            // Define foreign key constraints
             $table->foreign('theme_id')->references('id')->on('themes')->onDelete('cascade');
             $table->foreign('author_id')->references('id')->on('users')->onDelete('cascade');
         });

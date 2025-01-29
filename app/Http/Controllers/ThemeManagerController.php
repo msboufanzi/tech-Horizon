@@ -16,15 +16,15 @@ class ThemeManagerController extends Controller
     {
         $user = Auth::user();
         $theme = Theme::where('manager_id', $user->id)->first();
-        
+
         if (!$theme) {
             return redirect()->route('home')->with('error', 'You are not a theme manager');
         }
 
         $subscriptions = Following::with('user')->where('theme_id', $theme->id)->get();
         $articles = Article::with('author')->where('theme_id', $theme->id)->get();
-        $proposals = ProposedArticle::with('author')->where('theme_id', $theme->id)->get();
-        $comments = Comment::whereHas('article', function($query) use ($theme) {
+        $proposals = ProposedArticle::with('author')->where('theme_id', $theme->id)->where('position', 1)->get();
+        $comments = Comment::whereHas('article', function ($query) use ($theme) {
             $query->where('theme_id', $theme->id);
         })->with(['user', 'article'])->get();
 
@@ -43,7 +43,7 @@ class ThemeManagerController extends Controller
         Following::where('user_id', $request->user_id)
             ->where('theme_id', $request->theme_id)
             ->delete();
-        
+
         return redirect()->back()->with('success', 'Subscriber removed successfully');
     }
 
@@ -56,9 +56,9 @@ class ThemeManagerController extends Controller
     public function updateProposalStatus(Request $request)
     {
         $proposal = ProposedArticle::findOrFail($request->proposal_id);
-        $proposal->position = 2; // 2 for "Almost Done" status
+        $proposal->position = 2; // 2 for " Processed" status
         $proposal->save();
-        return redirect()->back()->with('success', 'Proposal status updated to Almost Done');
+        return redirect()->back()->with('success', 'Proposal status updated to  Processed');
     }
 
     public function deleteProposal($id)

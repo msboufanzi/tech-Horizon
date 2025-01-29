@@ -8,7 +8,8 @@ use App\Models\User;
 use App\Models\Theme;
 use App\Models\Comment;
 use App\Models\Rating;
-use App\Models\Magazine; // Add this line
+use App\Models\Magazine;
+use App\Models\ProposedArticle;
 
 class EditorController extends Controller
 {
@@ -17,9 +18,11 @@ class EditorController extends Controller
         $existingArticles = Article::with(['author', 'theme'])
             ->orderBy('title')
             ->paginate(7, ['*'], 'existing_page');
-        $pendingArticles = Article::with(['author', 'theme'])
-            ->where('ispublic', false)
+
+        $pendingArticles = ProposedArticle::with(['author', 'theme'])
+            ->where('position', 2)
             ->paginate(7, ['*'], 'pending_page');
+
         $users = User::paginate(7, ['*'], 'users_page');
         $subscribers = User::where('role', 'subscriber')->get();
         $statistics = [
@@ -28,10 +31,11 @@ class EditorController extends Controller
             'active_themes' => Theme::count(),
             'total_activities' => Comment::count() + Rating::count(),
         ];
-        $magazines = Magazine::all(); // Add this line
-        return view('editor_dashboard', compact('existingArticles', 'pendingArticles', 'users', 'statistics', 'subscribers', 'magazines')); // Add 'magazines' to the compact function
+        $magazines = Magazine::all();
+
+        return view('editor_dashboard', compact('existingArticles', 'pendingArticles', 'users', 'statistics', 'subscribers', 'magazines'));
     }
-    
+
     public function toggleVisibility(Request $request, Article $article)
     {
         $article->ispublic = !$article->ispublic;
@@ -63,29 +67,65 @@ class EditorController extends Controller
         $user = User::create($request->all());
         return response()->json(['success' => true, 'user' => $user]);
     }
-    
+
     public function addTheme(Request $request)
-{
-    $request->validate([
-        'theme-title' => 'required|string|max:255',
-        'theme-image' => 'required|url',
-        'theme-manager' => 'required|exists:users,id',
-        'theme-description' => 'required|string',
-    ]);
+    {
+        $request->validate([
+            'theme-title' => 'required|string|max:255',
+            'theme-image' => 'required|url',
+            'theme-manager' => 'required|exists:users,id',
+            'theme-description' => 'required|string',
+        ]);
 
-    $subscriber = User::findOrFail($request->input('theme-manager'));
+        $subscriber = User::findOrFail($request->input('theme-manager'));
 
-    $subscriber->role = 'manager';
-    $subscriber->save();
+        $subscriber->role = 'manager';
+        $subscriber->save();
 
-    $theme = Theme::create([
-        'title' => $request->input('theme-title'),
-        'image' => $request->input('theme-image'),
-        'description' => $request->input('theme-description'),
-        'manager_id' => $subscriber->id,
-    ]);
+        $theme = Theme::create([
+            'title' => $request->input('theme-title'),
+            'image' => $request->input('theme-image'),
+            'description' => $request->input('theme-description'),
+            'manager_id' => $subscriber->id,
+        ]);
 
-    return response()->json(['success' => true, 'theme' => $theme]);
-}
+        return response()->json(['success' => true, 'theme' => $theme]);
+    }
+
+    public function showProposedArticle($id)
+    {
+        $proposal = ProposedArticle::with(['author', 'theme'])->findOrFail($id);
+        return view('proposed_article_review', compact('proposal'));
+    }
+
+    public function approveArticle($id)
+    {
+        $proposal = ProposedArticle::findOrFail($id);
+
+        $article = new Article();
+        $article->title = $proposal->title;
+        $article->content = $proposal->content;
+        $article->description = $proposal->description;
+        $article->author_id = $proposal->author_id;
+        $article->theme_id = $proposal->theme_id;
+        $article->ispublic = true;
+        $article->image = $proposal->image;
+        $article->save();
+
+        $proposal->position = 3;
+        $proposal->save();
+
+        return redirect()->route('editor_dashboard')->with('success', 'Article approved and published.');
+    }
+
+    public function rejectArticle($id)
+    {
+        $proposal = ProposedArticle::findOrFail($id);
+
+        $proposal->position = 4;
+        $proposal->save();
+
+        return redirect()->route('editor_dashboard')->with('error', 'Article rejected.');
+    }
 }
 
