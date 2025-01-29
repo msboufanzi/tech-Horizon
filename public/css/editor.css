@@ -338,7 +338,6 @@ input:checked + .slider:before {
     background-color: #0056b3;
 }
 
-
 .add-article-form {
     display: flex;
     gap: 1rem;
@@ -451,7 +450,7 @@ input:checked + .slider:before {
 .magazine-form .form-row {
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-end; /* Align inputs and button */
+    align-items: flex-start;
     gap: 1rem;
 }
 
@@ -490,6 +489,7 @@ input:checked + .slider:before {
 .magazine-form button {
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
+    margin-top: 2rem;
     font-weight: bold;
     background-color: #0074d9;
     color: white;
@@ -497,8 +497,8 @@ input:checked + .slider:before {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    height: 43px; /* Match input height */
-    align-self: center; /* Align button with inputs */
+    height: 43px;
+    align-self: center;
 }
 
 .magazine-form button:hover {
