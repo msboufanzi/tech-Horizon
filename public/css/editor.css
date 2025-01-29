@@ -316,3 +316,185 @@ input:checked + .slider:before {
 #add-theme-form button[type="submit"]:hover {
     background-color: #0056b3;
 }
+/* Add these styles to your existing editor.css */
+
+.magazine-header {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 5px;
+  }
+  
+  .magazine-header h1 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .add-article-form {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  #article-select {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+  }
+  
+  .back-link {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+  
+  .back-link:hover {
+    color: #7fdbff;
+  }
+  
+  /* Add these styles to your existing editor.css */
+
+.top-nav {
+    background-color: #001f3f;
+    color: white;
+    padding: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .back-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  .magazine-details {
+    background-color: white;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .magazine-details h1 {
+    color: #001f3f;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+  
+  .magazine-details p {
+    color: #666;
+    margin-bottom: 0.5rem;
+  }
+  
+  .add-article-section {
+    background-color: white;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .add-article-section h2 {
+    color: #001f3f;
+    margin-bottom: 1rem;
+  }
+  
+  .add-article-form {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .article-select {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 1rem;
+  }
+  
+  .magazine-articles {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .magazine-articles h2 {
+    color: #001f3f;
+    margin-bottom: 1rem;
+  }
+  
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+  
+  .data-table th {
+    background-color: #001f3f;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+  }
+  
+  .data-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .btn-danger {
+    background-color: #ff4136;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .btn-danger:hover {
+    background-color: #dc352b;
+  }
+  
+  .btn-primary {
+    background-color: #0074d9;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  .btn-danger {
+    background-color: #ff4136;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .btn-danger:hover {
+    background-color: #dc352b;
+  }
+  
+  form {
+    margin: 0;
+    padding: 0;
+  }
+  
+  
+  

@@ -10,7 +10,7 @@ use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\EditorController;
 use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\ThemeManagerController;
-
+use App\Http\Controllers\MagazineController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -66,6 +66,12 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/users/{user}/role', [EditorController::class, 'updateRole']);
     Route::delete('/users/{user}', [EditorController::class, 'blockUser']);
     Route::post('/users', [EditorController::class, 'addUser']);
+    
+    Route::get('/magazines/{id}/manage', [MagazineController::class, 'manage'])->name('magazines.manage');
+    Route::post('/magazines', [MagazineController::class, 'store'])->name('magazines.store');
+    Route::post('/magazines/{id}/articles', [MagazineController::class, 'addArticle'])->name('magazines.addArticle');
+    Route::delete('/magazines/{id}/articles/{articleId}', [MagazineController::class, 'removeArticle'])->name('magazines.removeArticle');
+    Route::delete('/magazines/{id}', [MagazineController::class, 'destroy'])->name('magazines.destroy');
 });
 
 Route::middleware(['auth'])->group(function () {

@@ -30,6 +30,7 @@ class Article extends Model
     {
         return $this->belongsTo(Theme::class, 'theme_id');
     }
+    
 
     public function comments()
     {
@@ -39,5 +40,9 @@ class Article extends Model
     public function ratings()
     {
         return $this->hasMany(Rating::class);
+    }
+    public function magazines()
+    {
+        return $this->belongsToMany(Magazine::class, 'article_magazine');
     }
 }

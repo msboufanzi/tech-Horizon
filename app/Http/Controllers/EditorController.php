@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\User;
-use App\Models\Theme; // Added import for Theme model
-use App\Models\Comment; // Added import for Comment model
-use App\Models\Rating; // Added import for Rating model
+use App\Models\Theme;
+use App\Models\Comment;
+use App\Models\Rating;
+use App\Models\Magazine; // Add this line
 
 class EditorController extends Controller
 {
-
     public function index()
     {
         $existingArticles = Article::with(['author', 'theme'])
@@ -21,16 +21,17 @@ class EditorController extends Controller
             ->where('ispublic', false)
             ->paginate(7, ['*'], 'pending_page');
         $users = User::paginate(7, ['*'], 'users_page');
-        $subscribers = User::where('role', 'subscriber')->get(); 
+        $subscribers = User::where('role', 'subscriber')->get();
         $statistics = [
             'total_subscribers' => User::where('role', 'subscriber')->count(),
             'published_articles' => Article::where('ispublic', true)->count(),
             'active_themes' => Theme::count(),
             'total_activities' => Comment::count() + Rating::count(),
         ];
-        return view('editor_dashboard', compact('existingArticles', 'pendingArticles', 'users', 'statistics', 'subscribers'));
+        $magazines = Magazine::all(); // Add this line
+        return view('editor_dashboard', compact('existingArticles', 'pendingArticles', 'users', 'statistics', 'subscribers', 'magazines')); // Add 'magazines' to the compact function
     }
-
+    
     public function toggleVisibility(Request $request, Article $article)
     {
         $article->ispublic = !$article->ispublic;

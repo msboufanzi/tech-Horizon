@@ -142,6 +142,62 @@
                 <button type="submit" class="btn-primary">Add</button>
             </form>
         </section>
+        
+        <section id="magazines">
+            <h2>Magazine Numbers</h2>
+            <div class="magazine-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="magazine-number">Number:</label>
+                        <input type="text" id="magazine-number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="magazine-title">Title:</label>
+                        <input type="text" id="magazine-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="magazine-status">Is Public:</label>
+                        <select id="magazine-status">
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                    <button onclick="addMagazine()" class="btn-primary">Add Magazine Number</button>
+                </div>
+            </div>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Number</th>
+                        <th>Title</th>
+                        <th>Is Public</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="magazines-table-body">
+                    @foreach($magazines as $magazine)
+                    <tr data-magazine-id="{{ $magazine->id }}">
+                        <td>{{ $magazine->number }}</td>
+                        <td>{{ $magazine->title }}</td>
+                        <td>{{ $magazine->is_public ? 'Yes' : 'No' }}</td>
+                        <td>
+    <a href="{{ route('magazines.manage', ['id' => $magazine->id]) }}" class="btn-primary">Manage</a>
+    <form action="{{ route('magazines.destroy', ['id' => $magazine->id]) }}" method="POST" style="display: inline;">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn-danger" onclick="return confirm('Are you sure you want to delete this magazine?')">Delete</button>
+    </form>
+</td>
+
+
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </section>
+
+
         <section id="statistics">
             <h2>Global Statistics</h2>
             <div id="stats-container">
