@@ -30,7 +30,7 @@
             <li><a href="#existing-articles">Existing Articles</a></li>
             <li><a href="#articles">Articles Request Management</a></li>
             <li><a href="#users">User Management</a></li>
-            <li><a href="#magazine-numbers">Magazine Numbers</a></li>
+            <li><a href="#magazines">Magazine Numbers</a></li>
             <li><a href="#statistics">Global Statistics</a></li>
         </ul>
     </nav>
