@@ -337,18 +337,7 @@ input:checked + .slider:before {
 #add-theme-form button[type="submit"]:hover {
     background-color: #0056b3;
 }
-/* Add these styles to your existing editor.css */
 
-.magazine-header {
-    background-color: #f8f9fa;
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-    border-radius: 5px;
-}
-
-.magazine-header h1 {
-    margin-bottom: 0.5rem;
-}
 
 .add-article-form {
     display: flex;
@@ -442,34 +431,133 @@ input:checked + .slider:before {
     font-size: 1rem;
 }
 
-.magazine-articles {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+#magazines {
+    margin-bottom: 2rem;
 }
 
-.magazine-articles h2 {
+#magazines h2 {
     color: #001f3f;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+}
+
+.magazine-form {
+    background-color: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.magazine-form .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end; /* Align inputs and button */
+    gap: 1rem;
+}
+
+.magazine-form .form-group {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.magazine-form label {
+    font-weight: bold;
+    color: #001f3f;
+    margin-bottom: 0.5rem;
+}
+
+.magazine-form input[type="text"],
+.magazine-form select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #333;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.magazine-form input[type="text"]:focus,
+.magazine-form select:focus {
+    border-color: #0074d9;
+    box-shadow: 0 0 5px rgba(0, 116, 217, 0.3);
+    outline: none;
+}
+
+.magazine-form button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #0074d9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    height: 43px; /* Match input height */
+    align-self: center; /* Align button with inputs */
+}
+
+.magazine-form button:hover {
+    background-color: #0056b3;
 }
 
 .data-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
+}
+
+.data-table th,
+.data-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
 }
 
 .data-table th {
     background-color: #001f3f;
     color: white;
-    padding: 1rem;
-    text-align: left;
 }
 
-.data-table td {
-    padding: 1rem;
-    border-bottom: 1px solid #ddd;
+.data-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.data-table .btn-primary {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    background-color: #0074d9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.data-table .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.data-table .btn-danger {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.data-table .btn-danger:hover {
+    background-color: #c82333;
 }
 
 .btn-danger {
